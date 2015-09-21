@@ -11,3 +11,9 @@ class AddSurpriseView(generic.CreateView):
     template_name = "website/add-surprise.html"
     model = models.Surprise
     fields = ('link', 'description')
+
+
+class SurpriseDetailView(generic.DetailView):
+
+    template_name = "website/surprise-detail.html"
+    model = models.Surprise
