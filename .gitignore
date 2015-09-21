@@ -56,3 +56,5 @@ docs/_build/
 # PyBuilder
 target/
 mirigata/db.sqlite3
+mirigata.iml
+.idea
