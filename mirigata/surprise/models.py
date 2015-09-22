@@ -1,3 +1,4 @@
+import random
 from django.core.urlresolvers import reverse
 from django.db import models
 
@@ -8,3 +9,10 @@ class Surprise(models.Model):
 
     def get_absolute_url(self):
         return reverse('surprise-detail', kwargs={"pk": self.id})
+
+
+def get_random_surprise():
+    count = Surprise.objects.count()
+    rnd = random.randint(0, count-1)
+    return Surprise.objects.all().order_by('id')[rnd]
+

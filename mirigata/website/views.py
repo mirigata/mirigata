@@ -1,5 +1,3 @@
-import random
-
 from django.core.urlresolvers import reverse
 from django.views import generic
 
@@ -25,8 +23,5 @@ class RandomSurpriseView(generic.RedirectView):
     permanent = False
 
     def get_redirect_url(self, *args, **kwargs):
-        count = models.Surprise.objects.count()
-        rnd = random.randint(0, count-1)
-        surprise = models.Surprise.objects.all().order_by('id')[rnd]
-
+        surprise = models.get_random_surprise()
         return reverse("surprise-detail", kwargs=dict(pk=surprise.id))
