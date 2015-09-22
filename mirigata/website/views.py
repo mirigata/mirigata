@@ -3,7 +3,7 @@ from django.contrib.messages import views
 from django.core.urlresolvers import reverse
 from django.views import generic
 
-from surprise import models
+from surprise import models, forms
 
 
 class HomepageView(generic.TemplateView):
@@ -13,7 +13,8 @@ class HomepageView(generic.TemplateView):
 class AddSurpriseView(views.SuccessMessageMixin, generic.CreateView):
     template_name = "website/add-surprise.html"
     model = models.Surprise
-    fields = ('link', 'description')
+    form_class = forms.CreateSurpriseForm
+
     success_message = "Your surprise has been added to our collection! Thank you. "
 
 
