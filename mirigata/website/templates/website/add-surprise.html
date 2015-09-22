@@ -4,13 +4,6 @@
 
 {% block page %}
 
-	<form action="" method="post">
-		{% csrf_token %}
-
 		{% crispy form %}
-
-		<input class="btn btn-primary" type="submit" value="Create" />
-		<a href="{% url "homepage" %}">Cancel</a>
-	</form>
 
 {% endblock page %}
