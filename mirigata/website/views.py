@@ -1,3 +1,5 @@
+from django.contrib.messages import views
+
 from django.core.urlresolvers import reverse
 from django.views import generic
 
@@ -8,10 +10,11 @@ class HomepageView(generic.TemplateView):
     template_name = "website/index.html"
 
 
-class AddSurpriseView(generic.CreateView):
+class AddSurpriseView(views.SuccessMessageMixin, generic.CreateView):
     template_name = "website/add-surprise.html"
     model = models.Surprise
     fields = ('link', 'description')
+    success_message = "Your surprise has been added to our collection! Thank you. "
 
 
 class SurpriseDetailView(generic.DetailView):
