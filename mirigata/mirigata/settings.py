@@ -15,15 +15,48 @@ import os
 from django.core.exceptions import ImproperlyConfigured
 import re
 
-
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+
+def get_database_host():
+    docker_host = os.getenv('DOCKER_HOST', None)
+    if not docker_host:
+        raise ImproperlyConfigured("Could not find DOCKER_HOST environment variable")
+
+    # docker_host is something like tcp://192.168.99.100:2376
+    # so, let's extract the IP address
+    match = re.match('^tcp://(.*):\d+$', docker_host)
+    if not match:
+        raise ImproperlyConfigured("Weird value for DOCKER_HOST, expected something like tcp://IP:PORT")
+
+    return match.group(1)
+
+
+def get_value_from_passwords(key):
+    with open(os.path.join(BASE_DIR, '..', 'passwords.env')) as passwords:
+        lines = passwords.readlines()
+        for line in lines:
+            k, value = line.strip().split('=', 1)
+            if k == key:
+                return value
+
+    raise ImproperlyConfigured("Could not find {} in passwords.env".format(key))
+
+
+def get_database_password():
+    return get_value_from_passwords('MYSQL_PASSWORD')
+
+
+def get_secret():
+    return get_value_from_passwords('SECRET_KEY')
+
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'hmza=$)j(tuainnvk415z*fwj^4#)*+!y20_n+yn1a$%=9yh=o'
+SECRET_KEY = get_secret()
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -82,20 +115,6 @@ WSGI_APPLICATION = 'mirigata.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 
-def get_database_host():
-    docker_host = os.getenv('DOCKER_HOST', None)
-    if not docker_host:
-        raise ImproperlyConfigured("Could not find DOCKER_HOST environment variable")
-
-    # docker_host is something like tcp://192.168.99.100:2376
-    # so, let's extract the IP address
-    match = re.match('^tcp://(.*):\d+$', docker_host)
-    if not match:
-        raise ImproperlyConfigured("Weird value for DOCKER_HOST, expected something like tcp://IP:PORT")
-
-    return match.group(1)
-
-
 DATABASES = {
     'default': {
         # 'ENGINE': 'django.db.backends.sqlite3',
@@ -103,7 +122,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'mirigata_db',
         'USER': 'mirigata',
-        'PASSWORD': 'secret',
+        'PASSWORD': get_database_password(),
         'HOST': get_database_host(),
         'PORT': 13306,
     }

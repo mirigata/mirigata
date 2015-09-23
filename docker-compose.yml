@@ -2,10 +2,8 @@ database:
   image: mysql:5.6
   ports:
     - "13306:3306"
+  env_file:
+    - passwords.env
   environment:
-    MYSQL_ROOT_PASSWORD: supersecret
     MYSQL_DATABASE: mirigata_db
     MYSQL_USER: mirigata
-    MYSQL_PASSWORD: secret
-
-
