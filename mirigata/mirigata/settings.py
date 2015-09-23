@@ -12,6 +12,9 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+from django.core.exceptions import ImproperlyConfigured
+import re
+
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -79,6 +82,20 @@ WSGI_APPLICATION = 'mirigata.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 
+def get_database_host():
+    docker_host = os.getenv('DOCKER_HOST', None)
+    if not docker_host:
+        raise ImproperlyConfigured("Could not find DOCKER_HOST environment variable")
+
+    # docker_host is something like tcp://192.168.99.100:2376
+    # so, let's extract the IP address
+    match = re.match('^tcp://(.*):\d+$', docker_host)
+    if not match:
+        raise ImproperlyConfigured("Weird value for DOCKER_HOST, expected something like tcp://IP:PORT")
+
+    return match.group(1)
+
+
 DATABASES = {
     'default': {
         # 'ENGINE': 'django.db.backends.sqlite3',
@@ -87,7 +104,7 @@ DATABASES = {
         'NAME': 'mirigata_db',
         'USER': 'mirigata',
         'PASSWORD': 'secret',
-        'HOST': '192.168.99.100',
+        'HOST': get_database_host(),
         'PORT': 13306,
     }
 }
