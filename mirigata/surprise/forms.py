@@ -1,6 +1,6 @@
 from crispy_forms import helper
 from crispy_forms.bootstrap import FormActions
-from crispy_forms.layout import Layout, Field, Submit, Button
+from crispy_forms.layout import Layout, Field, Submit, Button, HTML
 from django import forms
 from . import models
 
@@ -15,11 +15,11 @@ class CreateSurpriseForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
         self.helper = helper.FormHelper()
         self.helper.layout = Layout(
-            Field('link', css_class="col-sm-12"),
-            Field('description', css_class="col-sm-12", rows=2),
+            Field('link', autofocus=True),
+            Field('description', rows=2),
 
             FormActions(
                 Submit('save', 'Create'),
-                Button('cancel', 'Cancel'),
+                HTML('<a href="{% url "homepage" %}">Cancel</a>'),
             )
         )
