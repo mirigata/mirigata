@@ -12,24 +12,42 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
-from django.core.exceptions import ImproperlyConfigured
 import re
+
+from django.core.exceptions import ImproperlyConfigured
+
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 def get_database_host():
     docker_host = os.getenv('DOCKER_HOST', None)
-    if not docker_host:
-        raise ImproperlyConfigured("Could not find DOCKER_HOST environment variable")
+    if docker_host:
+        # docker_host is something like tcp://192.168.99.100:2376
+        # so, let's extract the IP address
+        match = re.match('^tcp://(.*):\d+$', docker_host)
+        if not match:
+            raise ImproperlyConfigured("Weird value for DOCKER_HOST, expected something like tcp://IP:PORT")
 
-    # docker_host is something like tcp://192.168.99.100:2376
-    # so, let's extract the IP address
-    match = re.match('^tcp://(.*):\d+$', docker_host)
-    if not match:
-        raise ImproperlyConfigured("Weird value for DOCKER_HOST, expected something like tcp://IP:PORT")
+        return match.group(1)
 
-    return match.group(1)
+    linked_container = os.getenv('MIRIGATA_DB_PORT_3306_TCP_ADDR', None)
+    if linked_container:
+        return linked_container
+
+    raise ImproperlyConfigured("Could not find DOCKER_HOST or MIRIGATA_DB_PORT_3306_TCP_ADDR environment variable")
+
+
+def get_database_port():
+    docker_host = os.getenv('DOCKER_HOST', None)
+    if docker_host:
+        return 13306
+
+    linked_container = os.getenv('MIRIGATA_DB_PORT_3306_TCP_PORT', None)
+    if linked_container:
+        return int(linked_container)
+
+    raise ImproperlyConfigured("Could not find DOCKER_HOST or MIRIGATA_DB_PORT_3306_TCP_PORT environment variable")
 
 
 def get_value_from_passwords(key):
@@ -49,8 +67,6 @@ def get_database_password():
 
 def get_secret():
     return get_value_from_passwords('SECRET_KEY')
-
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
@@ -124,7 +140,7 @@ DATABASES = {
         'USER': 'mirigata',
         'PASSWORD': get_database_password(),
         'HOST': get_database_host(),
-        'PORT': 13306,
+        'PORT': get_database_port(),
     }
 }
 

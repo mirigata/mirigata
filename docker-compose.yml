@@ -7,3 +7,11 @@ database:
   environment:
     MYSQL_DATABASE: mirigata_db
     MYSQL_USER: mirigata
+
+mirigata:
+  build: .
+  links:
+    - database:mirigata_db
+  ports:
+    - "80:8000"
+
