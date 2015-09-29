@@ -14,4 +14,6 @@ mirigata:
     - database:mirigata_db
   ports:
     - "80:8000"
+  env_file:
+    - passwords.env
 

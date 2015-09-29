@@ -62,10 +62,18 @@ def get_value_from_passwords(key):
 
 
 def get_database_password():
+    password = os.getenv('MYSQL_PASSWORD', None)
+    if password:
+        return password
+
     return get_value_from_passwords('MYSQL_PASSWORD')
 
 
 def get_secret():
+    secret = os.getenv('SECRET_KEY', None)
+    if secret:
+        return secret
+
     return get_value_from_passwords('SECRET_KEY')
 
 # Quick-start development settings - unsuitable for production
