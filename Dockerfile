@@ -1,6 +1,11 @@
 FROM python:3
 MAINTAINER yigal@publysher.nl
 
+RUN apt-get update && \
+    apt-get install netcat-traditional  && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
 WORKDIR /app/mirigata
 EXPOSE 8000
 
