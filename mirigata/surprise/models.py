@@ -1,9 +1,12 @@
 import random
 from django.core.urlresolvers import reverse
 from django.db import models
+import shortuuid
+from shortuuidfield import ShortUUIDField
 
 
 class Surprise(models.Model):
+    id = ShortUUIDField(primary_key=True, auto=True)
     link = models.URLField(max_length=500)
     description = models.TextField(max_length=1000)
 

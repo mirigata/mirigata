@@ -7,5 +7,5 @@ urlpatterns = [
     url('^add-surprise$', views.AddSurpriseView.as_view(), name="add-surprise"),
 
     url('^surprise/random$', views.RandomSurpriseView.as_view(), name="random-surprise"),
-    url('^surprise/(?P<pk>\d+)$', views.SurpriseDetailView.as_view(), name="surprise-detail"),
+    url('^surprise/(?P<pk>[a-zA-Z0-9]+)$', views.SurpriseDetailView.as_view(), name="surprise-detail"),
 ]
