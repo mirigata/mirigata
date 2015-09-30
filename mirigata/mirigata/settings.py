@@ -76,6 +76,10 @@ def get_secret():
 
     return get_value_from_passwords('SECRET_KEY')
 
+
+def get_debug():
+    return os.getenv("DOCKER_HOST", None) is not None
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
 
@@ -83,9 +87,9 @@ def get_secret():
 SECRET_KEY = get_secret()
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = get_debug()
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '192.168.99.100', '.mirigata.com']
 
 
 # Application definition
@@ -173,3 +177,19 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 CRISPY_TEMPLATE_PACK = "bootstrap3"
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['console'],
+            'level': 'DEBUG',
+        },
+    },
+}

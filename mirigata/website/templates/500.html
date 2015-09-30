@@ -1,0 +1,15 @@
+{% extends "website/base.html" %}
+
+{% block page %}
+
+<h1 class="page-header">500: Oh nos</h1>
+
+	<p>
+	Everything seems to be broken. We're really really sorry.
+	</p>
+
+	<p>
+		<a href="{% url "random-surprise" %}" class="btn btn-primary btn-lg">Surprise me again</a>
+	</p>
+
+{% endblock %}

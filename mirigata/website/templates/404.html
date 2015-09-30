@@ -1,0 +1,15 @@
+{% extends "website/base.html" %}
+
+{% block page %}
+
+<h1 class="page-header">404: We're really sorry</h1>
+
+	<p>
+	The surprise you were looking for does not exist.
+	</p>
+
+	<p>
+		<a href="{% url "random-surprise" %}" class="btn btn-primary btn-lg">Surprise me again</a>
+	</p>
+
+{% endblock %}

@@ -29,3 +29,9 @@ class RandomSurpriseView(generic.RedirectView):
     def get_redirect_url(self, *args, **kwargs):
         surprise = models.get_random_surprise()
         return reverse("surprise-detail", kwargs=dict(pk=surprise.id))
+
+
+def error(request):
+    raise ValueError("Expected error")
+
+
