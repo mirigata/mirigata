@@ -18,15 +18,27 @@
 		{% endif %}
 	{% endif %}
 
-	<form id="login-form" method="post" action="{% url 'django.contrib.auth.views.login' %}">
-		{% csrf_token %}
-		{{ form | crispy }}
+	<div class="row">
+	<div class="col-sm-6">
+		<h2>Log in</h2>
+		<form id="login-form" method="post" action="{% url 'django.contrib.auth.views.login' %}">
+			{% csrf_token %}
+			{{ form | crispy }}
 
-		<input type="submit" value="login" class="btn btn-primary"/>
-		<input type="hidden" name="next" value="{{ next }}" />
-	</form>
+			<input type="submit" value="login" class="btn btn-primary"/>
+			<input type="hidden" name="next" value="{{ next }}" />
+		</form>
 
-	{# Assumes you setup the password_reset view in your URLconf #}
-{#	<p><a href="{% url 'password_reset' %}">Lost password?</a></p>#}
+		{# Assumes you setup the password_reset view in your URLconf #}
+		{#	<p><a href="{% url 'password_reset' %}">Lost password?</a></p>#}
+	</div>
+	<div class="col-sm-6">
+		<h2>Sign up</h2>
+		<p>
+			Don't have an account? <a href="{% url "signup" %}">Sign up now!</a>
+		</p>
+	</div>
+	</div>
+
 
 {% endblock %}

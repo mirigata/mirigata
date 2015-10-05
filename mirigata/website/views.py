@@ -1,6 +1,9 @@
+from django.contrib.auth import login, authenticate
+from django.contrib.auth.forms import UserCreationForm
 from django.contrib.messages import views
 
 from django.core.urlresolvers import reverse
+from django.shortcuts import redirect
 from django.views import generic
 
 from surprise import models, forms
@@ -35,3 +38,16 @@ def error(request):
     raise ValueError("Expected error")
 
 
+class SignupView(views.SuccessMessageMixin, generic.CreateView):
+    form_class = UserCreationForm
+    template_name = "website/signup.html"
+    success_url = "/"
+
+    success_message = "Thank you for signing up!"
+
+    def form_valid(self, form):
+        result = super().form_valid(form)
+        user = authenticate(username=form.cleaned_data['username'],
+                            password=form.cleaned_data['password1'])
+        login(self.request, user)
+        return result
