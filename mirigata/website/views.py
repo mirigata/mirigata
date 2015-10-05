@@ -1,10 +1,9 @@
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.messages import views
-
 from django.core.urlresolvers import reverse
-from django.shortcuts import redirect
 from django.views import generic
+from braces import views as braces
 
 from surprise import models, forms
 
@@ -13,7 +12,7 @@ class HomepageView(generic.TemplateView):
     template_name = "website/index.html"
 
 
-class AddSurpriseView(views.SuccessMessageMixin, generic.CreateView):
+class AddSurpriseView(views.SuccessMessageMixin, braces.LoginRequiredMixin, generic.CreateView):
     template_name = "website/add-surprise.html"
     model = models.Surprise
     form_class = forms.CreateSurpriseForm

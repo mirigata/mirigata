@@ -14,7 +14,9 @@
 			<p>Your account doesn't have access to this page. To proceed,
 				please login with an account that has access.</p>
 		{% else %}
-			<p>Please login to see this page.</p>
+			<div class="alert alert-info">
+				<p>Please login to add a surprise. Don't have an account? <a href="{% url "signup" %}">Sign up here</a></p>
+			</div>
 		{% endif %}
 	{% endif %}
 
