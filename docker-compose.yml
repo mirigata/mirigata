@@ -1,7 +1,7 @@
-database:
+mirigata_db:
   image: mysql:5.6
   ports:
-    - "13306:3306"
+    - ":3306"
   env_file:
     - passwords.env
   environment:
@@ -11,9 +11,10 @@ database:
 mirigata:
   build: .
   links:
-    - database:mirigata_db
+    - mirigata_db
   ports:
     - "80:8000"
-  env_file:
-    - passwords.env
+  environment:
+    DISCOVERY_MODE: env
+    SECRET_KEY: hmza=$)j(tuainnvk415z*fwj^4#)*+!y20_n+yn1a$%=9yh=o
 

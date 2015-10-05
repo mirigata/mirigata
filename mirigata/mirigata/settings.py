@@ -13,81 +13,17 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 import re
+from discovery import services
 
 from django.core.exceptions import ImproperlyConfigured
 
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+db = services.register('mirigata_db', 'mysql', secrets=['mysql_user', 'mysql_password', 'mysql_database'])
 
-def get_database_host():
-    docker_host = os.getenv('DOCKER_HOST', None)
-    if docker_host:
-        # docker_host is something like tcp://192.168.99.100:2376
-        # so, let's extract the IP address
-        match = re.match('^tcp://(.*):\d+$', docker_host)
-        if not match:
-            raise ImproperlyConfigured("Weird value for DOCKER_HOST, expected something like tcp://IP:PORT")
-
-        return match.group(1)
-
-    linked_container = os.getenv('MIRIGATA_DB_PORT_3306_TCP_ADDR', None)
-    if linked_container:
-        return linked_container
-
-    raise ImproperlyConfigured("Could not find DOCKER_HOST or MIRIGATA_DB_PORT_3306_TCP_ADDR environment variable")
-
-
-def get_database_port():
-    docker_host = os.getenv('DOCKER_HOST', None)
-    if docker_host:
-        return 13306
-
-    linked_container = os.getenv('MIRIGATA_DB_PORT_3306_TCP_PORT', None)
-    if linked_container:
-        return int(linked_container)
-
-    raise ImproperlyConfigured("Could not find DOCKER_HOST or MIRIGATA_DB_PORT_3306_TCP_PORT environment variable")
-
-
-def get_value_from_passwords(key):
-    with open(os.path.join(BASE_DIR, '..', 'passwords.env')) as passwords:
-        lines = passwords.readlines()
-        for line in lines:
-            k, value = line.strip().split('=', 1)
-            if k == key:
-                return value
-
-    raise ImproperlyConfigured("Could not find {} in passwords.env".format(key))
-
-
-def get_database_password():
-    password = os.getenv('MYSQL_PASSWORD', None)
-    if password:
-        return password
-
-    return get_value_from_passwords('MYSQL_PASSWORD')
-
-
-def get_secret():
-    secret = os.getenv('SECRET_KEY', None)
-    if secret:
-        return secret
-
-    return get_value_from_passwords('SECRET_KEY')
-
-
-def get_debug():
-    return os.getenv("DOCKER_HOST", None) is not None
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = get_secret()
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = get_debug()
+SECRET_KEY = os.getenv("SECRET_KEY", "default-secret")
+DEBUG = services.debug_mode
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', '192.168.99.100', '.mirigata.com']
 
@@ -148,11 +84,11 @@ DATABASES = {
         # 'ENGINE': 'django.db.backends.sqlite3',
         # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'mirigata_db',
-        'USER': 'mirigata',
-        'PASSWORD': get_database_password(),
-        'HOST': get_database_host(),
-        'PORT': get_database_port(),
+        'NAME': db.secrets['mysql_database'],
+        'USER': db.secrets['mysql_user'],
+        'PASSWORD': db.secrets['mysql_password'],
+        'HOST': db.host,
+        'PORT': db.port,
     }
 }
 
@@ -189,7 +125,7 @@ LOGGING = {
     'loggers': {
         'django': {
             'handlers': ['console'],
-            'level': 'DEBUG',
+            'level': 'INFO',
         },
     },
 }
