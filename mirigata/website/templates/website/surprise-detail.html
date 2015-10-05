@@ -12,6 +12,12 @@
 	{{ object.description }}
 	</p>
 
+	{% if object.creator %}
+	<p>
+	Posted by {{ object.creator }}
+	</p>
+	{% endif %}
+
 	<p>
 	<a href="{% url "random-surprise" %}" class="btn btn-primary btn-lg">Surprise me again</a>
 	</p>

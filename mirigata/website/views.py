@@ -19,6 +19,12 @@ class AddSurpriseView(views.SuccessMessageMixin, braces.LoginRequiredMixin, gene
 
     success_message = "Your surprise has been added to our collection! Thank you. "
 
+    def form_valid(self, form):
+        result = super().form_valid(form)
+        self.object.creator = self.request.user
+        self.object.save()
+        return result
+
 
 class SurpriseDetailView(generic.DetailView):
     template_name = "website/surprise-detail.html"

@@ -23,3 +23,4 @@ class CreateSurpriseForm(forms.ModelForm):
                 HTML('<a href="{% url "homepage" %}">Cancel</a>'),
             )
         )
+
