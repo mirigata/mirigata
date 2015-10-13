@@ -8,10 +8,16 @@ mirigata_db:
     MYSQL_DATABASE: mirigata_db
     MYSQL_USER: mirigata
 
+infiksi:
+  image: mirigata/infiksi
+  ports:
+    - ":8080"
+
 mirigata:
   build: .
   links:
     - mirigata_db
+    - infiksi
   ports:
     - "80:8000"
   environment:
