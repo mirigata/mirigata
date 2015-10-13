@@ -21,6 +21,9 @@ from django.core.exceptions import ImproperlyConfigured
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 db = services.register('mirigata_db', 'mysql', secrets=['mysql_user', 'mysql_password', 'mysql_database'])
+infiksi = services.register('infiksi', 8080)
+
+INFIKSI_BASE_URL = 'http://{}:{}/'.format(infiksi.host, infiksi.port)
 
 SECRET_KEY = os.getenv("SECRET_KEY", "default-secret")
 DEBUG = services.debug_mode
