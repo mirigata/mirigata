@@ -49,7 +49,7 @@ def get_random_surprise():
 
 def update_metadata(surprise):
     response = requests.get(settings.INFIKSI_BASE_URL, dict(q=surprise.link))
-    response.raise_for_status()
+    response.raise_for_status()     # TODO: Handle this gracefully
 
     metadata = response.json()
     surprise.add_metadata(metadata)

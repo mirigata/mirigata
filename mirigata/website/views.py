@@ -19,15 +19,12 @@ class AddSurpriseView(views.SuccessMessageMixin, braces.LoginRequiredMixin, gene
 
     success_message = "Your surprise has been added to our collection! Thank you. "
 
-    def form_invalid(self, form):
-        print("invalid form", form)
-        return super().form_invalid(form)
-
     def form_valid(self, form):
+        # TODO: Move all saving-related stuff to a command-like form
+
         result = super().form_valid(form)
         self.object.creator = self.request.user
         self.object.save()
-
         models.update_metadata(self.object)
 
         return result

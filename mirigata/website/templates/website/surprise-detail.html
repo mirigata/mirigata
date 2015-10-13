@@ -2,10 +2,12 @@
 
 {% block page %}
 
+	{% comment %} TODO: Use real layout {% endcomment %}
+
 	<h1 class="page-header">{{ object.title }}</h1>
 
 	{% if object.thumbnail_url %}
-	<img src="{{ object.thumbnail_url }}">
+		<img src="{{ object.thumbnail_url }}">
 	{% endif %}
 
 	<p>
