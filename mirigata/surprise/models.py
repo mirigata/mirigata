@@ -11,8 +11,11 @@ from shortuuidfield import ShortUUIDField
 class Surprise(models.Model):
     id = ShortUUIDField(primary_key=True, auto=True)
     link = models.URLField(max_length=500)
-    title = models.TextField(max_length=500, null=True, blank=True)
     description = models.TextField(max_length=1000)
+
+    title = models.TextField(max_length=500, null=True, blank=True)
+    author_name = models.TextField(max_length=500, null=True, blank=True)
+    thumbnail_url = models.URLField(max_length=500, null=True, blank=True)
     creator = models.ForeignKey(auth.User, null=True, blank=True)
 
     def get_absolute_url(self):
@@ -32,6 +35,14 @@ class Surprise(models.Model):
         description = d.get('description')
         if description:
             self.description = description
+
+        author = d.get('author_name')
+        if author:
+            self.author_name = author
+
+        thumbnail = d.get('og_image')
+        if thumbnail:
+            self.thumbnail_url = thumbnail
 
         self.save()
 

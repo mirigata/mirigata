@@ -80,3 +80,13 @@ class GuardianMetadataTestCase(TestCase):
         self.assertEqual(self.surprise.description,
                          "David Bowie has reportedly decided to retire from touring \u2013 and we believe him. But "
                          "it wouldn\u2019t be the first time a farewell pledge turned out not to be binding")
+
+    def test_add_metadata_adds_author(self):
+        self.surprise.add_metadata(self.metadata)
+        self.assertEqual(self.surprise.author_name, 'Michael Hann')
+
+    def test_add_metadata_adds_thumbnail(self):
+        self.surprise.add_metadata(self.metadata)
+        self.assertEqual(self.surprise.thumbnail_url,
+                         "https://i.guim.co.uk/img/media/d09bc7ec2154ded732ab3f835a5d04afc8568382/0_687_3548_2127"
+                         "/master/3548.jpg?w=1200&q=85&auto=format&sharp=10&s=6775811792d9d21580ba010cfbcfb1dd")
