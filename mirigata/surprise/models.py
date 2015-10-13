@@ -11,7 +11,7 @@ from shortuuidfield import ShortUUIDField
 class Surprise(models.Model):
     id = ShortUUIDField(primary_key=True, auto=True)
     link = models.URLField(max_length=500)
-    title = models.TextField(max_length=500, null=True)
+    title = models.TextField(max_length=500, null=True, blank=True)
     description = models.TextField(max_length=1000)
     creator = models.ForeignKey(auth.User, null=True, blank=True)
 
