@@ -4,22 +4,33 @@
 
 	<h1 class="page-header">{{ object.title }}</h1>
 
-	<p>
-	<a href="{{ object.link }}">{{ object.link }}</a>
-	</p>
-
-	<p>
-	{{ object.description }}
-	</p>
-
-	{% if object.creator %}
-	<p>
-	Posted by {{ object.creator }}
-	</p>
+	{% if object.thumbnail_url %}
+	<img src="{{ object.thumbnail_url }}">
 	{% endif %}
 
 	<p>
-	<a href="{% url "random-surprise" %}" class="btn btn-primary btn-lg">Surprise me again</a>
+		<a href="{{ object.link }}">{{ object.link }}</a>
+	</p>
+
+	<p>
+		{{ object.description }}
+	</p>
+
+	{% if object.author_name %}
+		<p>
+			Written by {{ object.author_name }}
+		</p>
+	{% endif %}
+
+
+	{% if object.creator %}
+		<p>
+			Posted by {{ object.creator }}
+		</p>
+	{% endif %}
+
+	<p>
+		<a href="{% url "random-surprise" %}" class="btn btn-primary btn-lg">Surprise me again</a>
 	</p>
 
 {% endblock page %}
