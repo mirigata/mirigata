@@ -1,7 +1,10 @@
 import random
+
+from django.conf import settings
 from django.core.urlresolvers import reverse
 from django.db import models
 from django.contrib.auth import models as auth
+import requests
 from shortuuidfield import ShortUUIDField
 
 
@@ -35,6 +38,13 @@ class Surprise(models.Model):
 
 def get_random_surprise():
     count = Surprise.objects.count()
-    rnd = random.randint(0, count-1)
+    rnd = random.randint(0, count - 1)
     return Surprise.objects.all().order_by('id')[rnd]
 
+
+def update_metadata(surprise):
+    response = requests.get(settings.INFIKSI_BASE_URL, dict(q=surprise.link))
+    response.raise_for_status()
+
+    metadata = response.json()
+    surprise.add_metadata(metadata)
