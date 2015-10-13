@@ -21,28 +21,22 @@ class Surprise(models.Model):
     def get_absolute_url(self):
         return reverse('surprise-detail', kwargs={"pk": self.id})
 
+    def _update(self, attr, metadata, *fields):
+        value = None
+        for field in fields:
+            value = metadata.get(field)
+            if value:
+                break
+
+        if value:
+            setattr(self, attr, value)
+
     def add_metadata(self, d):
-        canonical_url = d.get('canonical_url')
-        if canonical_url:
-            self.link = canonical_url
-
-        title = d.get('og_title')
-        if not title:
-            title = d.get('title')
-        if title:
-            self.title = title
-
-        description = d.get('description')
-        if description:
-            self.description = description
-
-        author = d.get('author_name')
-        if author:
-            self.author_name = author
-
-        thumbnail = d.get('og_image')
-        if thumbnail:
-            self.thumbnail_url = thumbnail
+        self._update('link', d, 'canonical_url')
+        self._update('description', d, 'description')
+        self._update('author_name', d, 'author_name')
+        self._update('thumbnail_url', d, 'og_image')
+        self._update('title', d, 'og_title', 'title')
 
         self.save()
 
