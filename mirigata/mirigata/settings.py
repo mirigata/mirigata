@@ -20,8 +20,8 @@ from django.core.exceptions import ImproperlyConfigured
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-db = services.register('mirigata_db', 'mysql', secrets=['mysql_user', 'mysql_password', 'mysql_database'])
-infiksi = services.register('infiksi', 8080)
+db = services.register('mirigata-db', 3306, 'mysql', secrets=['mysql-user', 'mysql-password', 'mysql-database'])
+infiksi = services.register('infiksi', 8080, 'http')
 
 INFIKSI_BASE_URL = 'http://{}:{}/'.format(infiksi.host, infiksi.port)
 
@@ -87,9 +87,9 @@ DATABASES = {
         # 'ENGINE': 'django.db.backends.sqlite3',
         # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': db.secrets['mysql_database'],
-        'USER': db.secrets['mysql_user'],
-        'PASSWORD': db.secrets['mysql_password'],
+        'NAME': db.secrets['mysql-database'],
+        'USER': db.secrets['mysql-user'],
+        'PASSWORD': db.secrets['mysql-password'],
         'HOST': db.host,
         'PORT': db.port,
     }
@@ -114,6 +114,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.abspath(os.path.join(BASE_DIR, '..', 'static'))
 
 CRISPY_TEMPLATE_PACK = "bootstrap3"
 
