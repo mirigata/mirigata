@@ -20,7 +20,7 @@ from django.core.exceptions import ImproperlyConfigured
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-db = services.register('mirigata-db', 3306, 'mysql', secrets=['mysql-user', 'mysql-password', 'mysql-database'])
+db = services.register('mirigata-db', 5432, 'postgres', secrets=['postgres-user', 'postgres-password'])
 infiksi = services.register('infiksi', 8080, 'http')
 
 INFIKSI_BASE_URL = 'http://{}:{}/'.format(infiksi.host, infiksi.port)
@@ -84,12 +84,10 @@ WSGI_APPLICATION = 'mirigata.wsgi.application'
 
 DATABASES = {
     'default': {
-        # 'ENGINE': 'django.db.backends.sqlite3',
-        # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': db.secrets['mysql-database'],
-        'USER': db.secrets['mysql-user'],
-        'PASSWORD': db.secrets['mysql-password'],
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': db.secrets['postgres-user'],
+        'USER': db.secrets['postgres-user'],
+        'PASSWORD': db.secrets['postgres-password'],
         'HOST': db.host,
         'PORT': db.port,
     }

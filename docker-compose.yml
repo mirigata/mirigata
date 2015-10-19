@@ -1,12 +1,11 @@
 mirigata-db:
-  image: mysql:5.6
+  image: postgres:9.4
   ports:
-    - ":3306"
+    - ":5432"
   env_file:
     - passwords.env
   environment:
-    MYSQL_DATABASE: mirigata_db
-    MYSQL_USER: mirigata
+    POSTGRES_USER: mirigata
 
 infiksi:
   image: mirigata/infiksi
