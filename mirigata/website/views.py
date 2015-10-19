@@ -12,22 +12,18 @@ class HomepageView(generic.TemplateView):
     template_name = "website/index.html"
 
 
-class AddSurpriseView(views.SuccessMessageMixin, braces.LoginRequiredMixin, generic.CreateView):
+class AddSurpriseView(views.SuccessMessageMixin, braces.LoginRequiredMixin, generic.FormView):
     template_name = "website/add-surprise.html"
-    model = models.Surprise
-    form_class = forms.CreateSurpriseForm
+    form_class = forms.CreateSurpriseCommand
 
     success_message = "Your surprise has been added to our collection! Thank you. "
 
+    def get_success_url(self):
+        return self.object.get_absolute_url()
+
     def form_valid(self, form):
-        # TODO: Move all saving-related stuff to a command-like form
-
-        result = super().form_valid(form)
-        self.object.creator = self.request.user
-        self.object.save()
-        models.update_metadata(self.object)
-
-        return result
+        self.object = form.execute(self.request.user)
+        return super().form_valid(form)
 
 
 class SurpriseDetailView(generic.DetailView):

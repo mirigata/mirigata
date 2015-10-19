@@ -4,6 +4,7 @@ from django.conf import settings
 from django.core.urlresolvers import reverse
 from django.db import models
 from django.contrib.auth import models as auth
+from django.utils import timezone
 import requests
 from shortuuidfield import ShortUUIDField
 
@@ -17,6 +18,7 @@ class Surprise(models.Model):
     author_name = models.TextField(max_length=500, null=True, blank=True)
     thumbnail_url = models.URLField(max_length=500, null=True, blank=True)
     creator = models.ForeignKey(auth.User, null=True, blank=True)
+    metadata_retrieved = models.DateTimeField(null=True)
 
     def get_absolute_url(self):
         return reverse('surprise-detail', kwargs={"pk": self.id})
@@ -37,6 +39,7 @@ class Surprise(models.Model):
         self._update('author_name', d, 'author_name')
         self._update('thumbnail_url', d, 'og_image')
         self._update('title', d, 'og_title', 'title')
+        self.metadata_retrieved = timezone.now()
 
         self.save()
 

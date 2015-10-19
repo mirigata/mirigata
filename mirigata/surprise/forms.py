@@ -1,22 +1,21 @@
 from crispy_forms import helper
 from crispy_forms.bootstrap import FormActions
-from crispy_forms.layout import Layout, Field, Submit, Button, HTML
+from crispy_forms.layout import Layout, Field, Submit, HTML
 from django import forms
+
 from . import models
 
 
-class CreateSurpriseForm(forms.ModelForm):
-
-    class Meta:
-        model = models.Surprise
-        exclude = ()
+class CreateSurpriseCommand(forms.Form):
+    link = forms.URLField()
 
     def __init__(self, *args, **kwargs):
+        print(args, kwargs)
+
         super().__init__(*args, **kwargs)
         self.helper = helper.FormHelper()
         self.helper.layout = Layout(
             Field('link', autofocus=True),
-            Field('description', rows=2),
 
             FormActions(
                 Submit('save', 'Create'),
@@ -24,3 +23,11 @@ class CreateSurpriseForm(forms.ModelForm):
             )
         )
 
+    def execute(self, user):
+        surprise = models.Surprise.objects.create(
+            link=self.cleaned_data['link'],
+            creator=user,
+        )
+        models.update_metadata(surprise)
+
+        return surprise
