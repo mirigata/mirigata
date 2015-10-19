@@ -2,9 +2,15 @@
 
 {% block page %}
 
+	{% if not object.link_exists %}
+		<div class="alert alert-warning">
+		This link no longer exists!
+		</div>
+	{% endif %}
+
 	{% comment %} TODO: Use real layout {% endcomment %}
 
-	<h1 class="page-header">{{ object.title }}</h1>
+	<h1 class="page-header">{{ object.title|default:object.link }}</h1>
 
 	{% if object.thumbnail_url %}
 		<img src="{{ object.thumbnail_url }}">

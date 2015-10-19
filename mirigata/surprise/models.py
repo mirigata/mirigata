@@ -1,3 +1,4 @@
+import logging
 import random
 
 from django.conf import settings
@@ -7,6 +8,9 @@ from django.contrib.auth import models as auth
 from django.utils import timezone
 import requests
 from shortuuidfield import ShortUUIDField
+
+
+log = logging.getLogger(__name__)
 
 
 class Surprise(models.Model):
@@ -19,6 +23,8 @@ class Surprise(models.Model):
     thumbnail_url = models.URLField(max_length=500, null=True, blank=True)
     creator = models.ForeignKey(auth.User, null=True, blank=True)
     metadata_retrieved = models.DateTimeField(null=True)
+
+    link_exists = models.BooleanField(default=True)
 
     def get_absolute_url(self):
         return reverse('surprise-detail', kwargs={"pk": self.id})
@@ -52,7 +58,19 @@ def get_random_surprise():
 
 def update_metadata(surprise):
     response = requests.get(settings.INFIKSI_BASE_URL, dict(q=surprise.link))
-    response.raise_for_status()     # TODO: Handle this gracefully
 
-    metadata = response.json()
-    surprise.add_metadata(metadata)
+    if response.status_code == 404:
+        surprise.link_exists = False
+        surprise.metadata_retrieved = timezone.now()
+        surprise.save()
+        return
+
+    if response.status_code == 200:
+        metadata = response.json()
+        surprise.add_metadata(metadata)
+        return
+
+
+    # status_code is probably 504
+    log.warning("Could not retrieve metadata for %s; received status code %d", surprise.link, response.status_code)
+    return

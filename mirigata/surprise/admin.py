@@ -11,7 +11,7 @@ update_metadata.short_description = "Update metadata"
 
 
 class SurpriseAdmin(admin.ModelAdmin):
-    list_display = ('id', 'link', 'metadata_retrieved')
+    list_display = ('id', 'link', 'metadata_retrieved', 'link_exists')
     actions = [update_metadata]
 
 
