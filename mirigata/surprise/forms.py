@@ -10,8 +10,6 @@ class CreateSurpriseCommand(forms.Form):
     link = forms.URLField()
 
     def __init__(self, *args, **kwargs):
-        print(args, kwargs)
-
         super().__init__(*args, **kwargs)
         self.helper = helper.FormHelper()
         self.helper.layout = Layout(
