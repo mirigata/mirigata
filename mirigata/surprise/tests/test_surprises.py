@@ -90,3 +90,21 @@ class GuardianMetadataTestCase(TestCase):
         self.assertEqual(self.surprise.thumbnail_url,
                          "https://i.guim.co.uk/img/media/d09bc7ec2154ded732ab3f835a5d04afc8568382/0_687_3548_2127"
                          "/master/3548.jpg?w=1200&q=85&auto=format&sharp=10&s=6775811792d9d21580ba010cfbcfb1dd")
+
+
+class RandomSurpriseTestCase(TestCase):
+
+    def test_never_return_non_existing_link(self):
+        non_existing = models.Surprise.objects.create(
+            link="http://hjdsfhsdhfjdshfsdj.com",
+            link_exists=False,
+        )
+        existing = models.Surprise.objects.create(
+            link="http://fjhdsfhjdskhfjs.com",
+            link_exists=True,
+        )
+
+        random_surprises = [models.get_random_surprise() for _ in range(100)]
+
+        self.assertIn(existing, random_surprises)
+        self.assertNotIn(non_existing, random_surprises)

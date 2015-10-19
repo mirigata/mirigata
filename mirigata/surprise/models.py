@@ -24,7 +24,7 @@ class Surprise(models.Model):
     creator = models.ForeignKey(auth.User, null=True, blank=True)
     metadata_retrieved = models.DateTimeField(null=True)
 
-    link_exists = models.BooleanField(default=True)
+    link_exists = models.BooleanField(default=True, db_index=True)
 
     def get_absolute_url(self):
         return reverse('surprise-detail', kwargs={"pk": self.id})
@@ -51,9 +51,11 @@ class Surprise(models.Model):
 
 
 def get_random_surprise():
-    count = Surprise.objects.count()
+    query_set = Surprise.objects.exclude(link_exists=False)
+
+    count = query_set.count()
     rnd = random.randint(0, count - 1)
-    return Surprise.objects.all().order_by('id')[rnd]
+    return query_set.all().order_by('id')[rnd]
 
 
 def update_metadata(surprise):
@@ -69,7 +71,6 @@ def update_metadata(surprise):
         metadata = response.json()
         surprise.add_metadata(metadata)
         return
-
 
     # status_code is probably 504
     log.warning("Could not retrieve metadata for %s; received status code %d", surprise.link, response.status_code)
