@@ -1,0 +1,19 @@
+{
+  "name": "mirigata",
+  "version": "0.0.0",
+  "homepage": "https://github.com/mirigata/mirigata",
+  "authors": [
+    "Yigal Duppen <yigal@publysher.nl>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "materialize": "~0.97.1"
+  }
+}

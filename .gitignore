@@ -58,3 +58,5 @@ target/
 mirigata/db.sqlite3
 mirigata.iml
 .idea
+
+bower_components/
