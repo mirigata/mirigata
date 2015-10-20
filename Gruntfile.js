@@ -20,17 +20,6 @@ module.exports = function(grunt) {
             }
         },
 
-        cssmin: {
-            build: {
-                files: {
-                    'mirigata/website/static/css/style.css': [
-                        'bower_components/materialize/dist/css/materialize.css',
-                        'frontend/**/*.css'
-                    ]
-                }
-            }
-        },
-
         copy: {
             build: {
                 files: [
@@ -55,18 +44,28 @@ module.exports = function(grunt) {
                 tasks: ['uglify']
             },
             styles: {
-                files: ['frontend/**/*.css'],
-                tasks: ['cssmin']
+                files: ['frontend/**/*.scss'],
+                tasks: ['sass']
+            }
+        },
+
+        sass: {
+            build: {
+                files: {
+                    'mirigata/website/static/css/style.css': [
+                        'frontend/styles/app.scss'
+                    ]
+                }
             }
         }
     });
 
     grunt.loadNpmTasks('grunt-contrib-uglify');
-    grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-copy');
+    grunt.loadNpmTasks('grunt-contrib-sass');
 
     // Default task(s).
-    grunt.registerTask('default', ['cssmin', 'uglify', 'copy']);
+    grunt.registerTask('default', ['sass', 'uglify', 'copy']);
 
 };

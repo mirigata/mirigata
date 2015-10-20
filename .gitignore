@@ -61,3 +61,5 @@ mirigata.iml
 
 bower_components/
 node_modules/
+.sass-cache
+mirigata/website/static/css/style.css.map
