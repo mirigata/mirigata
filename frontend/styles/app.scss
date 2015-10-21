@@ -6,7 +6,7 @@
 @import "../../bower_components/materialize/sass/components/color";
 
 // Variables;
-@import "../../bower_components/materialize/sass/components/variables";
+@import "variables";
 
 // Reset
 @import "../../bower_components/materialize/sass/components/normalize";
@@ -38,3 +38,6 @@
 @import "../../bower_components/materialize/sass/components/date_picker/default.date.scss";
 @import "../../bower_components/materialize/sass/components/date_picker/default.time.scss";
 
+@import "typography";
+@import "global_layout";
+@import "footer";
