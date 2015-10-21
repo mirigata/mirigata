@@ -1,0 +1,20 @@
+<li class="collection-item avatar">
+	<a href="{{ surprise.get_absolute_url }}">
+		{% if surprise.thumbnail_url %}
+			<img src="{{ surprise.thumbnail_url }}" alt="" class="circle">
+		{% endif %}
+		<span class="title truncate">{{ surprise.title|default:surprise.link }}</span>
+
+		<p>
+			{% if surprise.description %}
+				<span class="truncate">{{ surprise.description }}</span>
+			{% else %}
+				<br/>
+			{% endif %}
+			Posted by {{ surprise.creator.username }} on a time I don't store yet
+		</p>
+
+		<a href="{{ surprise.get_absolute_url }}" class="secondary-content"><i class="material-icons">send</i></a>
+	</a>
+</li>
+

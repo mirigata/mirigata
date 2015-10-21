@@ -1,17 +1,23 @@
 {% extends "website/base.html" %}
 
 {% block page %}
-	<div class="jumbotron">
-		<h1>Welcome</h1>
 
-		<p>
-			Welcome to Mirigata, the surprising link sharing site.
-		</p>
+	<ul class="collection with-header">
+		<li class="collection-header"><h4>Latests surprises</h4></li>
+		{% for surprise in surprises %}
+			{% include "surprise/surprise-detail.html" %}
+		{% endfor %}
+	</ul>
 
-		<p>
-			<a href="{% url 'random-surprise' %}" role="button">Be surprised</a>
-			<a href="{% url 'add-surprise' %}" role="button">Add a surprise</a>
-		</p>
+
+	<div class="top-buttons">
+		<a href="{% url 'random-surprise' %}" role="button" class="btn">Be surprised</a>
 	</div>
+
+
+	<a href="{% url 'add-surprise' %}" role="button" class="btn">
+		Add a surprise
+	</a>
+
 {% endblock page %}
 

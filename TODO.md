@@ -4,6 +4,8 @@ TODO
 # Use a real layout/design
 # No duplicates
 
+# Add created date to Surprise
+
 # Go live !
 # Voting on links
 # Showing an overview of surprises, not just the surprise button

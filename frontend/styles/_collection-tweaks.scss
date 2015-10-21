@@ -1,0 +1,17 @@
+.collection {
+  .collection-item {
+
+    a {
+      color: $off-black;
+    }
+
+    &.avatar .title,
+    &.avatar p {
+      margin-right: 3em; // make sure description does not overlap with secondary content
+    }
+
+    a.secondary-content {
+      color: $primary-color;
+    }
+  }
+}
