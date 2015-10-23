@@ -39,7 +39,7 @@
                         class="topnav__text">Be surprised</span></a>
 
                 {% if request.user.is_authenticated %}
-                    <a class="topnav__link" href="#"><i class="topnav__icon material-icons">person</i><span
+                    <a class="topnav__link" href="#" data-feature="user profile"><i class="topnav__icon material-icons">person</i><span
                             class="topnav__text">{{ request.user }}</span></a>
                     <a class="topnav__link" href="{% url "logout" %}?next=/"><i class="topnav__icon material-icons">exit_to_app</i><span
                             class="topnav__text">Log out</span></a>
