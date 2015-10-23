@@ -1,0 +1,56 @@
+.surprise-headline {
+
+  display: flex;
+  header {
+    flex: 1 1 auto;
+    overflow: hidden;
+  }
+  footer {
+    flex: 0 0 72px;
+
+    display: flex;
+    flex-flow: column;
+
+    .surprise__comments-link {
+      flex: 1 0 auto;
+    }
+  }
+
+
+  .surprise__title {
+    @include typo-body-2;
+    color: $text-color-primary;
+    font-size: 16px;
+    margin: 0;
+    a {
+      text-decoration: none;
+    }
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .surprise__comments-link {
+    display: flex;
+    flex-flow: column;
+    justify-content: flex-start;
+    align-items: center;
+
+    text-decoration: none;
+  }
+  .surprise__comments-text {
+    display: none;
+  }
+
+  .surprise__comments-icon {
+    font-size: 36px;
+  }
+
+  .surprise__points {
+    display: inline-block;
+    padding-right: 8px;
+    margin-right: 8px;
+    border-right: 1px solid rgba(0, 0, 0, .12);
+  }
+}

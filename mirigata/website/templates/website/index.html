@@ -3,10 +3,12 @@
 {% block page %}
 
     <section class="headlines headlines-newest">
-        <h1>Latest surprises</h1>
+        <h1 class="headlines__title">Latest surprises</h1>
 
         {% for surprise in surprises %}
-            {% include "surprise/surprise-detail.html" %}
+            <div class="headlines__entry">
+                {% include "surprise/surprise-detail.html" %}
+            </div>
         {% endfor %}
     </section>
 
