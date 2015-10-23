@@ -13,39 +13,5 @@ $color-accent: $palette-deep_purple-A100;
   @extend .mdl-layout--fixed-header;
 }
 
-.header {
-  @extend .mdl-layout__header;
-}
-.header__row {
-  @extend .mdl-layout__header-row;
-}
-.header__logo {
-  margin-left: -40px;
-  margin-right: 40px;
-}
-.header__title {
-  @extend .mdl-layout-title;
-  @extend .mdl-layout--large-screen-only;
-}
-.header__center {
-  @extend .mdl-layout-spacer;
-}
-
-
-.topnav {
-  @extend .mdl-navigation
-}
-
-.topnav__link {
-  @extend .mdl-navigation__link;
-}
-
-.topnav__icon {
-  vertical-align: middle;
-  margin-top: -4px;
-  margin-right: 4px;
-}
-.topnav__text {
-  @extend .mdl-layout--large-screen-only;
-}
-
+@import "header";
+@import "tags";

@@ -9259,3 +9259,24 @@ _:-ms-input-placeholder, :root .mdl-slider.mdl-slider.is-upgraded {
   vertical-align: middle;
   margin-top: -4px;
   margin-right: 4px; }
+
+.tag {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0;
+  color: rgba(0,0,0, 0.87);
+  text-decoration: none;
+  background-color: rgba(158,158,158, 0.20);
+  display: inline-block;
+  height: 32px;
+  line-height: 32px;
+  padding: 0 12px;
+  vertical-align: middle;
+  border-radius: 12px; }
+  .tag:hover {
+    background-color: rgba(158,158,158, 0.40); }
+  .tag:focus:not(:active) {
+    background-color: rgba(0,0,0, 0.12); }
+  .tag:active {
+    background-color: rgba(158,158,158, 0.40); }

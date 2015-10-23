@@ -1,20 +1,40 @@
-<li class="collection-item avatar">
-	<a href="{{ surprise.get_absolute_url }}">
-		{% if surprise.thumbnail_url %}
-			<img src="{{ surprise.thumbnail_url }}" alt="" class="circle">
-		{% endif %}
-		<span class="title truncate">{{ surprise.title|default:surprise.link }}</span>
+<article class="surprise surprise-headline">
+    <header>
+        <h1 class="surprise__title"><a href="{{ surprise.get_absolute_url }}">{{ surprise.title|default:"Untitled" }}</a></h1>
+        <div class="surprise__meta">
+            <span class="surprise__points">400</span>
+            <span class="surprise__author">{{ surprise.creator.username }}</span>
+            <span class="surprise__posted">4 days ago</span>
+        </div>
+        <div class="tag-list">
+            <a class="tag" href="#">interesting tag</a>
+            <a class="tag" href="#">another tag</a>
+            <a class="tag" href="#">more tags</a>
+        </div>
+    </header>
+    <footer>
+        <a class="surprise__comments-link" href="#">xyz comments</a>
+    </footer>
+</article>
 
-		<p>
-			{% if surprise.description %}
-				<span class="truncate">{{ surprise.description }}</span>
-			{% else %}
-				<br/>
-			{% endif %}
-			Posted by {{ surprise.creator.username }} on a time I don't store yet
-		</p>
 
-		<a href="{{ surprise.get_absolute_url }}" class="secondary-content"><i class="material-icons">send</i></a>
-	</a>
-</li>
-
+{#<li class="collection-item avatar">#}
+{#	<a href="{{ surprise.get_absolute_url }}">#}
+{#		{% if surprise.thumbnail_url %}#}
+{#			<img src="{{ surprise.thumbnail_url }}" alt="" class="circle">#}
+{#		{% endif %}#}
+{#		<span class="title truncate">{{ surprise.title|default:surprise.link }}</span>#}
+{##}
+{#		<p>#}
+{#			{% if surprise.description %}#}
+{#				<span class="truncate">{{ surprise.description }}</span>#}
+{#			{% else %}#}
+{#				<br/>#}
+{#			{% endif %}#}
+{#			Posted by {{ surprise.creator.username }} on a time I don't store yet#}
+{#		</p>#}
+{##}
+{#		<a href="{{ surprise.get_absolute_url }}" class="secondary-content"><i class="material-icons">send</i></a>#}
+{#	</a>#}
+{#</li>#}
+{##}

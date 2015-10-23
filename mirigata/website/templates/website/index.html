@@ -2,22 +2,13 @@
 
 {% block page %}
 
-	<ul class="collection with-header">
-		<li class="collection-header"><h4>Latests surprises</h4></li>
-		{% for surprise in surprises %}
-			{% include "surprise/surprise-detail.html" %}
-		{% endfor %}
-	</ul>
+    <section class="headlines headlines-newest">
+        <h1>Latest surprises</h1>
 
-
-	<div class="top-buttons">
-		<a href="{% url 'random-surprise' %}" role="button" class="btn">Be surprised</a>
-	</div>
-
-
-	<a href="{% url 'add-surprise' %}" role="button" class="btn">
-		Add a surprise
-	</a>
+        {% for surprise in surprises %}
+            {% include "surprise/surprise-detail.html" %}
+        {% endfor %}
+    </section>
 
 {% endblock page %}
 

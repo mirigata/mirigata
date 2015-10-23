@@ -1,0 +1,29 @@
+$tag-size: 32px;
+
+.tag {
+  @include typo-body-1;
+  color: $text-color-primary;
+  text-decoration: none;
+
+  background-color: $button-primary-color;
+  display: inline-block;
+
+  height: $tag-size;
+  line-height: $tag-size;
+  padding: 0 12px;
+  vertical-align: middle;
+  border-radius: 12px;
+
+  &:hover {
+    background-color: $button-active-color;
+  }
+
+  &:focus:not(:active) {
+    background-color: $button-focus-color;
+  }
+
+  &:active {
+    background-color: $button-active-color;
+  }
+
+}
