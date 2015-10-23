@@ -9329,3 +9329,10 @@ _:-ms-input-placeholder, :root .mdl-slider.mdl-slider.is-upgraded {
 
 .headlines__entry {
   border-top: 1px solid rgba(0, 0, 0, 0.12); }
+
+.card-coming-soon {
+  margin: 40px auto; }
+  .card-coming-soon .mdl-card__title {
+    background: rgb(255,152,0);
+    color: rgb(255,255,255);
+    height: 88px; }

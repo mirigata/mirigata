@@ -15,5 +15,8 @@
   ],
   "dependencies": {
     "material-design-lite": "~1.0.5"
+  },
+  "devDependencies": {
+    "jquery": "~2.1.4"
   }
 }

@@ -13,6 +13,7 @@ module.exports = function(grunt) {
             build: {
                 files: {
                     '<%= dest %>/js/vendor.js': [
+                        'bower_components/jquery/dist/jquery.js',
                         'bower_components/material-design-lite/material.js'
                     ],
                     '<%= dest %>/js/app.js': [
@@ -21,18 +22,6 @@ module.exports = function(grunt) {
                 }
             }
         },
-        //copy: {
-        //    build: {
-        //        files: [
-        //            {
-        //                expand: true,
-        //                cwd: 'bower_components/material-design/dist/font',
-        //                src: ['**'],
-        //                dest: '<%= dest %>/font'
-        //            }
-        //        ]
-        //    }
-        //},
         watch: {
             options: {
                 livereload: true,

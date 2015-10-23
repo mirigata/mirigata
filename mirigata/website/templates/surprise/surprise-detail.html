@@ -2,20 +2,20 @@
     <header>
         <h1 class="surprise__title"><a href="{{ surprise.get_absolute_url }}">{{ surprise.title|default:"Untitled" }}</a></h1>
         <div class="surprise__meta">
-            <span class="surprise__points">400 points</span>
-            <span class="surprise__posted">posted 4 days ago</span>
-            <span class="surprise__author">by <a href="#">{{ surprise.creator.username|default:"nobody" }}</a></span>
+            <span class="surprise__points">no points</span>
+            <span class="surprise__posted">posted some time ago</span>
+            <span class="surprise__author">by <a href="#" data-feature="author links">{{ surprise.creator.username|default:"nobody" }}</a></span>
         </div>
         <div class="tag-list">
-            <a class="tag" href="#">interesting tag</a>
-            <a class="tag" href="#">another tag</a>
-            <a class="tag" href="#">more tags</a>
+            <a class="tag" href="#" data-feature="tags">tags are</a>
+            <a class="tag" href="#" data-feature="tags">not yet</a>
+            <a class="tag" href="#" data-feature="tags">implemented</a>
         </div>
     </header>
     <footer>
-        <a class="surprise__comments-link" href="#">
+        <a class="surprise__comments-link" href="#" data-feature="comments">
             <i class="material-icons surprise__comments-icon">comment</i>
-            <span class="surprise__comments-amount">421</span>
+            <span class="surprise__comments-amount">soon...</span>
             <span class="surprise__comments-text">comments</span></a>
     </footer>
 </article>

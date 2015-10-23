@@ -17,3 +17,15 @@ $color-accent: $palette-deep_purple-A100;
 @import "tags";
 @import "surprise";
 @import "headlines";
+
+
+// coming soon stuff
+.card-coming-soon {
+  margin: 40px auto;
+
+  .mdl-card__title {
+    background: $button-primary-color-alt;
+    color: $button-secondary-color-alt;
+    height: 88px;
+  }
+}
