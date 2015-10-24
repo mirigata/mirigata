@@ -6,27 +6,9 @@
 }
 
 .surprise-detail {
-  @extend .mdl-card;
-  @extend .mdl-shadow--2dp;
+  @include card-basics;
   width: auto;
   margin: 16px;
-
-  h1 {
-    @extend .mdl-card__title;
-
-    a {
-      @extend .mdl-card__title-text;
-      text-decoration: none;
-    }
-  }
-
-  header {
-    background-color: unquote("rgb(#{$color-accent})");
-    h1 {
-      color: white;
-    }
-    padding-top: 20px;
-  }
 
   .surprise__votes {
     @extend .mdl-card__menu;

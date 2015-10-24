@@ -3,13 +3,15 @@
 
 {% block page %}
 
-	<h1 class="page-header">Sign up to Mirigata</h1>
+	<div class="form-container form-container--full-page">
+		<h1>Sign up to Mirigata</h1>
 
-	<form method="POST">
-		{% csrf_token %}
-		{{ form|crispy }}
+		<form method="POST">
+			{% csrf_token %}
+			{{ form|crispy }}
 
-		<input type="submit" class="btn btn-primary" value="Create account">
-	</form>
+			<input type="submit" class="btn btn-primary" value="Create account">
+		</form>
+	</div>
 
 {% endblock page %}

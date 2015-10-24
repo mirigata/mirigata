@@ -1,3 +1,4 @@
+// display dialog for non-existing features
 $(function() {
     var $body = $("main");
 
@@ -24,3 +25,5 @@ $(function() {
         $body.append($card);
     });
 });
+
+

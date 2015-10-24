@@ -1,0 +1,42 @@
+.form {
+  margin: 16px;
+}
+
+.form--full-page {
+  margin: 16px auto;
+
+  @include card-basics;
+
+  @extend .mdl-card;
+  @extend .mdl-shadow--2dp;
+
+  h1 {
+
+    display: flex;
+    flex-flow: column;
+    align-items: flex-start;
+    width: 100%;
+
+    .material-icons {
+      align-self: center;
+
+      @include card-icon-header;
+    }
+  }
+
+  .form__fields {
+    @extend .mdl-card__supporting-text;
+  }
+
+  .form__actions {
+    @extend .mdl-card__actions;
+  }
+
+}
+
+.form {
+
+  button {
+    @extend .mdl-button;
+  }
+}
