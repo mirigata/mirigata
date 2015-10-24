@@ -1,0 +1,54 @@
+.comment-list {
+
+  padding: 0 16px;
+  @include with-divider;
+  margin-top: 16px;
+
+  > .comment {
+    @include with-divider;
+    margin-top: 16px;
+  }
+
+  > .comment:first-of-type {
+    border-top: none;
+    margin-top: none;
+    padding-top: none;
+  }
+}
+
+.comment {
+  padding-top: 16px;
+}
+
+.comment__replies {
+  padding-left: 10vw;
+}
+
+.comment__actions {
+  a {
+    @extend .mdl-button;
+    @extend .mdl-button--icon;
+
+    span {
+      display: none;
+    }
+  }
+}
+
+
+.new-comment {
+  @extend .mdl-button;
+  @extend .mdl-button--fab;
+  @extend .mdl-button--colored;
+
+  span {
+    display: none;
+  }
+}
+
+.new-comment {
+  //position: fixed;
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+}

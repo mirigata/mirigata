@@ -13,10 +13,12 @@ $color-accent: $palette-deep_purple-A100;
   @extend .mdl-layout--fixed-header;
 }
 
+@import "mixins";
 @import "header";
 @import "tags";
 @import "surprise";
 @import "headlines";
+@import "comments";
 
 
 // coming soon stuff

@@ -1,10 +1,11 @@
 <article class="surprise surprise-headline">
     <header>
-        <h1 class="surprise__title"><a href="{{ surprise.get_absolute_url }}">{{ surprise.title|default:"Untitled" }}</a></h1>
+        <h1 class="surprise__title"><a href="{{ surprise.link }}">{{ surprise.title|default:"Untitled" }}</a></h1>
         <div class="surprise__meta">
             <span class="surprise__points">no points</span>
             <span class="surprise__posted">posted some time ago</span>
             <span class="surprise__author">by <a href="#" data-feature="author profile">{{ surprise.creator.username|default:"nobody" }}</a></span>
+            <span class="surprise__discuss"><a href="{{ surprise.get_absolute_url }}">discuss</a></span>
         </div>
         <div class="tag-list">
             <a class="tag" href="#" data-feature="tags">tags are</a>
@@ -13,9 +14,9 @@
         </div>
     </header>
     <footer>
-        <a class="surprise__comments-link" href="#" data-feature="comments">
+        <a class="surprise__comments-link icon-button" href="{{ surprise.get_absolute_url }}">
             <i class="material-icons surprise__comments-icon">comment</i>
-            <span class="surprise__comments-amount">soon...</span>
+            <span class="surprise__comments-amount">17</span>
             <span class="surprise__comments-text">comments</span></a>
     </footer>
 </article>

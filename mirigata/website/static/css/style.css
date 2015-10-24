@@ -576,7 +576,7 @@ textarea {
  */
 /* Remove the unwanted box around FAB buttons */
 /* More info: http://goo.gl/IPwKi */
-a, .mdl-accordion, .mdl-button, .mdl-card, .mdl-checkbox, .mdl-dropdown-menu,
+a, .mdl-accordion, .mdl-button, .surprise-detail .surprise__actions a, .comment__actions a, .new-comment, .mdl-card, .mdl-checkbox, .mdl-dropdown-menu,
 .mdl-icon-toggle, .mdl-item, .mdl-radio, .mdl-slider, .mdl-switch, .mdl-tabs__tab {
   -webkit-tap-highlight-color: transparent;
   -webkit-tap-highlight-color: rgba(255, 255, 255, 0); }
@@ -3528,7 +3528,7 @@ ul, ol {
     border-radius: 50%;
     background: rgb(179,136,255);
     color: rgb(255,255,255); }
-    .mdl-button .mdl-badge[data-badge]:after {
+    .mdl-button .mdl-badge[data-badge]:after, .surprise-detail .surprise__actions a .mdl-badge[data-badge]:after, .comment__actions a .mdl-badge[data-badge]:after, .new-comment .mdl-badge[data-badge]:after {
       top: -10px;
       right: -5px; }
   .mdl-badge.mdl-badge--no-background[data-badge]:after {
@@ -3710,7 +3710,7 @@ ul, ol {
 /* Typography */
 /* Shadows */
 /* Animations */
-.mdl-button {
+.mdl-button, .surprise-detail .surprise__actions a, .comment__actions a, .new-comment {
   background: transparent;
   border: none;
   border-radius: 2px;
@@ -3735,20 +3735,20 @@ ul, ol {
   text-align: center;
   line-height: 36px;
   vertical-align: middle; }
-  .mdl-button::-moz-focus-inner {
+  .mdl-button::-moz-focus-inner, .surprise-detail .surprise__actions a::-moz-focus-inner, .comment__actions a::-moz-focus-inner, .new-comment::-moz-focus-inner {
     border: 0; }
-  .mdl-button:hover {
+  .mdl-button:hover, .surprise-detail .surprise__actions a:hover, .comment__actions a:hover, .new-comment:hover {
     background-color: rgba(158,158,158, 0.20); }
-  .mdl-button:focus:not(:active) {
+  .mdl-button:focus:not(:active), .surprise-detail .surprise__actions a:focus:not(:active), .comment__actions a:focus:not(:active), .new-comment:focus:not(:active) {
     background-color: rgba(0,0,0, 0.12); }
-  .mdl-button:active {
+  .mdl-button:active, .surprise-detail .surprise__actions a:active, .comment__actions a:active, .new-comment:active {
     background-color: rgba(158,158,158, 0.40); }
-  .mdl-button.mdl-button--colored {
+  .mdl-button.mdl-button--colored, .surprise-detail .surprise__actions a.mdl-button--colored, .surprise-detail .surprise__actions a.new-comment, .comment__actions a.mdl-button--colored, .comment__actions a.new-comment, .new-comment {
     color: rgb(255,152,0); }
-    .mdl-button.mdl-button--colored:focus:not(:active) {
+    .mdl-button.mdl-button--colored:focus:not(:active), .surprise-detail .surprise__actions a.mdl-button--colored:focus:not(:active), .comment__actions a.mdl-button--colored:focus:not(:active), .new-comment:focus:not(:active) {
       background-color: rgba(0,0,0, 0.12); }
 
-input.mdl-button[type="submit"] {
+input.mdl-button[type="submit"], input[type="submit"].new-comment {
   -webkit-appearance: none; }
 
 .mdl-button--raised {
@@ -3760,19 +3760,19 @@ input.mdl-button[type="submit"] {
   .mdl-button--raised:focus:not(:active) {
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.18), 0 8px 16px rgba(0, 0, 0, 0.36);
     background-color: rgba(158,158,158, 0.40); }
-  .mdl-button--raised.mdl-button--colored {
+  .mdl-button--raised.mdl-button--colored, .mdl-button--raised.new-comment {
     background: rgb(255,152,0);
     color: rgb(255,255,255); }
-    .mdl-button--raised.mdl-button--colored:hover {
+    .mdl-button--raised.mdl-button--colored:hover, .mdl-button--raised.new-comment:hover {
       background-color: rgb(255,152,0); }
-    .mdl-button--raised.mdl-button--colored:active {
+    .mdl-button--raised.mdl-button--colored:active, .mdl-button--raised.new-comment:active {
       background-color: rgb(255,152,0); }
-    .mdl-button--raised.mdl-button--colored:focus:not(:active) {
+    .mdl-button--raised.mdl-button--colored:focus:not(:active), .mdl-button--raised.new-comment:focus:not(:active) {
       background-color: rgb(255,152,0); }
-    .mdl-button--raised.mdl-button--colored .mdl-ripple {
+    .mdl-button--raised.mdl-button--colored .mdl-ripple, .mdl-button--raised.new-comment .mdl-ripple {
       background: rgb(255,255,255); }
 
-.mdl-button--fab {
+.mdl-button--fab, .new-comment {
   border-radius: 50%;
   font-size: 24px;
   height: 56px;
@@ -3785,39 +3785,39 @@ input.mdl-button[type="submit"] {
   box-shadow: 0 1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.24);
   position: relative;
   line-height: normal; }
-  .mdl-button--fab .material-icons {
+  .mdl-button--fab .material-icons, .new-comment .material-icons {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-12px, -12px);
     line-height: 24px;
     width: 24px; }
-  .mdl-button--fab.mdl-button--mini-fab {
+  .mdl-button--fab.mdl-button--mini-fab, .mdl-button--mini-fab.new-comment {
     height: 40px;
     min-width: 40px;
     width: 40px; }
-  .mdl-button--fab .mdl-button__ripple-container {
+  .mdl-button--fab .mdl-button__ripple-container, .new-comment .mdl-button__ripple-container {
     border-radius: 50%;
     -webkit-mask-image: -webkit-radial-gradient(circle, white, black); }
-  .mdl-button--fab:active {
+  .mdl-button--fab:active, .new-comment:active {
     box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
     background-color: rgba(158,158,158, 0.40); }
-  .mdl-button--fab:focus:not(:active) {
+  .mdl-button--fab:focus:not(:active), .new-comment:focus:not(:active) {
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.18), 0 8px 16px rgba(0, 0, 0, 0.36);
     background-color: rgba(158,158,158, 0.40); }
-  .mdl-button--fab.mdl-button--colored {
+  .mdl-button--fab.mdl-button--colored, .new-comment {
     background: rgb(179,136,255);
     color: rgb(255,255,255); }
-    .mdl-button--fab.mdl-button--colored:hover {
+    .mdl-button--fab.mdl-button--colored:hover, .new-comment:hover {
       background-color: rgb(179,136,255); }
-    .mdl-button--fab.mdl-button--colored:focus:not(:active) {
+    .mdl-button--fab.mdl-button--colored:focus:not(:active), .new-comment:focus:not(:active) {
       background-color: rgb(179,136,255); }
-    .mdl-button--fab.mdl-button--colored:active {
+    .mdl-button--fab.mdl-button--colored:active, .new-comment:active {
       background-color: rgb(179,136,255); }
-    .mdl-button--fab.mdl-button--colored .mdl-ripple {
+    .mdl-button--fab.mdl-button--colored .mdl-ripple, .new-comment .mdl-ripple {
       background: rgb(255,255,255); }
 
-.mdl-button--icon {
+.mdl-button--icon, .comment__actions a {
   border-radius: 50%;
   font-size: 24px;
   height: 32px;
@@ -3829,21 +3829,21 @@ input.mdl-button[type="submit"] {
   overflow: hidden;
   color: inherit;
   line-height: normal; }
-  .mdl-button--icon .material-icons {
+  .mdl-button--icon .material-icons, .comment__actions a .material-icons {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-12px, -12px);
     line-height: 24px;
     width: 24px; }
-  .mdl-button--icon.mdl-button--mini-icon {
+  .mdl-button--icon.mdl-button--mini-icon, .comment__actions a.mdl-button--mini-icon {
     height: 24px;
     min-width: 24px;
     width: 24px; }
-    .mdl-button--icon.mdl-button--mini-icon .material-icons {
+    .mdl-button--icon.mdl-button--mini-icon .material-icons, .comment__actions a.mdl-button--mini-icon .material-icons {
       top: 0px;
       left: 0px; }
-  .mdl-button--icon .mdl-button__ripple-container {
+  .mdl-button--icon .mdl-button__ripple-container, .comment__actions a .mdl-button__ripple-container {
     border-radius: 50%;
     -webkit-mask-image: -webkit-radial-gradient(circle, white, black); }
 
@@ -3857,14 +3857,17 @@ input.mdl-button[type="submit"] {
   z-index: 0;
   overflow: hidden; }
   .mdl-button[disabled] .mdl-button__ripple-container .mdl-ripple,
-  .mdl-button.mdl-button--disabled .mdl-button__ripple-container .mdl-ripple {
+  .surprise-detail .surprise__actions a[disabled] .mdl-button__ripple-container .mdl-ripple,
+  .comment__actions a[disabled] .mdl-button__ripple-container .mdl-ripple,
+  [disabled].new-comment .mdl-button__ripple-container .mdl-ripple,
+  .mdl-button.mdl-button--disabled .mdl-button__ripple-container .mdl-ripple, .surprise-detail .surprise__actions a.mdl-button--disabled .mdl-button__ripple-container .mdl-ripple, .comment__actions a.mdl-button--disabled .mdl-button__ripple-container .mdl-ripple, .mdl-button--disabled.new-comment .mdl-button__ripple-container .mdl-ripple {
     background-color: transparent; }
 
-.mdl-button--primary.mdl-button--primary {
+.mdl-button--primary.mdl-button--primary, .surprise-detail .surprise__actions a {
   color: rgb(255,152,0); }
-  .mdl-button--primary.mdl-button--primary .mdl-ripple {
+  .mdl-button--primary.mdl-button--primary .mdl-ripple, .surprise-detail .surprise__actions a .mdl-ripple {
     background: rgb(255,255,255); }
-  .mdl-button--primary.mdl-button--primary.mdl-button--raised, .mdl-button--primary.mdl-button--primary.mdl-button--fab {
+  .mdl-button--primary.mdl-button--primary.mdl-button--raised, .surprise-detail .surprise__actions a.mdl-button--raised, .mdl-button--primary.mdl-button--primary.mdl-button--fab, .surprise-detail .surprise__actions a.mdl-button--fab, .surprise-detail .surprise__actions a.new-comment, .mdl-button--primary.mdl-button--primary.new-comment {
     color: rgb(255,255,255);
     background-color: rgb(255,152,0); }
 
@@ -3872,18 +3875,22 @@ input.mdl-button[type="submit"] {
   color: rgb(179,136,255); }
   .mdl-button--accent.mdl-button--accent .mdl-ripple {
     background: rgb(255,255,255); }
-  .mdl-button--accent.mdl-button--accent.mdl-button--raised, .mdl-button--accent.mdl-button--accent.mdl-button--fab {
+  .mdl-button--accent.mdl-button--accent.mdl-button--raised, .mdl-button--accent.mdl-button--accent.mdl-button--fab, .mdl-button--accent.mdl-button--accent.new-comment {
     color: rgb(255,255,255);
     background-color: rgb(179,136,255); }
 
 .mdl-button[disabled][disabled],
-.mdl-button.mdl-button--disabled.mdl-button--disabled {
+.surprise-detail .surprise__actions a[disabled][disabled],
+.comment__actions a[disabled][disabled],
+[disabled][disabled].new-comment,
+.mdl-button.mdl-button--disabled.mdl-button--disabled, .surprise-detail .surprise__actions a.mdl-button--disabled.mdl-button--disabled, .comment__actions a.mdl-button--disabled.mdl-button--disabled, .mdl-button--disabled.mdl-button--disabled.new-comment {
   color: rgba(0,0,0, 0.26);
   cursor: auto;
   background-color: transparent; }
 
 .mdl-button--fab[disabled][disabled],
-.mdl-button--fab.mdl-button--disabled.mdl-button--disabled {
+[disabled][disabled].new-comment,
+.mdl-button--fab.mdl-button--disabled.mdl-button--disabled, .mdl-button--disabled.mdl-button--disabled.new-comment {
   background-color: rgba(0,0,0, 0.12);
   color: rgba(0,0,0, 0.26);
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12); }
@@ -3895,10 +3902,11 @@ input.mdl-button[type="submit"] {
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12); }
 
 .mdl-button--colored[disabled][disabled],
-.mdl-button--colored.mdl-button--disabled.mdl-button--disabled {
+[disabled][disabled].new-comment,
+.mdl-button--colored.mdl-button--disabled.mdl-button--disabled, .mdl-button--disabled.mdl-button--disabled.new-comment {
   color: rgba(0,0,0, 0.26); }
 
-.mdl-button .material-icons {
+.mdl-button .material-icons, .surprise-detail .surprise__actions a .material-icons, .comment__actions a .material-icons, .new-comment .material-icons {
   vertical-align: middle; }
 
 /**
@@ -8316,7 +8324,7 @@ _:-ms-input-placeholder, :root .mdl-slider.mdl-slider.is-upgraded {
   max-width: 100%;
   margin: 0;
   padding: 20px 0; }
-  .mdl-textfield .mdl-button {
+  .mdl-textfield .mdl-button, .mdl-textfield .surprise-detail .surprise__actions a, .surprise-detail .surprise__actions .mdl-textfield a, .mdl-textfield .comment__actions a, .comment__actions .mdl-textfield a, .mdl-textfield .new-comment {
     position: absolute;
     bottom: 20px; }
 
@@ -9283,6 +9291,51 @@ _:-ms-input-placeholder, :root .mdl-slider.mdl-slider.is-upgraded {
   .tag:active {
     background-color: rgba(158,158,158, 0.40); }
 
+.surprise__title {
+  color: rgba(0,0,0, 0.87); }
+  .surprise__title a {
+    text-decoration: none;
+    color: rgba(0,0,0, 0.87);
+    font-weight: 400; }
+  .surprise__title a:active {
+    color: rgb(179,136,255); }
+
+.surprise__votes {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  text-align: center;
+  width: 72px; }
+  .surprise__votes .material-icons {
+    font-size: 36px;
+    line-height: 1.5; }
+  .surprise__votes a {
+    font-size: 36px;
+    text-decoration: none; }
+
+.surprise-detail .surprise__comments,
+.surprise-detail > header {
+  padding: 16px; }
+
+.surprise-detail > header,
+.surprise-detail .surprise__description,
+.surprise-detail .surprise__tags,
+.surprise-detail .surprise__actions {
+  padding-left: 72px; }
+
+.surprise-detail > header {
+  position: relative; }
+  .surprise-detail > header .surprise__votes {
+    position: absolute;
+    top: 0;
+    left: 0; }
+
+.surprise-detail .surprise__title {
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-size: 45px;
+  font-weight: 400;
+  line-height: 48px; }
+
 .surprise-headline {
   display: flex; }
   .surprise-headline header {
@@ -9299,14 +9352,11 @@ _:-ms-input-placeholder, :root .mdl-slider.mdl-slider.is-upgraded {
     font-weight: bold;
     line-height: 24px;
     letter-spacing: 0;
-    color: rgba(0,0,0, 0.87);
     font-size: 16px;
     margin: 0;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis; }
-    .surprise-headline .surprise__title a {
-      text-decoration: none; }
   .surprise-headline .surprise__comments-link {
     display: flex;
     flex-flow: column;
@@ -9317,6 +9367,7 @@ _:-ms-input-placeholder, :root .mdl-slider.mdl-slider.is-upgraded {
     display: none; }
   .surprise-headline .surprise__comments-icon {
     font-size: 36px; }
+  .surprise-headline .surprise__author,
   .surprise-headline .surprise__points {
     display: inline-block;
     padding-right: 8px;
@@ -9328,7 +9379,39 @@ _:-ms-input-placeholder, :root .mdl-slider.mdl-slider.is-upgraded {
   padding: 16px 16px; }
 
 .headlines__entry {
+  padding-top: 16px;
   border-top: 1px solid rgba(0, 0, 0, 0.12); }
+
+.comment-list {
+  padding: 0 16px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
+  margin-top: 16px; }
+  .comment-list > .comment {
+    padding-top: 16px;
+    border-top: 1px solid rgba(0, 0, 0, 0.12);
+    margin-top: 16px; }
+  .comment-list > .comment:first-of-type {
+    border-top: none;
+    margin-top: none;
+    padding-top: none; }
+
+.comment {
+  padding-top: 16px; }
+
+.comment__replies {
+  padding-left: 10vw; }
+
+.comment__actions a span {
+  display: none; }
+
+.new-comment span {
+  display: none; }
+
+.new-comment {
+  position: fixed;
+  bottom: 32px;
+  right: 32px; }
 
 .card-coming-soon {
   margin: 40px auto; }
