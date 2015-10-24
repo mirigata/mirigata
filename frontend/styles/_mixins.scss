@@ -1,0 +1,45 @@
+@mixin plain-text-link-container {
+  color: $text-color-primary;
+  a {
+    text-decoration: none;
+    color: $text-color-primary;
+    font-weight: 400;
+  }
+
+  a:active {
+    color: $text-link-color;
+  }
+}
+
+@mixin card-basics {
+  @extend .mdl-card;
+  @extend .mdl-shadow--2dp;
+
+  > header {
+    @extend .mdl-card__title;
+
+    padding-top: 72px;
+
+    background-color: unquote("rgb(#{$color-accent})");
+
+    h1, a {
+      @extend .mdl-card__title-text;
+      text-decoration: none;
+      color: white;
+    }
+  }
+}
+
+@mixin card-icon-header {
+  font-size: 72px;
+  padding: 4px;
+  border-radius: 40px;
+
+  color: unquote("rgb(#{$color-accent})");
+  background-color: white;
+}
+
+@mixin with-divider {
+  padding-top: 16px;
+  border-top: 1px solid rgba(0, 0, 0, .12);
+}

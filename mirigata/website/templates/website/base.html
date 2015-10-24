@@ -1,53 +1,74 @@
-<html>
-<head>
-	<title>Mirigata, the surprising link sharing site</title>
-	<meta name="description" content="The place to share interesting and surprising links"/>
+<!doctype html>
+{% load staticfiles %}
 
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.5/paper/bootstrap.min.css">
-	<style>
-		#login-form .alert {
-			display: none;
-		}
-	</style>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Mirigata, the surprising link sharing site</title>
+    <meta name="description" content="The place to share interesting and surprising links"/>
+
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="{% static "css/style.css" %}">
+    <link rel="shortcut icon" href="{% static "images/favicon.ico" %}">
+
+    {% if debug %}
+        <script src="//localhost:35729/livereload.js"></script>
+    {% endif %}
 </head>
 <body>
+<div class="wrapper mdl-js-layout is-small-screen">
+    <header class="header">
+        <div class="header__row">
+            <a class="header__logo" href="{% url "homepage" %}"><img src="{% static "images/logo-mini.png" %}"></a>
 
-<nav class="navbar navbar-default">
-	<div class="container-fluid">
-		<div class="navbar-header">
-			<a class="navbar-brand" href="{% url "homepage" %}">Mirigata</a>
-		</div>
-		<ul class="nav navbar-nav navbar-right">
-			{% if request.user.is_authenticated %}
-				<li class="dropdown">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ request.user }} <span class="caret"></span></a>
-					<ul class="dropdown-menu">
-						<li><a href="{% url "logout" %}?next=/">Log out</a></li>
-					</ul>
-				</li>
-			{% else %}
-				<li><a href="{% url "login" %}">Log in</a></li>
-			{% endif %}
-		</ul>
-	</div>
-</nav>
+            <h1 class="header__title">Mirigata</h1>
 
-<div class="container">
+            <div class="header__center"></div>
 
-	{% if messages %}
-			{% for message in messages %}
-				<div class="alert alert-{{ message.tags }} alert-dismissible" role="alert">
-					<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-					{{ message }}
-				</div>
-			{% endfor %}
-	{% endif %}
+            <nav role="navigation" class="header__navigation topnav">
+                <a href="{% url 'add-surprise' %}" class="topnav__link"><i
+                        class="topnav__icon material-icons">note_add</i><span
+                        class="topnav__text">Add surprise</span></a>
+                <a href="{% url 'random-surprise' %}" class="topnav__link"><i
+                        class="topnav__icon material-icons">shuffle</i><span
+                        class="topnav__text">Be surprised</span></a>
 
-	{% block page %}
-	{% endblock page %}
+                {% if request.user.is_authenticated %}
+                    <a class="topnav__link" href="#" data-feature="user profile"><i class="topnav__icon material-icons">person</i><span
+                            class="topnav__text">{{ request.user }}</span></a>
+                    <a class="topnav__link" href="{% url "logout" %}?next=/"><i class="topnav__icon material-icons">exit_to_app</i><span
+                            class="topnav__text">Log out</span></a>
+                {% else %}
+                    <a class="topnav__link" href="{% url "login" %}"><i
+                            class="topnav__icon material-icons">person</i><span
+                            class="topnav__text">Log in</span></a>
+                {% endif %}
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }} alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+
+        {% block page %}
+        {% endblock page %}
+    </main>
 
 </div>
-<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="{% static "js/vendor.js" %}"></script>
+<script type="text/javascript" src="{% static "js/app.js" %}"></script>
 </body>
 </html>

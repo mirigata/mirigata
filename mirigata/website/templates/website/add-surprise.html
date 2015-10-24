@@ -1,8 +1,28 @@
 {% extends "website/base.html" %}
-{% load crispy_forms_tags %}
+{% load crispy_forms_filters %}
 
 {% block page %}
 
-		{% crispy form %}
+	<div class="form form--full-page">
+		<header class="form__title">
+			<h1><i class="material-icons">add</i> Add surprise</h1>
+		</header>
+
+		<p>
+			Please follow <a href="#" data-feature="rules">the rules</a> when submitting
+			new surprises.
+		</p>
+
+		<form class="form__form" method="post" action="">
+			<div class="form__fields">
+				{% csrf_token %}
+				{{ form | crispy }}
+			</div>
+
+			<div class="form__actions">
+				<button type="submit">Create</button>
+			</div>
+		</form>
+	</div>
 
 {% endblock page %}

@@ -1,39 +1,27 @@
 module.exports = function(grunt) {
 
+    require('load-grunt-tasks')(grunt);
+
     // Project configuration.
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
+        dest: 'mirigata/website/static',
         uglify: {
             options: {
                 banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
             },
             build: {
                 files: {
-                    'mirigata/website/static/js/vendor.js': [
+                    '<%= dest %>/js/vendor.js': [
                         'bower_components/jquery/dist/jquery.js',
-                        'bower_components/materialize/materialize.js'
+                        'bower_components/material-design-lite/material.js'
                     ],
-                    'mirigata/website/static/js/app.js': [
+                    '<%= dest %>/js/app.js': [
                         'frontend/**/*.js'
                     ]
                 }
             }
         },
-
-        copy: {
-            build: {
-                files: [
-                    {
-                        expand: true,
-                        cwd: 'bower_components/materialize/dist/font',
-                        src: ['**'],
-                        dest: 'mirigata/website/static/font'
-                    }
-                ]
-            }
-
-        },
-
         watch: {
             options: {
                 livereload: true,
@@ -45,27 +33,35 @@ module.exports = function(grunt) {
             },
             styles: {
                 files: ['frontend/**/*.scss'],
-                tasks: ['sass']
+                tasks: ['sass:watch']
             }
         },
 
         sass: {
+            options: {
+                style: 'compressed'
+            },
             build: {
                 files: {
-                    'mirigata/website/static/css/style.css': [
+                    '<%= dest %>/css/style.css': [
                         'frontend/styles/app.scss'
                     ]
+                }
+            },
+            watch: {
+                files: {
+                    '<%= dest %>/css/style.css': [
+                        'frontend/styles/app.scss'
+                    ]
+                },
+                options: {
+                    update: true
                 }
             }
         }
     });
 
-    grunt.loadNpmTasks('grunt-contrib-uglify');
-    grunt.loadNpmTasks('grunt-contrib-watch');
-    grunt.loadNpmTasks('grunt-contrib-copy');
-    grunt.loadNpmTasks('grunt-contrib-sass');
-
     // Default task(s).
-    grunt.registerTask('default', ['sass', 'uglify', 'copy']);
+    grunt.registerTask('default', ['sass:build', 'uglify']);
 
 };

@@ -1,40 +1,38 @@
 @charset "UTF-8";
 
-// Mixins
-@import "../../bower_components/materialize/sass/components/prefixer";
-@import "../../bower_components/materialize/sass/components/mixins";
-@import "../../bower_components/materialize/sass/components/color";
+@import "../../bower_components/material-design-lite/src/color-definitions";
 
-// Variables;
-@import "../../bower_components/materialize/sass/components/variables";
+$color-primary: $palette-orange-500;
+$color-primary-dark: $palette-orange-700;
+$color-accent: $palette-deep_purple-A100;
 
-// Reset
-@import "../../bower_components/materialize/sass/components/normalize";
+@import "../../bower_components/material-design-lite/src/material-design-lite";
 
-// components
-@import "../../bower_components/materialize/sass/components/global";
-@import "../../bower_components/materialize/sass/components/icons-material-design";
-@import "../../bower_components/materialize/sass/components/grid";
-@import "../../bower_components/materialize/sass/components/navbar";
-@import "../../bower_components/materialize/sass/components/roboto";
-@import "../../bower_components/materialize/sass/components/typography";
-@import "../../bower_components/materialize/sass/components/cards";
-@import "../../bower_components/materialize/sass/components/toast";
-@import "../../bower_components/materialize/sass/components/tabs";
-@import "../../bower_components/materialize/sass/components/tooltip";
-@import "../../bower_components/materialize/sass/components/buttons";
-@import "../../bower_components/materialize/sass/components/dropdown";
-@import "../../bower_components/materialize/sass/components/waves";
-@import "../../bower_components/materialize/sass/components/modal";
-@import "../../bower_components/materialize/sass/components/collapsible";
-@import "../../bower_components/materialize/sass/components/chips";
-@import "../../bower_components/materialize/sass/components/materialbox";
-@import "../../bower_components/materialize/sass/components/form";
-@import "../../bower_components/materialize/sass/components/table_of_contents";
-@import "../../bower_components/materialize/sass/components/sideNav";
-@import "../../bower_components/materialize/sass/components/preloader";
-@import "../../bower_components/materialize/sass/components/slider";
-@import "../../bower_components/materialize/sass/components/date_picker/default.scss";
-@import "../../bower_components/materialize/sass/components/date_picker/default.date.scss";
-@import "../../bower_components/materialize/sass/components/date_picker/default.time.scss";
+.wrapper {
+  @extend .mdl-layout;
+  @extend .mdl-layout--fixed-header;
+}
 
+html {
+  -webkit-font-smoothing: antialiased;
+}
+
+@import "mixins";
+@import "header";
+@import "tags";
+@import "surprise";
+@import "headlines";
+@import "comments";
+@import "forms";
+
+
+// coming soon stuff
+.card-coming-soon {
+  margin: 40px auto;
+
+  .mdl-card__title {
+    background: $button-primary-color-alt;
+    color: $button-secondary-color-alt;
+    height: 88px;
+  }
+}

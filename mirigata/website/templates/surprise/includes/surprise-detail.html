@@ -1,0 +1,33 @@
+<article class="surprise surprise-detail">
+	<header>
+		<h1 class="surprise__title"><a href="{{ surprise.link }}">{{ surprise.title|default:"Untitled" }}</a></h1>
+	</header>
+
+{#	<div class="surprise__votes">#}
+{#		<a class="surprise__vote-up" href="#" data-feature="voting"><i class="material-icons">thumb_up</i></a>#}
+{#		<a class="surprise__score" href="#" data-feature="voting history">20</a>#}
+{#		<a class="surprise__vote-down" href="#" data-feature="voting"><i class="material-icons">thumb_down</i></a>#}
+{#	</div>#}
+
+	<div class="surprise__meta">
+		<span class="surprise__posted">posted some time ago</span>
+    <span class="surprise__author">by <a href="#" data-feature="author profile">{{ surprise.creator.username|default:"nobody" }}</a></span>
+	</div>
+
+	<section class="surprise__description">
+		{{ surprise.description }}
+	</section>
+
+{#	<div class="surprise__tags tag-list">#}
+{#		<a class="tag" href="#" data-feature="tags">tags are</a>#}
+{#		<a class="tag" href="#" data-feature="tags">not yet</a>#}
+{#		<a class="tag" href="#" data-feature="tags">implemented</a>#}
+{#	</div>#}
+
+	<section class="surprise__actions">
+{#		<a href="#" data-feature="sharing" class="surprise__share"><i class="material-icons">share</i><span>share</span></a>#}
+		<a href="{{ surprise.get_absolute_url }}"><i class="material-icons">link</i> <span>link</span></a>
+{#		<a href="#" data-feature="editing surprises"><i class="material-icons">edit</i><span>edit</span></a>#}
+{#		<a href="#" data-feature="flagging surprises"><i class="material-icons">flag</i><span>flag</span></a>#}
+	</section>
+</article>

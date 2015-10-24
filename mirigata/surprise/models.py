@@ -62,6 +62,7 @@ def update_metadata(surprise):
     response = requests.get(settings.INFIKSI_BASE_URL, dict(q=surprise.link))
 
     if response.status_code == 404:
+        log.warning("Got 404 while retrieving %s; link does not exist?", surprise.link)
         surprise.link_exists = False
         surprise.metadata_retrieved = timezone.now()
         surprise.save()
@@ -69,6 +70,7 @@ def update_metadata(surprise):
 
     if response.status_code == 200:
         metadata = response.json()
+        surprise.link_exists = True
         surprise.add_metadata(metadata)
         return
 

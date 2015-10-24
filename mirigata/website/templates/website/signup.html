@@ -3,13 +3,21 @@
 
 {% block page %}
 
-	<h1 class="page-header">Sign up to Mirigata</h1>
+	<div class="form form--full-page">
+		<header class="form__title">
+			<h1><i class="material-icons">person</i> Sign up to Mirigata</h1>
+		</header>
 
-	<form method="POST">
-		{% csrf_token %}
-		{{ form|crispy }}
+		<form class="form__form" method="POST">
+			<div class="form__fields">
+				{% csrf_token %}
+				{{ form|crispy }}
+			</div>
 
-		<input type="submit" class="btn btn-primary" value="Create account">
-	</form>
+			<div class="form__actions">
+				<button type="submit">Create account</button>
+			</div>
+		</form>
+	</div>
 
 {% endblock page %}

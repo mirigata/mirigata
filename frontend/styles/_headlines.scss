@@ -1,0 +1,8 @@
+.headlines__title,
+.headlines__entry {
+  padding: 16px 16px;
+}
+
+.headlines__entry {
+  @include with-divider;
+}
