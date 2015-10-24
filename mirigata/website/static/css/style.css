@@ -576,7 +576,7 @@ textarea {
  */
 /* Remove the unwanted box around FAB buttons */
 /* More info: http://goo.gl/IPwKi */
-a, .mdl-accordion, .mdl-button, .surprise-detail .surprise__actions a, .comment__actions a, .new-comment, .mdl-card, .mdl-checkbox, .mdl-dropdown-menu,
+a, .mdl-accordion, .mdl-button, .surprise__actions a, .surprise-detail .surprise__votes a, .comment__actions a, .new-comment, .mdl-card, .surprise-detail, .mdl-checkbox, .mdl-dropdown-menu,
 .mdl-icon-toggle, .mdl-item, .mdl-radio, .mdl-slider, .mdl-switch, .mdl-tabs__tab {
   -webkit-tap-highlight-color: transparent;
   -webkit-tap-highlight-color: rgba(255, 255, 255, 0); }
@@ -3528,7 +3528,7 @@ ul, ol {
     border-radius: 50%;
     background: rgb(179,136,255);
     color: rgb(255,255,255); }
-    .mdl-button .mdl-badge[data-badge]:after, .surprise-detail .surprise__actions a .mdl-badge[data-badge]:after, .comment__actions a .mdl-badge[data-badge]:after, .new-comment .mdl-badge[data-badge]:after {
+    .mdl-button .mdl-badge[data-badge]:after, .surprise__actions a .mdl-badge[data-badge]:after, .surprise-detail .surprise__votes a .mdl-badge[data-badge]:after, .comment__actions a .mdl-badge[data-badge]:after, .new-comment .mdl-badge[data-badge]:after {
       top: -10px;
       right: -5px; }
   .mdl-badge.mdl-badge--no-background[data-badge]:after {
@@ -3710,7 +3710,7 @@ ul, ol {
 /* Typography */
 /* Shadows */
 /* Animations */
-.mdl-button, .surprise-detail .surprise__actions a, .comment__actions a, .new-comment {
+.mdl-button, .surprise__actions a, .surprise-detail .surprise__votes a, .comment__actions a, .new-comment {
   background: transparent;
   border: none;
   border-radius: 2px;
@@ -3735,17 +3735,17 @@ ul, ol {
   text-align: center;
   line-height: 36px;
   vertical-align: middle; }
-  .mdl-button::-moz-focus-inner, .surprise-detail .surprise__actions a::-moz-focus-inner, .comment__actions a::-moz-focus-inner, .new-comment::-moz-focus-inner {
+  .mdl-button::-moz-focus-inner, .surprise__actions a::-moz-focus-inner, .surprise-detail .surprise__votes a::-moz-focus-inner, .comment__actions a::-moz-focus-inner, .new-comment::-moz-focus-inner {
     border: 0; }
-  .mdl-button:hover, .surprise-detail .surprise__actions a:hover, .comment__actions a:hover, .new-comment:hover {
+  .mdl-button:hover, .surprise__actions a:hover, .surprise-detail .surprise__votes a:hover, .comment__actions a:hover, .new-comment:hover {
     background-color: rgba(158,158,158, 0.20); }
-  .mdl-button:focus:not(:active), .surprise-detail .surprise__actions a:focus:not(:active), .comment__actions a:focus:not(:active), .new-comment:focus:not(:active) {
+  .mdl-button:focus:not(:active), .surprise__actions a:focus:not(:active), .surprise-detail .surprise__votes a:focus:not(:active), .comment__actions a:focus:not(:active), .new-comment:focus:not(:active) {
     background-color: rgba(0,0,0, 0.12); }
-  .mdl-button:active, .surprise-detail .surprise__actions a:active, .comment__actions a:active, .new-comment:active {
+  .mdl-button:active, .surprise__actions a:active, .surprise-detail .surprise__votes a:active, .comment__actions a:active, .new-comment:active {
     background-color: rgba(158,158,158, 0.40); }
-  .mdl-button.mdl-button--colored, .surprise-detail .surprise__actions a.mdl-button--colored, .surprise-detail .surprise__actions a.new-comment, .comment__actions a.mdl-button--colored, .comment__actions a.new-comment, .new-comment {
+  .mdl-button.mdl-button--colored, .surprise__actions a, .surprise-detail .surprise__votes a.mdl-button--colored, .surprise-detail .surprise__votes .surprise__actions a, .surprise__actions .surprise-detail .surprise__votes a, .surprise-detail .surprise__votes a.new-comment, .comment__actions a.mdl-button--colored, .comment__actions a.new-comment, .new-comment {
     color: rgb(255,152,0); }
-    .mdl-button.mdl-button--colored:focus:not(:active), .surprise-detail .surprise__actions a.mdl-button--colored:focus:not(:active), .comment__actions a.mdl-button--colored:focus:not(:active), .new-comment:focus:not(:active) {
+    .mdl-button.mdl-button--colored:focus:not(:active), .surprise__actions a:focus:not(:active), .surprise-detail .surprise__votes a.mdl-button--colored:focus:not(:active), .comment__actions a.mdl-button--colored:focus:not(:active), .new-comment:focus:not(:active) {
       background-color: rgba(0,0,0, 0.12); }
 
 input.mdl-button[type="submit"], input[type="submit"].new-comment {
@@ -3760,16 +3760,16 @@ input.mdl-button[type="submit"], input[type="submit"].new-comment {
   .mdl-button--raised:focus:not(:active) {
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.18), 0 8px 16px rgba(0, 0, 0, 0.36);
     background-color: rgba(158,158,158, 0.40); }
-  .mdl-button--raised.mdl-button--colored, .mdl-button--raised.new-comment {
+  .mdl-button--raised.mdl-button--colored, .surprise__actions a.mdl-button--raised, .mdl-button--raised.new-comment {
     background: rgb(255,152,0);
     color: rgb(255,255,255); }
-    .mdl-button--raised.mdl-button--colored:hover, .mdl-button--raised.new-comment:hover {
+    .mdl-button--raised.mdl-button--colored:hover, .surprise__actions a.mdl-button--raised:hover, .mdl-button--raised.new-comment:hover {
       background-color: rgb(255,152,0); }
-    .mdl-button--raised.mdl-button--colored:active, .mdl-button--raised.new-comment:active {
+    .mdl-button--raised.mdl-button--colored:active, .surprise__actions a.mdl-button--raised:active, .mdl-button--raised.new-comment:active {
       background-color: rgb(255,152,0); }
-    .mdl-button--raised.mdl-button--colored:focus:not(:active), .mdl-button--raised.new-comment:focus:not(:active) {
+    .mdl-button--raised.mdl-button--colored:focus:not(:active), .surprise__actions a.mdl-button--raised:focus:not(:active), .mdl-button--raised.new-comment:focus:not(:active) {
       background-color: rgb(255,152,0); }
-    .mdl-button--raised.mdl-button--colored .mdl-ripple, .mdl-button--raised.new-comment .mdl-ripple {
+    .mdl-button--raised.mdl-button--colored .mdl-ripple, .surprise__actions a.mdl-button--raised .mdl-ripple, .mdl-button--raised.new-comment .mdl-ripple {
       background: rgb(255,255,255); }
 
 .mdl-button--fab, .new-comment {
@@ -3805,19 +3805,20 @@ input.mdl-button[type="submit"], input[type="submit"].new-comment {
   .mdl-button--fab:focus:not(:active), .new-comment:focus:not(:active) {
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.18), 0 8px 16px rgba(0, 0, 0, 0.36);
     background-color: rgba(158,158,158, 0.40); }
-  .mdl-button--fab.mdl-button--colored, .new-comment {
+  .mdl-button--fab.mdl-button--colored, .surprise__actions a.mdl-button--fab, .surprise__actions a.new-comment, .new-comment {
     background: rgb(179,136,255);
     color: rgb(255,255,255); }
-    .mdl-button--fab.mdl-button--colored:hover, .new-comment:hover {
+    .mdl-button--fab.mdl-button--colored:hover, .surprise__actions a.mdl-button--fab:hover, .new-comment:hover {
       background-color: rgb(179,136,255); }
-    .mdl-button--fab.mdl-button--colored:focus:not(:active), .new-comment:focus:not(:active) {
+    .mdl-button--fab.mdl-button--colored:focus:not(:active), .surprise__actions a.mdl-button--fab:focus:not(:active), .new-comment:focus:not(:active) {
       background-color: rgb(179,136,255); }
-    .mdl-button--fab.mdl-button--colored:active, .new-comment:active {
+    .mdl-button--fab.mdl-button--colored:active, .surprise__actions a.mdl-button--fab:active, .new-comment:active {
       background-color: rgb(179,136,255); }
-    .mdl-button--fab.mdl-button--colored .mdl-ripple, .new-comment .mdl-ripple {
+    .mdl-button--fab.mdl-button--colored .mdl-ripple, .surprise__actions a.mdl-button--fab .mdl-ripple, .new-comment .mdl-ripple {
       background: rgb(255,255,255); }
 
-.mdl-button--icon, .comment__actions a {
+.mdl-button--icon, .surprise-detail .surprise__votes a.surprise__vote-up,
+.surprise-detail .surprise__votes a.surprise__vote-down, .comment__actions a {
   border-radius: 50%;
   font-size: 24px;
   height: 32px;
@@ -3829,21 +3830,25 @@ input.mdl-button[type="submit"], input[type="submit"].new-comment {
   overflow: hidden;
   color: inherit;
   line-height: normal; }
-  .mdl-button--icon .material-icons, .comment__actions a .material-icons {
+  .mdl-button--icon .material-icons, .surprise-detail .surprise__votes a.surprise__vote-up .material-icons,
+  .surprise-detail .surprise__votes a.surprise__vote-down .material-icons, .comment__actions a .material-icons {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-12px, -12px);
     line-height: 24px;
     width: 24px; }
-  .mdl-button--icon.mdl-button--mini-icon, .comment__actions a.mdl-button--mini-icon {
+  .mdl-button--icon.mdl-button--mini-icon, .surprise-detail .surprise__votes a.mdl-button--mini-icon.surprise__vote-up,
+  .surprise-detail .surprise__votes a.mdl-button--mini-icon.surprise__vote-down, .comment__actions a.mdl-button--mini-icon {
     height: 24px;
     min-width: 24px;
     width: 24px; }
-    .mdl-button--icon.mdl-button--mini-icon .material-icons, .comment__actions a.mdl-button--mini-icon .material-icons {
+    .mdl-button--icon.mdl-button--mini-icon .material-icons, .surprise-detail .surprise__votes a.mdl-button--mini-icon.surprise__vote-up .material-icons,
+    .surprise-detail .surprise__votes a.mdl-button--mini-icon.surprise__vote-down .material-icons, .comment__actions a.mdl-button--mini-icon .material-icons {
       top: 0px;
       left: 0px; }
-  .mdl-button--icon .mdl-button__ripple-container, .comment__actions a .mdl-button__ripple-container {
+  .mdl-button--icon .mdl-button__ripple-container, .surprise-detail .surprise__votes a.surprise__vote-up .mdl-button__ripple-container,
+  .surprise-detail .surprise__votes a.surprise__vote-down .mdl-button__ripple-container, .comment__actions a .mdl-button__ripple-container {
     border-radius: 50%;
     -webkit-mask-image: -webkit-radial-gradient(circle, white, black); }
 
@@ -3857,17 +3862,18 @@ input.mdl-button[type="submit"], input[type="submit"].new-comment {
   z-index: 0;
   overflow: hidden; }
   .mdl-button[disabled] .mdl-button__ripple-container .mdl-ripple,
-  .surprise-detail .surprise__actions a[disabled] .mdl-button__ripple-container .mdl-ripple,
+  .surprise__actions a[disabled] .mdl-button__ripple-container .mdl-ripple,
+  .surprise-detail .surprise__votes a[disabled] .mdl-button__ripple-container .mdl-ripple,
   .comment__actions a[disabled] .mdl-button__ripple-container .mdl-ripple,
   [disabled].new-comment .mdl-button__ripple-container .mdl-ripple,
-  .mdl-button.mdl-button--disabled .mdl-button__ripple-container .mdl-ripple, .surprise-detail .surprise__actions a.mdl-button--disabled .mdl-button__ripple-container .mdl-ripple, .comment__actions a.mdl-button--disabled .mdl-button__ripple-container .mdl-ripple, .mdl-button--disabled.new-comment .mdl-button__ripple-container .mdl-ripple {
+  .mdl-button.mdl-button--disabled .mdl-button__ripple-container .mdl-ripple, .surprise__actions a.mdl-button--disabled .mdl-button__ripple-container .mdl-ripple, .surprise-detail .surprise__votes a.mdl-button--disabled .mdl-button__ripple-container .mdl-ripple, .comment__actions a.mdl-button--disabled .mdl-button__ripple-container .mdl-ripple, .mdl-button--disabled.new-comment .mdl-button__ripple-container .mdl-ripple {
     background-color: transparent; }
 
-.mdl-button--primary.mdl-button--primary, .surprise-detail .surprise__actions a {
+.mdl-button--primary.mdl-button--primary {
   color: rgb(255,152,0); }
-  .mdl-button--primary.mdl-button--primary .mdl-ripple, .surprise-detail .surprise__actions a .mdl-ripple {
+  .mdl-button--primary.mdl-button--primary .mdl-ripple {
     background: rgb(255,255,255); }
-  .mdl-button--primary.mdl-button--primary.mdl-button--raised, .surprise-detail .surprise__actions a.mdl-button--raised, .mdl-button--primary.mdl-button--primary.mdl-button--fab, .surprise-detail .surprise__actions a.mdl-button--fab, .surprise-detail .surprise__actions a.new-comment, .mdl-button--primary.mdl-button--primary.new-comment {
+  .mdl-button--primary.mdl-button--primary.mdl-button--raised, .mdl-button--primary.mdl-button--primary.mdl-button--fab, .mdl-button--primary.mdl-button--primary.new-comment {
     color: rgb(255,255,255);
     background-color: rgb(255,152,0); }
 
@@ -3880,10 +3886,11 @@ input.mdl-button[type="submit"], input[type="submit"].new-comment {
     background-color: rgb(179,136,255); }
 
 .mdl-button[disabled][disabled],
-.surprise-detail .surprise__actions a[disabled][disabled],
+.surprise__actions a[disabled][disabled],
+.surprise-detail .surprise__votes a[disabled][disabled],
 .comment__actions a[disabled][disabled],
 [disabled][disabled].new-comment,
-.mdl-button.mdl-button--disabled.mdl-button--disabled, .surprise-detail .surprise__actions a.mdl-button--disabled.mdl-button--disabled, .comment__actions a.mdl-button--disabled.mdl-button--disabled, .mdl-button--disabled.mdl-button--disabled.new-comment {
+.mdl-button.mdl-button--disabled.mdl-button--disabled, .surprise__actions a.mdl-button--disabled.mdl-button--disabled, .surprise-detail .surprise__votes a.mdl-button--disabled.mdl-button--disabled, .comment__actions a.mdl-button--disabled.mdl-button--disabled, .mdl-button--disabled.mdl-button--disabled.new-comment {
   color: rgba(0,0,0, 0.26);
   cursor: auto;
   background-color: transparent; }
@@ -3902,11 +3909,12 @@ input.mdl-button[type="submit"], input[type="submit"].new-comment {
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12); }
 
 .mdl-button--colored[disabled][disabled],
+.surprise__actions a[disabled][disabled],
 [disabled][disabled].new-comment,
-.mdl-button--colored.mdl-button--disabled.mdl-button--disabled, .mdl-button--disabled.mdl-button--disabled.new-comment {
+.mdl-button--colored.mdl-button--disabled.mdl-button--disabled, .surprise__actions a.mdl-button--disabled.mdl-button--disabled, .mdl-button--disabled.mdl-button--disabled.new-comment {
   color: rgba(0,0,0, 0.26); }
 
-.mdl-button .material-icons, .surprise-detail .surprise__actions a .material-icons, .comment__actions a .material-icons, .new-comment .material-icons {
+.mdl-button .material-icons, .surprise__actions a .material-icons, .surprise-detail .surprise__votes a .material-icons, .comment__actions a .material-icons, .new-comment .material-icons {
   vertical-align: middle; }
 
 /**
@@ -4065,7 +4073,7 @@ input.mdl-button[type="submit"], input[type="submit"].new-comment {
 /* GRID */
 /* DATA TABLE */
 /* TOOLTIP */
-.mdl-card {
+.mdl-card, .surprise-detail {
   display: flex;
   flex-direction: column;
   font-size: 16px;
@@ -4088,7 +4096,7 @@ input.mdl-button[type="submit"], input[type="submit"].new-comment {
   background-attachment: scroll;
   box-sizing: border-box; }
 
-.mdl-card__title {
+.mdl-card__title, .surprise-detail h1 {
   align-items: center;
   color: rgb(0,0,0);
   display: block;
@@ -4099,10 +4107,10 @@ input.mdl-button[type="submit"], input[type="submit"].new-comment {
   perspective-origin: 165px 56px;
   transform-origin: 165px 56px;
   box-sizing: border-box; }
-  .mdl-card__title.mdl-card--border {
+  .mdl-card__title.mdl-card--border, .surprise-detail h1.mdl-card--border, .surprise-detail h1.surprise__actions, .surprise-detail .mdl-card__title.surprise__actions {
     border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
 
-.mdl-card__title-text {
+.mdl-card__title-text, .surprise-detail h1 a {
   align-self: flex-end;
   color: inherit;
   display: block;
@@ -4119,7 +4127,9 @@ input.mdl-button[type="submit"], input[type="submit"].new-comment {
   color: grey;
   margin: 0; }
 
-.mdl-card__supporting-text {
+.mdl-card__supporting-text, .surprise-detail .surprise__meta,
+.surprise-detail .surprise__tags,
+.surprise-detail .surprise__description {
   color: rgba(0,0,0, 0.54);
   font-size: 13px;
   line-height: 18px;
@@ -4127,20 +4137,20 @@ input.mdl-button[type="submit"], input[type="submit"].new-comment {
   padding: 16px 16px;
   width: 90%; }
 
-.mdl-card__actions {
+.mdl-card__actions, .surprise-detail .surprise__actions {
   font-size: 16px;
   line-height: normal;
   width: 100%;
   background-color: transparent;
   padding: 8px;
   box-sizing: border-box; }
-  .mdl-card__actions.mdl-card--border {
+  .mdl-card__actions.mdl-card--border, .surprise-detail .surprise__actions {
     border-top: 1px solid rgba(0, 0, 0, 0.1); }
 
 .mdl-card--expand {
   flex-grow: 1; }
 
-.mdl-card__menu {
+.mdl-card__menu, .surprise-detail .surprise__votes {
   position: absolute;
   right: 16px;
   top: 16px; }
@@ -8324,7 +8334,7 @@ _:-ms-input-placeholder, :root .mdl-slider.mdl-slider.is-upgraded {
   max-width: 100%;
   margin: 0;
   padding: 20px 0; }
-  .mdl-textfield .mdl-button, .mdl-textfield .surprise-detail .surprise__actions a, .surprise-detail .surprise__actions .mdl-textfield a, .mdl-textfield .comment__actions a, .comment__actions .mdl-textfield a, .mdl-textfield .new-comment {
+  .mdl-textfield .mdl-button, .mdl-textfield .surprise__actions a, .surprise__actions .mdl-textfield a, .mdl-textfield .surprise-detail .surprise__votes a, .surprise-detail .surprise__votes .mdl-textfield a, .mdl-textfield .comment__actions a, .comment__actions .mdl-textfield a, .mdl-textfield .new-comment {
     position: absolute;
     bottom: 20px; }
 
@@ -8805,7 +8815,7 @@ _:-ms-input-placeholder, :root .mdl-slider.mdl-slider.is-upgraded {
 /* Typography */
 /* Shadows */
 /* Animations */
-.mdl-shadow--2dp {
+.mdl-shadow--2dp, .surprise-detail {
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12); }
 
 .mdl-shadow--3dp {
@@ -9259,6 +9269,9 @@ _:-ms-input-placeholder, :root .mdl-slider.mdl-slider.is-upgraded {
     .mdl-grid--no-spacing > .mdl-cell--12-col-desktop.mdl-cell--12-col-desktop {
       width: 100%; } }
 
+html {
+  -webkit-font-smoothing: antialiased; }
+
 .header__logo {
   margin-left: -40px;
   margin-right: 40px; }
@@ -9291,50 +9304,21 @@ _:-ms-input-placeholder, :root .mdl-slider.mdl-slider.is-upgraded {
   .tag:active {
     background-color: rgba(158,158,158, 0.40); }
 
-.surprise__title {
-  color: rgba(0,0,0, 0.87); }
-  .surprise__title a {
-    text-decoration: none;
-    color: rgba(0,0,0, 0.87);
-    font-weight: 400; }
-  .surprise__title a:active {
-    color: rgb(179,136,255); }
-
-.surprise__votes {
-  display: flex;
-  flex-flow: column;
-  align-items: center;
-  text-align: center;
-  width: 72px; }
-  .surprise__votes .material-icons {
-    font-size: 36px;
-    line-height: 1.5; }
-  .surprise__votes a {
-    font-size: 36px;
+.surprise-detail {
+  width: auto;
+  margin: 16px; }
+  .surprise-detail h1 a {
     text-decoration: none; }
-
-.surprise-detail .surprise__comments,
-.surprise-detail > header {
-  padding: 16px; }
-
-.surprise-detail > header,
-.surprise-detail .surprise__description,
-.surprise-detail .surprise__tags,
-.surprise-detail .surprise__actions {
-  padding-left: 72px; }
-
-.surprise-detail > header {
-  position: relative; }
-  .surprise-detail > header .surprise__votes {
-    position: absolute;
-    top: 0;
-    left: 0; }
-
-.surprise-detail .surprise__title {
-  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-  font-size: 45px;
-  font-weight: 400;
-  line-height: 48px; }
+  .surprise-detail header {
+    background-color: rgb(179,136,255);
+    padding-top: 20px; }
+    .surprise-detail header h1 {
+      color: white; }
+  .surprise-detail .surprise__votes a {
+    color: white; }
+  .surprise-detail .surprise__votes a.surprise__vote-up,
+  .surprise-detail .surprise__votes a.surprise__vote-down {
+    color: white; }
 
 .surprise-headline {
   display: flex; }
@@ -9383,10 +9367,7 @@ _:-ms-input-placeholder, :root .mdl-slider.mdl-slider.is-upgraded {
   border-top: 1px solid rgba(0, 0, 0, 0.12); }
 
 .comment-list {
-  padding: 0 16px;
-  padding-top: 16px;
-  border-top: 1px solid rgba(0, 0, 0, 0.12);
-  margin-top: 16px; }
+  padding: 16px 16px 0; }
   .comment-list > .comment {
     padding-top: 16px;
     border-top: 1px solid rgba(0, 0, 0, 0.12);
@@ -9415,7 +9396,7 @@ _:-ms-input-placeholder, :root .mdl-slider.mdl-slider.is-upgraded {
 
 .card-coming-soon {
   margin: 40px auto; }
-  .card-coming-soon .mdl-card__title {
+  .card-coming-soon .mdl-card__title, .card-coming-soon .surprise-detail h1, .surprise-detail .card-coming-soon h1 {
     background: rgb(255,152,0);
     color: rgb(255,255,255);
     height: 88px; }

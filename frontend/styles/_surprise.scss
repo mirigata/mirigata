@@ -1,59 +1,57 @@
-.surprise__title {
-  @include plain-text-link-container;
-}
-
-.surprise__votes {
-  display: flex;
-  flex-flow: column;
-  align-items: center;
-
-
-  text-align: center;
-  width: 72px;
-
-  .material-icons {
-    font-size: 36px;
-    line-height: 1.5;
-  }
-
+.surprise__actions {
   a {
-    font-size: 36px;
-    text-decoration: none;
+    @extend .mdl-button;
+    @extend .mdl-button--colored;
   }
 }
 
 .surprise-detail {
-  .surprise__comments,
-  > header {
-    padding: 16px;
-  }
+  @extend .mdl-card;
+  @extend .mdl-shadow--2dp;
+  width: auto;
+  margin: 16px;
 
-  > header,
-  .surprise__description,
-  .surprise__tags,
-  .surprise__actions {
-    padding-left: 72px;
-  }
+  h1 {
+    @extend .mdl-card__title;
 
-  > header {
-    position: relative;
-
-    .surprise__votes {
-      position: absolute;
-      top: 0;
-      left: 0;
+    a {
+      @extend .mdl-card__title-text;
+      text-decoration: none;
     }
   }
 
-  .surprise__actions {
+  header {
+    background-color: unquote("rgb(#{$color-accent})");
+    h1 {
+      color: white;
+    }
+    padding-top: 20px;
+  }
+
+  .surprise__votes {
+    @extend .mdl-card__menu;
+
     a {
       @extend .mdl-button;
-      @extend .mdl-button--primary;
+      color: white;
+    }
+
+    a.surprise__vote-up,
+    a.surprise__vote-down {
+      @extend .mdl-button--icon;
+      color: white;
     }
   }
 
-  .surprise__title {
-    @include typo-display-2;
+  .surprise__meta,
+  .surprise__tags,
+  .surprise__description {
+    @extend .mdl-card__supporting-text;
+  }
+
+  .surprise__actions {
+    @extend .mdl-card__actions;
+    @extend .mdl-card--border;
   }
 }
 
@@ -74,7 +72,6 @@
       flex: 1 0 auto;
     }
   }
-
 
   .surprise__title {
     @include typo-body-2;

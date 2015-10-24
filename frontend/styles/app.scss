@@ -13,6 +13,10 @@ $color-accent: $palette-deep_purple-A100;
   @extend .mdl-layout--fixed-header;
 }
 
+html {
+  -webkit-font-smoothing: antialiased;
+}
+
 @import "mixins";
 @import "header";
 @import "tags";
