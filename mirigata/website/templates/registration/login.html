@@ -8,6 +8,9 @@
 			<h1><i class="material-icons">person</i> Log in</h1>
 		</header>
 
+		<p>
+			Don't have an account? <a href="{% url "signup" %}">Sign up now!</a>
+		</p>
 
 		{% if form.errors %}
 			<div class="alert alert-danger">
@@ -33,16 +36,10 @@
 			</div>
 
 			<div class="form__actions">
-				<button type="submit" class="btn btn-primary">Log in</button>
+				<button type="submit">Log in</button>
 				<input type="hidden" name="next" value="{{ next }}"/>
 			</div>
 		</form>
 	</div>
-
-	<h2>Sign up</h2>
-
-	<p>
-		Don't have an account? <a href="{% url "signup" %}">Sign up now!</a>
-	</p>
 
 {% endblock %}

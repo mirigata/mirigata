@@ -19,24 +19,83 @@
 
     .material-icons {
       align-self: center;
+      margin-bottom: 16px;
 
       @include card-icon-header;
     }
   }
 
-  .form__fields {
+  >div, >p,
+  .form__form {
     @extend .mdl-card__supporting-text;
+  }
+
+  .alert {
+    color: $input-text-error-color;
   }
 
   .form__actions {
     @extend .mdl-card__actions;
+    padding: 0;
+    margin: 0 -8px;
   }
 
 }
 
 .form {
 
+  font-size: $input-text-font-size;
+
+  .form__form .alert {
+    display: none;
+  }
+
   button {
     @extend .mdl-button;
+  }
+
+  .asteriskField {
+    display: none;
+  }
+
+  .urlinput,
+  .textinput {
+    border: none;
+    border-bottom: 1px solid $input-text-bottom-border-color;
+    display: block;
+    font-size: $input-text-font-size;
+    margin: 0;
+    padding: $input-text-padding 0;
+    width: $input-text-width;
+    background: none;
+    text-align: left;
+    color: inherit;
+
+    &:focus {
+      outline: none;
+      border-color: $input-text-highlight-color;
+
+    }
+  }
+
+  .has-error {
+    label, .help-block {
+      color: $input-text-error-color;
+      strong {
+        font-weight: 400;
+      }
+    }
+
+    .urlinput,
+    .textinput {
+      border-color: $input-text-error-color;
+    }
+  }
+
+  .help-block {
+    margin-bottom: 0;
+  }
+  .form-group {
+    padding: 16px 0;
   }
 }

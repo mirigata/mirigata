@@ -4131,7 +4131,8 @@ input.mdl-button[type="submit"], input[type="submit"].new-comment {
 
 .mdl-card__supporting-text, .surprise-detail .surprise__meta,
 .surprise-detail .surprise__tags,
-.surprise-detail .surprise__description, .form--full-page .form__fields {
+.surprise-detail .surprise__description, .form--full-page > div, .form--full-page > p,
+.form--full-page .form__form {
   color: rgba(0,0,0, 0.54);
   font-size: 13px;
   line-height: 18px;
@@ -9413,11 +9414,51 @@ html {
     width: 100%; }
     .form--full-page h1 .material-icons {
       align-self: center;
+      margin-bottom: 16px;
       font-size: 72px;
       padding: 4px;
       border-radius: 40px;
       color: rgb(179,136,255);
       background-color: white; }
+  .form--full-page .alert {
+    color: rgb(222, 50, 38); }
+  .form--full-page .form__actions {
+    padding: 0;
+    margin: 0 -8px; }
+
+.form {
+  font-size: 16px; }
+  .form .form__form .alert {
+    display: none; }
+  .form .asteriskField {
+    display: none; }
+  .form .urlinput,
+  .form .textinput {
+    border: none;
+    border-bottom: 1px solid rgba(0,0,0, 0.12);
+    display: block;
+    font-size: 16px;
+    margin: 0;
+    padding: 4px 0;
+    width: 100%;
+    background: none;
+    text-align: left;
+    color: inherit; }
+    .form .urlinput:focus,
+    .form .textinput:focus {
+      outline: none;
+      border-color: rgb(255,152,0); }
+  .form .has-error label, .form .has-error .help-block {
+    color: rgb(222, 50, 38); }
+    .form .has-error label strong, .form .has-error .help-block strong {
+      font-weight: 400; }
+  .form .has-error .urlinput,
+  .form .has-error .textinput {
+    border-color: rgb(222, 50, 38); }
+  .form .help-block {
+    margin-bottom: 0; }
+  .form .form-group {
+    padding: 16px 0; }
 
 .card-coming-soon {
   margin: 40px auto; }

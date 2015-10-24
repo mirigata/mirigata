@@ -27,3 +27,19 @@ $(function() {
 });
 
 
+// move labels to placeholders
+$(function() {
+    $(".control-label").each(function() {
+        var $label = $(this);
+        var $input = $(this).parent().find("input");
+
+        if (!$input.length) {
+            return;
+        }
+
+        var text = $label.text().trim().replace('*', '');
+        $input.attr("placeholder", text);
+
+        $label.remove();
+    });
+});
