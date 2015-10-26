@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Mirigata, the surprising link sharing site</title>
+    <title>{% block page_title %}Home{% endblock %} :: Mirigata</title>
     <meta name="description" content="The place to share interesting and surprising links"/>
 
     <link rel="stylesheet"
@@ -26,7 +26,7 @@
         <div class="header__row">
             <a class="header__logo" href="{% url "homepage" %}"><img src="{% static "images/logo-mini.png" %}"></a>
 
-            <h1 class="header__title">Mirigata</h1>
+            <h1 class="header__title">{% block header_title %}Mirigata{% endblock %}</h1>
 
             <div class="header__center"></div>
 

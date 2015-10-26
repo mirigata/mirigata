@@ -9460,6 +9460,9 @@ html {
   .form .form-group {
     padding: 16px 0; }
 
+.content {
+  padding: 16px; }
+
 .card-coming-soon {
   margin: 40px auto; }
   .card-coming-soon .mdl-card__title, .card-coming-soon .surprise-detail > header, .card-coming-soon .form--full-page > header {

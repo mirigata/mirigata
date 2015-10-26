@@ -2,14 +2,22 @@
 
 {% block page %}
 
-<h1 class="page-header">404: We're really sorry</h1>
+	<article class="content">
+		<header class="content__title">
+			<h1>404: We're really sorry</h1>
+		</header>
 
-	<p>
-	The surprise you were looking for does not exist.
-	</p>
+		<div class="content__content">
+			<p>
+				The surprise you were looking for does not exist.
+			</p>
 
-	<p>
-		<a href="{% url "random-surprise" %}" class="btn btn-primary btn-lg">Surprise me again</a>
-	</p>
+			<p>
+				<a href="{% url "random-surprise" %}">Take me somewhere else</a>
+			</p>
+		</div>
+
+	</article>
+
 
 {% endblock %}
