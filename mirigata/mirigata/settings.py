@@ -45,6 +45,7 @@ INSTALLED_APPS = (
 
     'website',
     'surprise',
+    'health',
 )
 
 MIDDLEWARE_CLASSES = (
