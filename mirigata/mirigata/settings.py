@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 import re
+import netifaces
 from discovery import services
 
 from django.core.exceptions import ImproperlyConfigured
@@ -28,7 +29,11 @@ INFIKSI_BASE_URL = 'http://{}:{}/'.format(infiksi.host, infiksi.port)
 SECRET_KEY = os.getenv("SECRET_KEY", "default-secret")
 DEBUG = services.debug_mode
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '192.168.99.100', '.mirigata.com']
+IP_ADDRESSES = [i.get('addr', '')
+                for interface in netifaces.interfaces()
+                for i in netifaces.ifaddresses(interface).get(netifaces.AF_INET, [])]
+
+ALLOWED_HOSTS = ['localhost', '192.168.99.100', '.mirigata.com'] + IP_ADDRESSES
 
 
 # Application definition
