@@ -17,3 +17,25 @@ class CreateSurpriseCommand(forms.Form):
         models.update_metadata(surprise)
 
         return surprise
+
+
+class UpvoteCommand(forms.Form):
+    surprise_id = forms.CharField()
+
+    def execute(self):
+        pk = self.cleaned_data['surprise_id']
+        surprise = models.Surprise.objects.get(pk=pk)
+        surprise.points += 1
+        surprise.save()
+        return surprise
+
+
+class DownvoteCommand(forms.Form):
+    surprise_id = forms.CharField()
+
+    def execute(self):
+        pk = self.cleaned_data['surprise_id']
+        surprise = models.Surprise.objects.get(pk=pk)
+        surprise.points -= 1
+        surprise.save()
+        return surprise

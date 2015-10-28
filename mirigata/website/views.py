@@ -2,6 +2,7 @@ from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.messages import views
 from django.core.urlresolvers import reverse
+from django.shortcuts import redirect
 from django.views import generic
 from braces import views as braces
 
@@ -63,3 +64,23 @@ class SignupView(views.SuccessMessageMixin, generic.CreateView):
                             password=form.cleaned_data['password1'])
         login(self.request, user)
         return result
+
+
+class SurpriseVoteUpView(generic.View):
+
+    def post(self, request, *args, **kwargs):
+        form = forms.UpvoteCommand(request.POST)
+        form.full_clean()
+        surprise = form.execute()
+        return redirect(surprise.get_absolute_url())
+
+
+class SurpriseVoteDownView(generic.View):
+
+    def post(self, request, *args, **kwargs):
+        form = forms.DownvoteCommand(request.POST)
+        form.full_clean()
+        surprise = form.execute()
+        return redirect(surprise.get_absolute_url())
+
+

@@ -18,6 +18,8 @@ class Surprise(models.Model):
     link = models.URLField(max_length=500)
     description = models.TextField(max_length=1000)
 
+    points = models.IntegerField(default=0)
+
     title = models.TextField(max_length=500, null=True, blank=True)
     author_name = models.TextField(max_length=500, null=True, blank=True)
     thumbnail_url = models.URLField(max_length=500, null=True, blank=True)

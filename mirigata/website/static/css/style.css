@@ -576,7 +576,8 @@ textarea {
  */
 /* Remove the unwanted box around FAB buttons */
 /* More info: http://goo.gl/IPwKi */
-a, .mdl-accordion, .mdl-button, .surprise__actions a, .surprise-detail .surprise__votes a, .comment__actions a, .new-comment, .form button, .mdl-card, .surprise-detail, .form--full-page, .mdl-checkbox, .mdl-dropdown-menu,
+a, .mdl-accordion, .mdl-button, .surprise__actions a, .surprise-detail .surprise__votes a, .surprise-detail .surprise__votes form.surprise__vote-up button,
+.surprise-detail .surprise__votes form.surprise__vote-down button, .comment__actions a, .new-comment, .form button, .mdl-card, .surprise-detail, .form--full-page, .mdl-checkbox, .mdl-dropdown-menu,
 .mdl-icon-toggle, .mdl-item, .mdl-radio, .mdl-slider, .mdl-switch, .mdl-tabs__tab {
   -webkit-tap-highlight-color: transparent;
   -webkit-tap-highlight-color: rgba(255, 255, 255, 0); }
@@ -3528,7 +3529,8 @@ ul, ol {
     border-radius: 50%;
     background: rgb(179,136,255);
     color: rgb(255,255,255); }
-    .mdl-button .mdl-badge[data-badge]:after, .surprise__actions a .mdl-badge[data-badge]:after, .surprise-detail .surprise__votes a .mdl-badge[data-badge]:after, .comment__actions a .mdl-badge[data-badge]:after, .new-comment .mdl-badge[data-badge]:after, .form button .mdl-badge[data-badge]:after {
+    .mdl-button .mdl-badge[data-badge]:after, .surprise__actions a .mdl-badge[data-badge]:after, .surprise-detail .surprise__votes a .mdl-badge[data-badge]:after, .surprise-detail .surprise__votes form.surprise__vote-up button .mdl-badge[data-badge]:after,
+    .surprise-detail .surprise__votes form.surprise__vote-down button .mdl-badge[data-badge]:after, .comment__actions a .mdl-badge[data-badge]:after, .new-comment .mdl-badge[data-badge]:after, .form button .mdl-badge[data-badge]:after {
       top: -10px;
       right: -5px; }
   .mdl-badge.mdl-badge--no-background[data-badge]:after {
@@ -3710,7 +3712,8 @@ ul, ol {
 /* Typography */
 /* Shadows */
 /* Animations */
-.mdl-button, .surprise__actions a, .surprise-detail .surprise__votes a, .comment__actions a, .new-comment, .form button {
+.mdl-button, .surprise__actions a, .surprise-detail .surprise__votes a, .surprise-detail .surprise__votes form.surprise__vote-up button,
+.surprise-detail .surprise__votes form.surprise__vote-down button, .comment__actions a, .new-comment, .form button {
   background: transparent;
   border: none;
   border-radius: 2px;
@@ -3735,17 +3738,25 @@ ul, ol {
   text-align: center;
   line-height: 36px;
   vertical-align: middle; }
-  .mdl-button::-moz-focus-inner, .surprise__actions a::-moz-focus-inner, .surprise-detail .surprise__votes a::-moz-focus-inner, .comment__actions a::-moz-focus-inner, .new-comment::-moz-focus-inner, .form button::-moz-focus-inner {
+  .mdl-button::-moz-focus-inner, .surprise__actions a::-moz-focus-inner, .surprise-detail .surprise__votes a::-moz-focus-inner, .surprise-detail .surprise__votes form.surprise__vote-up button::-moz-focus-inner,
+  .surprise-detail .surprise__votes form.surprise__vote-down button::-moz-focus-inner, .comment__actions a::-moz-focus-inner, .new-comment::-moz-focus-inner, .form button::-moz-focus-inner {
     border: 0; }
-  .mdl-button:hover, .surprise__actions a:hover, .surprise-detail .surprise__votes a:hover, .comment__actions a:hover, .new-comment:hover, .form button:hover {
+  .mdl-button:hover, .surprise__actions a:hover, .surprise-detail .surprise__votes a:hover, .surprise-detail .surprise__votes form.surprise__vote-up button:hover,
+  .surprise-detail .surprise__votes form.surprise__vote-down button:hover, .comment__actions a:hover, .new-comment:hover, .form button:hover {
     background-color: rgba(158,158,158, 0.20); }
-  .mdl-button:focus:not(:active), .surprise__actions a:focus:not(:active), .surprise-detail .surprise__votes a:focus:not(:active), .comment__actions a:focus:not(:active), .new-comment:focus:not(:active), .form button:focus:not(:active) {
+  .mdl-button:focus:not(:active), .surprise__actions a:focus:not(:active), .surprise-detail .surprise__votes a:focus:not(:active), .surprise-detail .surprise__votes form.surprise__vote-up button:focus:not(:active),
+  .surprise-detail .surprise__votes form.surprise__vote-down button:focus:not(:active), .comment__actions a:focus:not(:active), .new-comment:focus:not(:active), .form button:focus:not(:active) {
     background-color: rgba(0,0,0, 0.12); }
-  .mdl-button:active, .surprise__actions a:active, .surprise-detail .surprise__votes a:active, .comment__actions a:active, .new-comment:active, .form button:active {
+  .mdl-button:active, .surprise__actions a:active, .surprise-detail .surprise__votes a:active, .surprise-detail .surprise__votes form.surprise__vote-up button:active,
+  .surprise-detail .surprise__votes form.surprise__vote-down button:active, .comment__actions a:active, .new-comment:active, .form button:active {
     background-color: rgba(158,158,158, 0.40); }
-  .mdl-button.mdl-button--colored, .surprise__actions a, .surprise-detail .surprise__votes a.mdl-button--colored, .surprise-detail .surprise__votes .surprise__actions a, .surprise__actions .surprise-detail .surprise__votes a, .surprise-detail .surprise__votes a.new-comment, .comment__actions a.mdl-button--colored, .comment__actions a.new-comment, .new-comment, .form button.mdl-button--colored, .form button.new-comment {
+  .mdl-button.mdl-button--colored, .surprise__actions a, .surprise-detail .surprise__votes a.mdl-button--colored, .surprise-detail .surprise__votes .surprise__actions a, .surprise__actions .surprise-detail .surprise__votes a, .surprise-detail .surprise__votes a.new-comment, .surprise-detail .surprise__votes form.surprise__vote-up button.mdl-button--colored,
+  .surprise-detail .surprise__votes form.surprise__vote-up button.new-comment,
+  .surprise-detail .surprise__votes form.surprise__vote-down button.mdl-button--colored, .surprise-detail .surprise__votes form.surprise__vote-down button.new-comment, .comment__actions a.mdl-button--colored, .comment__actions a.new-comment, .new-comment, .form button.mdl-button--colored, .form button.new-comment {
     color: rgb(255,152,0); }
-    .mdl-button.mdl-button--colored:focus:not(:active), .surprise__actions a:focus:not(:active), .surprise-detail .surprise__votes a.mdl-button--colored:focus:not(:active), .comment__actions a.mdl-button--colored:focus:not(:active), .new-comment:focus:not(:active), .form button.mdl-button--colored:focus:not(:active) {
+    .mdl-button.mdl-button--colored:focus:not(:active), .surprise__actions a:focus:not(:active), .surprise-detail .surprise__votes a.mdl-button--colored:focus:not(:active), .surprise-detail .surprise__votes form.surprise__vote-up button.mdl-button--colored:focus:not(:active),
+    .surprise-detail .surprise__votes form.surprise__vote-up button.new-comment:focus:not(:active),
+    .surprise-detail .surprise__votes form.surprise__vote-down button.mdl-button--colored:focus:not(:active), .surprise-detail .surprise__votes form.surprise__vote-down button.new-comment:focus:not(:active), .comment__actions a.mdl-button--colored:focus:not(:active), .new-comment:focus:not(:active), .form button.mdl-button--colored:focus:not(:active) {
       background-color: rgba(0,0,0, 0.12); }
 
 input.mdl-button[type="submit"], input[type="submit"].new-comment {
@@ -3817,8 +3828,8 @@ input.mdl-button[type="submit"], input[type="submit"].new-comment {
     .mdl-button--fab.mdl-button--colored .mdl-ripple, .surprise__actions a.mdl-button--fab .mdl-ripple, .new-comment .mdl-ripple {
       background: rgb(255,255,255); }
 
-.mdl-button--icon, .surprise-detail .surprise__votes a.surprise__vote-up,
-.surprise-detail .surprise__votes a.surprise__vote-down, .comment__actions a {
+.mdl-button--icon, .surprise-detail .surprise__votes form.surprise__vote-up button,
+.surprise-detail .surprise__votes form.surprise__vote-down button, .comment__actions a {
   border-radius: 50%;
   font-size: 24px;
   height: 32px;
@@ -3830,25 +3841,25 @@ input.mdl-button[type="submit"], input[type="submit"].new-comment {
   overflow: hidden;
   color: inherit;
   line-height: normal; }
-  .mdl-button--icon .material-icons, .surprise-detail .surprise__votes a.surprise__vote-up .material-icons,
-  .surprise-detail .surprise__votes a.surprise__vote-down .material-icons, .comment__actions a .material-icons {
+  .mdl-button--icon .material-icons, .surprise-detail .surprise__votes form.surprise__vote-up button .material-icons,
+  .surprise-detail .surprise__votes form.surprise__vote-down button .material-icons, .comment__actions a .material-icons {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-12px, -12px);
     line-height: 24px;
     width: 24px; }
-  .mdl-button--icon.mdl-button--mini-icon, .surprise-detail .surprise__votes a.mdl-button--mini-icon.surprise__vote-up,
-  .surprise-detail .surprise__votes a.mdl-button--mini-icon.surprise__vote-down, .comment__actions a.mdl-button--mini-icon {
+  .mdl-button--icon.mdl-button--mini-icon, .surprise-detail .surprise__votes form.surprise__vote-up button.mdl-button--mini-icon,
+  .surprise-detail .surprise__votes form.surprise__vote-down button.mdl-button--mini-icon, .comment__actions a.mdl-button--mini-icon {
     height: 24px;
     min-width: 24px;
     width: 24px; }
-    .mdl-button--icon.mdl-button--mini-icon .material-icons, .surprise-detail .surprise__votes a.mdl-button--mini-icon.surprise__vote-up .material-icons,
-    .surprise-detail .surprise__votes a.mdl-button--mini-icon.surprise__vote-down .material-icons, .comment__actions a.mdl-button--mini-icon .material-icons {
+    .mdl-button--icon.mdl-button--mini-icon .material-icons, .surprise-detail .surprise__votes form.surprise__vote-up button.mdl-button--mini-icon .material-icons,
+    .surprise-detail .surprise__votes form.surprise__vote-down button.mdl-button--mini-icon .material-icons, .comment__actions a.mdl-button--mini-icon .material-icons {
       top: 0px;
       left: 0px; }
-  .mdl-button--icon .mdl-button__ripple-container, .surprise-detail .surprise__votes a.surprise__vote-up .mdl-button__ripple-container,
-  .surprise-detail .surprise__votes a.surprise__vote-down .mdl-button__ripple-container, .comment__actions a .mdl-button__ripple-container {
+  .mdl-button--icon .mdl-button__ripple-container, .surprise-detail .surprise__votes form.surprise__vote-up button .mdl-button__ripple-container,
+  .surprise-detail .surprise__votes form.surprise__vote-down button .mdl-button__ripple-container, .comment__actions a .mdl-button__ripple-container {
     border-radius: 50%;
     -webkit-mask-image: -webkit-radial-gradient(circle, white, black); }
 
@@ -3864,10 +3875,13 @@ input.mdl-button[type="submit"], input[type="submit"].new-comment {
   .mdl-button[disabled] .mdl-button__ripple-container .mdl-ripple,
   .surprise__actions a[disabled] .mdl-button__ripple-container .mdl-ripple,
   .surprise-detail .surprise__votes a[disabled] .mdl-button__ripple-container .mdl-ripple,
+  .surprise-detail .surprise__votes form.surprise__vote-up button[disabled] .mdl-button__ripple-container .mdl-ripple,
+  .surprise-detail .surprise__votes form.surprise__vote-down button[disabled] .mdl-button__ripple-container .mdl-ripple,
   .comment__actions a[disabled] .mdl-button__ripple-container .mdl-ripple,
   [disabled].new-comment .mdl-button__ripple-container .mdl-ripple,
   .form button[disabled] .mdl-button__ripple-container .mdl-ripple,
-  .mdl-button.mdl-button--disabled .mdl-button__ripple-container .mdl-ripple, .surprise__actions a.mdl-button--disabled .mdl-button__ripple-container .mdl-ripple, .surprise-detail .surprise__votes a.mdl-button--disabled .mdl-button__ripple-container .mdl-ripple, .comment__actions a.mdl-button--disabled .mdl-button__ripple-container .mdl-ripple, .mdl-button--disabled.new-comment .mdl-button__ripple-container .mdl-ripple, .form button.mdl-button--disabled .mdl-button__ripple-container .mdl-ripple {
+  .mdl-button.mdl-button--disabled .mdl-button__ripple-container .mdl-ripple, .surprise__actions a.mdl-button--disabled .mdl-button__ripple-container .mdl-ripple, .surprise-detail .surprise__votes a.mdl-button--disabled .mdl-button__ripple-container .mdl-ripple, .surprise-detail .surprise__votes form.surprise__vote-up button.mdl-button--disabled .mdl-button__ripple-container .mdl-ripple,
+  .surprise-detail .surprise__votes form.surprise__vote-down button.mdl-button--disabled .mdl-button__ripple-container .mdl-ripple, .comment__actions a.mdl-button--disabled .mdl-button__ripple-container .mdl-ripple, .mdl-button--disabled.new-comment .mdl-button__ripple-container .mdl-ripple, .form button.mdl-button--disabled .mdl-button__ripple-container .mdl-ripple {
     background-color: transparent; }
 
 .mdl-button--primary.mdl-button--primary {
@@ -3889,10 +3903,13 @@ input.mdl-button[type="submit"], input[type="submit"].new-comment {
 .mdl-button[disabled][disabled],
 .surprise__actions a[disabled][disabled],
 .surprise-detail .surprise__votes a[disabled][disabled],
+.surprise-detail .surprise__votes form.surprise__vote-up button[disabled][disabled],
+.surprise-detail .surprise__votes form.surprise__vote-down button[disabled][disabled],
 .comment__actions a[disabled][disabled],
 [disabled][disabled].new-comment,
 .form button[disabled][disabled],
-.mdl-button.mdl-button--disabled.mdl-button--disabled, .surprise__actions a.mdl-button--disabled.mdl-button--disabled, .surprise-detail .surprise__votes a.mdl-button--disabled.mdl-button--disabled, .comment__actions a.mdl-button--disabled.mdl-button--disabled, .mdl-button--disabled.mdl-button--disabled.new-comment, .form button.mdl-button--disabled.mdl-button--disabled {
+.mdl-button.mdl-button--disabled.mdl-button--disabled, .surprise__actions a.mdl-button--disabled.mdl-button--disabled, .surprise-detail .surprise__votes a.mdl-button--disabled.mdl-button--disabled, .surprise-detail .surprise__votes form.surprise__vote-up button.mdl-button--disabled.mdl-button--disabled,
+.surprise-detail .surprise__votes form.surprise__vote-down button.mdl-button--disabled.mdl-button--disabled, .comment__actions a.mdl-button--disabled.mdl-button--disabled, .mdl-button--disabled.mdl-button--disabled.new-comment, .form button.mdl-button--disabled.mdl-button--disabled {
   color: rgba(0,0,0, 0.26);
   cursor: auto;
   background-color: transparent; }
@@ -3916,7 +3933,8 @@ input.mdl-button[type="submit"], input[type="submit"].new-comment {
 .mdl-button--colored.mdl-button--disabled.mdl-button--disabled, .surprise__actions a.mdl-button--disabled.mdl-button--disabled, .mdl-button--disabled.mdl-button--disabled.new-comment {
   color: rgba(0,0,0, 0.26); }
 
-.mdl-button .material-icons, .surprise__actions a .material-icons, .surprise-detail .surprise__votes a .material-icons, .comment__actions a .material-icons, .new-comment .material-icons, .form button .material-icons {
+.mdl-button .material-icons, .surprise__actions a .material-icons, .surprise-detail .surprise__votes a .material-icons, .surprise-detail .surprise__votes form.surprise__vote-up button .material-icons,
+.surprise-detail .surprise__votes form.surprise__vote-down button .material-icons, .comment__actions a .material-icons, .new-comment .material-icons, .form button .material-icons {
   vertical-align: middle; }
 
 /**
@@ -8337,7 +8355,8 @@ _:-ms-input-placeholder, :root .mdl-slider.mdl-slider.is-upgraded {
   max-width: 100%;
   margin: 0;
   padding: 20px 0; }
-  .mdl-textfield .mdl-button, .mdl-textfield .surprise__actions a, .surprise__actions .mdl-textfield a, .mdl-textfield .surprise-detail .surprise__votes a, .surprise-detail .surprise__votes .mdl-textfield a, .mdl-textfield .comment__actions a, .comment__actions .mdl-textfield a, .mdl-textfield .new-comment, .mdl-textfield .form button, .form .mdl-textfield button {
+  .mdl-textfield .mdl-button, .mdl-textfield .surprise__actions a, .surprise__actions .mdl-textfield a, .mdl-textfield .surprise-detail .surprise__votes a, .surprise-detail .surprise__votes .mdl-textfield a, .mdl-textfield .surprise-detail .surprise__votes form.surprise__vote-up button, .surprise-detail .surprise__votes form.surprise__vote-up .mdl-textfield button,
+  .mdl-textfield .surprise-detail .surprise__votes form.surprise__vote-down button, .surprise-detail .surprise__votes form.surprise__vote-down .mdl-textfield button, .mdl-textfield .comment__actions a, .comment__actions .mdl-textfield a, .mdl-textfield .new-comment, .mdl-textfield .form button, .form .mdl-textfield button {
     position: absolute;
     bottom: 20px; }
 
@@ -9318,9 +9337,12 @@ html {
       color: white; }
   .surprise-detail .surprise__votes a {
     color: white; }
-  .surprise-detail .surprise__votes a.surprise__vote-up,
-  .surprise-detail .surprise__votes a.surprise__vote-down {
-    color: white; }
+  .surprise-detail .surprise__votes form.surprise__vote-up,
+  .surprise-detail .surprise__votes form.surprise__vote-down {
+    display: inline; }
+    .surprise-detail .surprise__votes form.surprise__vote-up button,
+    .surprise-detail .surprise__votes form.surprise__vote-down button {
+      color: white; }
 
 .surprise-headline {
   display: flex; }
