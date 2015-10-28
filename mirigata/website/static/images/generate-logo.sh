@@ -3,7 +3,7 @@
 set -e
 set -u
 
-TARGET=mirigata/website/static/images
+TARGET=$(pwd)
 FONT=/Library/Fonts/Luminari.ttf
 
 mkdir -p ${TARGET}
