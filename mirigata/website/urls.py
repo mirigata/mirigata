@@ -11,8 +11,8 @@ urlpatterns = [
 
     url('^surprise/random$', views.RandomSurpriseView.as_view(), name="random-surprise"),
     url('^surprise/(?P<pk>[a-zA-Z0-9]+)$', views.SurpriseDetailView.as_view(), name="surprise-detail"),
-    url('^surprise/(?P<surprise_id>[a-zA-Z0-9]+)/up', views.SurpriseVoteUpView.as_view(), name="surprise-vote-up"),
-    url('^surprise/(?P<surprise_id>[a-zA-Z0-9]+)/down', views.SurpriseVoteDownView.as_view(), name="surprise-vote-down"),
+    url('^surprise/(?P<pk>[a-zA-Z0-9]+)/up', views.SurpriseUpvoteView.as_view(), name="surprise-vote-up"),
+    url('^surprise/(?P<pk>[a-zA-Z0-9]+)/down', views.SurpriseDownvoteView.as_view(), name="surprise-vote-down"),
 
     url('^system/error$', views.error)
 ]

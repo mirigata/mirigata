@@ -66,21 +66,21 @@ class SignupView(views.SuccessMessageMixin, generic.CreateView):
         return result
 
 
-class SurpriseVoteUpView(generic.View):
+class _SurpriseVoteView(generic.View):
+    form_class = None
 
-    def post(self, request, *args, **kwargs):
-        form = forms.UpvoteCommand(request.POST)
+    def post(self, request, *args, pk=None, **kwargs):
+        form = self.form_class(dict(
+            surprise_id=pk
+        ))
         form.full_clean()
         surprise = form.execute()
         return redirect(surprise.get_absolute_url())
 
 
-class SurpriseVoteDownView(generic.View):
-
-    def post(self, request, *args, **kwargs):
-        form = forms.DownvoteCommand(request.POST)
-        form.full_clean()
-        surprise = form.execute()
-        return redirect(surprise.get_absolute_url())
+class SurpriseUpvoteView(_SurpriseVoteView):
+    form_class = forms.UpvoteCommand
 
 
+class SurpriseDownvoteView(_SurpriseVoteView):
+    form_class = forms.DownvoteCommand

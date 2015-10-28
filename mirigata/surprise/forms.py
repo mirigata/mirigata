@@ -1,6 +1,3 @@
-from crispy_forms import helper
-from crispy_forms.bootstrap import FormActions
-from crispy_forms.layout import Layout, Field, Submit, HTML
 from django import forms
 
 from . import models
@@ -19,23 +16,21 @@ class CreateSurpriseCommand(forms.Form):
         return surprise
 
 
-class UpvoteCommand(forms.Form):
+class _VoteCommand(forms.Form):
+    increase = 0
     surprise_id = forms.CharField()
 
     def execute(self):
         pk = self.cleaned_data['surprise_id']
         surprise = models.Surprise.objects.get(pk=pk)
-        surprise.points += 1
+        surprise.points += self.increase
         surprise.save()
         return surprise
 
 
-class DownvoteCommand(forms.Form):
-    surprise_id = forms.CharField()
+class UpvoteCommand(_VoteCommand):
+    increase = 1
 
-    def execute(self):
-        pk = self.cleaned_data['surprise_id']
-        surprise = models.Surprise.objects.get(pk=pk)
-        surprise.points -= 1
-        surprise.save()
-        return surprise
+
+class DownvoteCommand(_VoteCommand):
+    increase = -1

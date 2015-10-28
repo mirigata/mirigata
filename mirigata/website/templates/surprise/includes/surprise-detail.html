@@ -6,7 +6,6 @@
 	<div class="surprise__votes">
 		<form class="surprise__vote-up" method="POST" action="{% url "surprise-vote-up" surprise.pk %}">
 			{% csrf_token %}
-			<input type="hidden" name="surprise_id" value="{{ surprise.pk }}"/>
 			<button type="submit"><i class="material-icons">thumb_up</i></button>
 		</form>
 
@@ -14,7 +13,6 @@
 
 		<form class="surprise__vote-down" method="POST" action="{% url "surprise-vote-down" surprise.pk %}">
 			{% csrf_token %}
-			<input type="hidden" name="surprise_id" value="{{ surprise.pk }}"/>
 			<button type="submit"><i class="material-icons">thumb_down</i></button>
 		</form>
 	</div>
