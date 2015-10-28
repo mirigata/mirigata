@@ -9488,3 +9488,7 @@ html {
     background: rgb(255,152,0);
     color: rgb(255,255,255);
     height: 88px; }
+
+#djDebug[hidden],
+#djDebug *[hidden] {
+  display: inherit !important; }

@@ -36,3 +36,10 @@ html {
     height: 88px;
   }
 }
+
+
+// override for django debug toolbar
+#djDebug[hidden],
+#djDebug *[hidden] {
+  display: inherit !important;
+}
