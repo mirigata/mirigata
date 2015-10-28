@@ -15,7 +15,11 @@ class HomepageView(generic.TemplateView):
     def get_context_data(self, **kwargs):
         ctx = super().get_context_data(**kwargs)
 
-        ctx['surprises'] = models.Surprise.objects.exclude(link_exists=False).order_by('-metadata_retrieved')
+        ctx['surprises'] = (models.Surprise.objects
+                            .exclude(link_exists=False)
+                            .order_by('-metadata_retrieved')
+                            .select_related('creator')
+                            )
 
         return ctx
 
@@ -36,7 +40,9 @@ class AddSurpriseView(views.SuccessMessageMixin, braces.LoginRequiredMixin, gene
 
 class SurpriseDetailView(generic.DetailView):
     template_name = "website/surprise-detail.html"
-    model = models.Surprise
+
+    def get_queryset(self):
+        return models.Surprise.objects.select_related('creator')
 
 
 class RandomSurpriseView(generic.RedirectView):
@@ -74,8 +80,8 @@ class _SurpriseVoteView(generic.View):
             surprise_id=pk
         ))
         form.full_clean()
-        surprise = form.execute()
-        return redirect(surprise.get_absolute_url())
+        form.execute()
+        return redirect(reverse("surprise-detail", args=(pk, )))
 
 
 class SurpriseUpvoteView(_SurpriseVoteView):

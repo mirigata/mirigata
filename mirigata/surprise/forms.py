@@ -1,6 +1,7 @@
 from django import forms
 
 from . import models
+from django.db import connection
 
 
 class CreateSurpriseCommand(forms.Form):
@@ -22,10 +23,14 @@ class _VoteCommand(forms.Form):
 
     def execute(self):
         pk = self.cleaned_data['surprise_id']
-        surprise = models.Surprise.objects.get(pk=pk)
-        surprise.points += self.increase
-        surprise.save()
-        return surprise
+
+        with connection.cursor() as c:
+            sql = "update {} set points = points + %s where id = %s".format(
+                models.Surprise._meta.db_table,
+            )
+
+            c.execute(sql, (self.increase, pk))
+
 
 
 class UpvoteCommand(_VoteCommand):

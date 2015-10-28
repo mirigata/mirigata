@@ -39,7 +39,6 @@ html {
 
 
 // override for django debug toolbar
-#djDebug[hidden],
-#djDebug *[hidden] {
-  display: inherit !important;
+[hidden][style="display: block;"] {
+  display: block !important;
 }
