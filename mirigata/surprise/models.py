@@ -20,6 +20,9 @@ class Surprise(models.Model):
 
     points = models.IntegerField(default=0)
 
+    created = models.DateTimeField(auto_now_add=True)
+    last_modified = models.DateTimeField(auto_now=True)
+
     title = models.TextField(max_length=500, null=True, blank=True)
     author_name = models.TextField(max_length=500, null=True, blank=True)
     thumbnail_url = models.URLField(max_length=500, null=True, blank=True)

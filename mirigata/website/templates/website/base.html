@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Mirigata, the surprising link sharing site</title>
+    <title>{% block page_title %}Home{% endblock %} :: Mirigata</title>
     <meta name="description" content="The place to share interesting and surprising links"/>
 
     <link rel="stylesheet"
@@ -26,7 +26,7 @@
         <div class="header__row">
             <a class="header__logo" href="{% url "homepage" %}"><img src="{% static "images/logo-mini.png" %}"></a>
 
-            <h1 class="header__title">Mirigata</h1>
+            <h1 class="header__title">{% block header_title %}Mirigata{% endblock %}</h1>
 
             <div class="header__center"></div>
 
@@ -70,5 +70,14 @@
 </div>
 <script type="text/javascript" src="{% static "js/vendor.js" %}"></script>
 <script type="text/javascript" src="{% static "js/app.js" %}"></script>
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-69480660-1', 'auto');
+ga('send', 'pageview');
+</script>
 </body>
 </html>
