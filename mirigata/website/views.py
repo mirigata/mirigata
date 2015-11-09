@@ -36,6 +36,14 @@ class AddSurpriseView(views.SuccessMessageMixin, braces.LoginRequiredMixin, gene
 class SurpriseDetailView(generic.DetailView):
     template_name = "website/surprise-detail.html"
 
+    def get_context_data(self, **kwargs):
+        result = super().get_context_data(**kwargs)
+        result['vote'] = models.Vote.objects.get_vote_for(
+            user=self.request.user,
+            surprise_id=self.kwargs['pk'],
+        )
+        return result
+
     def get_queryset(self):
         return models.Surprise.objects.select_related('creator')
 

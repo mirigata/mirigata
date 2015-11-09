@@ -4,15 +4,15 @@
 		<h1 class="surprise__title"><a href="{{ surprise.link }}">{{ surprise.title|default:"Untitled" }}</a></h1>
 	</header>
 
-	<div class="surprise__votes">
-		<form class="surprise__vote-up" method="POST" action="{% url "surprise-vote-up" surprise.pk %}">
+	<div class="surprise__votes {% if vote %}surprise__votes--voted{% endif %}">
+		<form class="surprise__vote-up{% if vote.is_upvote %} surprise__vote-up--active{% endif %}" method="POST" action="{% url "surprise-vote-up" surprise.pk %}">
 			{% csrf_token %}
 			<button type="submit"><i class="material-icons">thumb_up</i></button>
 		</form>
 
 		<a class="surprise__score" href="#" data-feature="voting history">{{ surprise.points }}</a>
 
-		<form class="surprise__vote-down" method="POST" action="{% url "surprise-vote-down" surprise.pk %}">
+		<form class="surprise__vote-down{% if vote.is_downvote %} surprise__vote-down--active{% endif %}" method="POST" action="{% url "surprise-vote-down" surprise.pk %}">
 			{% csrf_token %}
 			<button type="submit"><i class="material-icons">thumb_down</i></button>
 		</form>

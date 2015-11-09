@@ -85,11 +85,29 @@ def update_metadata(surprise):
     return
 
 
+class VoteManager(models.Manager):
+
+    def get_vote_for(self, user, surprise_id):
+        result = self.filter(user=user, surprise__id=surprise_id)
+        if result:
+            return result[0]
+        else:
+            return None
+
+
 class Vote(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4)
     user = models.ForeignKey(auth.User)
-    surprise = models.ForeignKey(Surprise)
+    surprise = models.ForeignKey(Surprise, related_name="votes")
     amount = models.SmallIntegerField(choices=((1, 'Up'), (-1, 'Down')))
+
+    objects = VoteManager()
 
     class Meta:
         unique_together = ('user', 'surprise')
+
+    def is_upvote(self):
+        return self.amount > 0
+
+    def is_downvote(self):
+        return self.amount < 0

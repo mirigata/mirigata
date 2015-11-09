@@ -8,6 +8,7 @@ class VotingTest(TestCase):
 
     def setUp(self):
         self.user = auth.User.objects.create_user(username='xyz', password='xyz')
+        self.other_user = auth.User.objects.create_user(username='qqq', password='qqq')
 
         self.surprise = models.Surprise.objects.create()
         self.upvote_command = forms.UpvoteCommand(data=dict(
@@ -42,4 +43,34 @@ class VotingTest(TestCase):
         self.upvote_command.execute(user=self.user)
         self.assertRaises(PermissionDenied, self.upvote_command.execute, user=self.user)
 
+    def test_different_users_can_vote_for_same_surprise(self):
+        self.upvote_command.execute(user=self.user)
+        self.upvote_command.execute(user=self.other_user)
+
+        s = models.Surprise.objects.get(pk=self.surprise.pk)
+        self.assertEquals(s.votes.count(), 2)
+
+    def test_retrieve_votes_for_user(self):
+        vote = models.Vote.objects.get_vote_for(user=self.user, surprise_id=self.surprise.pk)
+        self.assertIsNone(vote)
+
+        self.upvote_command.execute(user=self.user)
+        vote = models.Vote.objects.get_vote_for(user=self.user, surprise_id=self.surprise.pk)
+        self.assertIsNotNone(vote)
+
+        vote = models.Vote.objects.get_vote_for(user=self.other_user, surprise_id=self.surprise.pk)
+        self.assertIsNone(vote)
+
+
+class VoteModelTest(TestCase):
+
+    def test_upvote(self):
+        vote = models.Vote(amount=1)
+        self.assertTrue(vote.is_upvote())
+        self.assertFalse(vote.is_downvote())
+
+    def test_downvote(self):
+        vote = models.Vote(amount=-1)
+        self.assertTrue(vote.is_downvote())
+        self.assertFalse(vote.is_upvote())
 
