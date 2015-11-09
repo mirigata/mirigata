@@ -1,10 +1,10 @@
+from braces import views as braces
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.messages import views
 from django.core.urlresolvers import reverse
 from django.shortcuts import redirect
 from django.views import generic
-from braces import views as braces
 
 from surprise import models, forms
 
@@ -14,16 +14,7 @@ class HomepageView(generic.TemplateView):
 
     def get_context_data(self, **kwargs):
         ctx = super().get_context_data(**kwargs)
-
-<<<<<<< HEAD
-        ctx['surprises'] = (models.Surprise.objects
-                            .exclude(link_exists=False)
-                            .order_by('-metadata_retrieved')
-                            .select_related('creator')
-                            )
-=======
         ctx['surprises'] = models.Surprise.objects.exclude(link_exists=False).order_by('-created')
->>>>>>> hotfix/analytics
 
         return ctx
 
@@ -76,16 +67,17 @@ class SignupView(views.SuccessMessageMixin, generic.CreateView):
         return result
 
 
-class _SurpriseVoteView(generic.View):
+class _SurpriseVoteView(braces.LoginRequiredMixin, generic.View):
     form_class = None
 
     def post(self, request, *args, pk=None, **kwargs):
+        # noinspection PyCallingNonCallable
         form = self.form_class(dict(
             surprise_id=pk
         ))
         form.full_clean()
         form.execute()
-        return redirect(reverse("surprise-detail", args=(pk, )))
+        return redirect(reverse("surprise-detail", args=(pk,)))
 
 
 class SurpriseUpvoteView(_SurpriseVoteView):

@@ -3,17 +3,11 @@
     <header>
         <h1 class="surprise__title"><a href="{{ surprise.link }}">{{ surprise.title|default:"Untitled" }}</a></h1>
         <div class="surprise__meta">
-<<<<<<< HEAD
             <span class="surprise__points">{{ surprise.points }} point{{ surprise.points|pluralize }}</span>
             <span class="surprise__posted">posted some time ago</span>
             <span class="surprise__author">by
 	            <a href="#" data-feature="author profile">{{ surprise.creator.username|default:"nobody" }}</a>
             </span>
-=======
-            <span class="surprise__points">no points</span>
-            <span class="surprise__posted">posted {{ surprise.created|naturaltime }}</span>
-            <span class="surprise__author">by <a href="#" data-feature="author profile">{{ surprise.creator.username|default:"nobody" }}</a></span>
->>>>>>> hotfix/analytics
             <span class="surprise__discuss"><a href="{{ surprise.get_absolute_url }}">discuss</a></span>
         </div>
 {#        <div class="tag-list">#}

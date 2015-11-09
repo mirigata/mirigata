@@ -9443,7 +9443,8 @@ html {
       color: rgb(179,136,255);
       background-color: white; }
   .form--full-page .alert {
-    color: rgb(222, 50, 38); }
+    color: rgb(222, 50, 38);
+    padding-bottom: 0; }
   .form--full-page .form__actions {
     padding: 0;
     margin: 0 -8px; }
