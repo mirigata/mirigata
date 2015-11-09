@@ -76,7 +76,7 @@ class _SurpriseVoteView(braces.LoginRequiredMixin, generic.View):
             surprise_id=pk
         ))
         form.full_clean()
-        form.execute()
+        form.execute(user=self.request.user)
         return redirect(reverse("surprise-detail", args=(pk,)))
 
 

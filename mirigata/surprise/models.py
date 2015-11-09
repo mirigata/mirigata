@@ -1,5 +1,6 @@
 import logging
 import random
+import uuid
 
 from django.conf import settings
 from django.core.urlresolvers import reverse
@@ -82,3 +83,13 @@ def update_metadata(surprise):
     # status_code is probably 504
     log.warning("Could not retrieve metadata for %s; received status code %d", surprise.link, response.status_code)
     return
+
+
+class Vote(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4)
+    user = models.ForeignKey(auth.User)
+    surprise = models.ForeignKey(Surprise)
+    amount = models.SmallIntegerField(choices=((1, 'Up'), (-1, 'Down')))
+
+    class Meta:
+        unique_together = ('user', 'surprise')

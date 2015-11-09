@@ -1,7 +1,8 @@
 from django import forms
+from django.core.exceptions import PermissionDenied
+from django.db import connection, IntegrityError
 
 from . import models
-from django.db import connection
 
 
 class CreateSurpriseCommand(forms.Form):
@@ -21,8 +22,20 @@ class _VoteCommand(forms.Form):
     increase = 0
     surprise_id = forms.CharField()
 
-    def execute(self):
+    def execute(self, user):
+        if user is None:
+            raise PermissionDenied()
+
         pk = self.cleaned_data['surprise_id']
+
+        try:
+            models.Vote.objects.create(
+                surprise_id=pk,
+                user=user,
+                amount=self.increase
+            )
+        except IntegrityError:
+            raise PermissionDenied()
 
         with connection.cursor() as c:
             sql = "update {} set points = points + %s where id = %s".format(
@@ -30,7 +43,6 @@ class _VoteCommand(forms.Form):
             )
 
             c.execute(sql, (self.increase, pk))
-
 
 
 class UpvoteCommand(_VoteCommand):
