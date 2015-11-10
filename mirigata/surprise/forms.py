@@ -28,21 +28,27 @@ class _VoteCommand(forms.Form):
 
         pk = self.cleaned_data['surprise_id']
 
-        try:
-            models.Vote.objects.create(
-                surprise_id=pk,
-                user=user,
-                amount=self.increase
+        vote, created = models.Vote.objects.get_or_create(
+            surprise_id=pk,
+            user=user,
+            defaults=dict(
+                amount=self.increase,
             )
-        except IntegrityError:
-            raise PermissionDenied()
+        )
+
+        delta = 0
+        if created:
+            delta = self.increase
+        else:
+            delta = -vote.amount
+            vote.delete()
 
         with connection.cursor() as c:
             sql = "update {} set points = points + %s where id = %s".format(
                 models.Surprise._meta.db_table,
             )
 
-            c.execute(sql, (self.increase, pk))
+            c.execute(sql, (delta, pk))
 
 
 class UpvoteCommand(_VoteCommand):

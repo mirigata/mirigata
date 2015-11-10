@@ -39,10 +39,6 @@ class VotingTest(TestCase):
     def test_upvote_requires_user(self):
         self.assertRaises(PermissionDenied, self.upvote_command.execute, user=None)
 
-    def test_upvoting_can_happen_only_once(self):
-        self.upvote_command.execute(user=self.user)
-        self.assertRaises(PermissionDenied, self.upvote_command.execute, user=self.user)
-
     def test_different_users_can_vote_for_same_surprise(self):
         self.upvote_command.execute(user=self.user)
         self.upvote_command.execute(user=self.other_user)
@@ -60,6 +56,54 @@ class VotingTest(TestCase):
 
         vote = models.Vote.objects.get_vote_for(user=self.other_user, surprise_id=self.surprise.pk)
         self.assertIsNone(vote)
+
+    def test_after_upvote_upvoting_again_will_remove_vote(self):
+        self.upvote_command.execute(user=self.user)
+        vote = models.Vote.objects.get_vote_for(user=self.user, surprise_id=self.surprise.pk)
+        self.assertIsNotNone(vote)
+
+        self.upvote_command.execute(user=self.user)
+        vote = models.Vote.objects.get_vote_for(user=self.user, surprise_id=self.surprise.pk)
+        self.assertIsNone(vote)
+
+        s = models.Surprise.objects.get(pk=self.surprise.pk)
+        self.assertEquals(s.points, 0)
+
+    def test_after_upvote_downvoting_again_will_remove_vote(self):
+        self.upvote_command.execute(user=self.user)
+        vote = models.Vote.objects.get_vote_for(user=self.user, surprise_id=self.surprise.pk)
+        self.assertIsNotNone(vote)
+
+        self.downvote_command.execute(user=self.user)
+        vote = models.Vote.objects.get_vote_for(user=self.user, surprise_id=self.surprise.pk)
+        self.assertIsNone(vote)
+
+        s = models.Surprise.objects.get(pk=self.surprise.pk)
+        self.assertEquals(s.points, 0)
+
+    def test_after_downvote_upvoting_will_remove_vote(self):
+        self.downvote_command.execute(user=self.user)
+        vote = models.Vote.objects.get_vote_for(user=self.user, surprise_id=self.surprise.pk)
+        self.assertIsNotNone(vote)
+
+        self.upvote_command.execute(user=self.user)
+        vote = models.Vote.objects.get_vote_for(user=self.user, surprise_id=self.surprise.pk)
+        self.assertIsNone(vote)
+
+        s = models.Surprise.objects.get(pk=self.surprise.pk)
+        self.assertEquals(s.points, 0)
+
+    def test_after_downvote_downvoting_will_remove_vote(self):
+        self.downvote_command.execute(user=self.user)
+        vote = models.Vote.objects.get_vote_for(user=self.user, surprise_id=self.surprise.pk)
+        self.assertIsNotNone(vote)
+
+        self.downvote_command.execute(user=self.user)
+        vote = models.Vote.objects.get_vote_for(user=self.user, surprise_id=self.surprise.pk)
+        self.assertIsNone(vote)
+
+        s = models.Surprise.objects.get(pk=self.surprise.pk)
+        self.assertEquals(s.points, 0)
 
 
 class VoteModelTest(TestCase):

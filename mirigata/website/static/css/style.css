@@ -3751,14 +3751,18 @@ ul, ol {
   .surprise-detail .surprise__votes form.surprise__vote-down button:active, .comment__actions a:active, .new-comment:active, .form button:active {
     background-color: rgba(158,158,158, 0.40); }
   .mdl-button.mdl-button--colored, .surprise__actions a, .surprise-detail .surprise__votes a.mdl-button--colored, .surprise-detail .surprise__votes .surprise__actions a, .surprise__actions .surprise-detail .surprise__votes a, .surprise-detail .surprise__votes a.new-comment, .surprise-detail .surprise__votes form.surprise__vote-up button.mdl-button--colored,
+  .surprise-detail .surprise__votes form.surprise__vote-up.surprise__vote-down--active button,
   .surprise-detail .surprise__votes form.surprise__vote-up.surprise__vote-up--active button,
   .surprise-detail .surprise__votes form.surprise__vote-up button.new-comment,
-  .surprise-detail .surprise__votes form.surprise__vote-down button.mdl-button--colored, .surprise-detail .surprise__votes form.surprise__vote-down.surprise__vote-up--active button, .surprise-detail .surprise__votes form.surprise__vote-down button.new-comment, .comment__actions a.mdl-button--colored, .comment__actions a.new-comment, .new-comment, .form button.mdl-button--colored, .form button.new-comment {
+  .surprise-detail .surprise__votes form.surprise__vote-down button.mdl-button--colored, .surprise-detail .surprise__votes form.surprise__vote-down.surprise__vote-down--active button,
+  .surprise-detail .surprise__votes form.surprise__vote-down.surprise__vote-up--active button, .surprise-detail .surprise__votes form.surprise__vote-down button.new-comment, .comment__actions a.mdl-button--colored, .comment__actions a.new-comment, .new-comment, .form button.mdl-button--colored, .form button.new-comment {
     color: rgb(255,152,0); }
     .mdl-button.mdl-button--colored:focus:not(:active), .surprise__actions a:focus:not(:active), .surprise-detail .surprise__votes a.mdl-button--colored:focus:not(:active), .surprise-detail .surprise__votes form.surprise__vote-up button.mdl-button--colored:focus:not(:active),
+    .surprise-detail .surprise__votes form.surprise__vote-up.surprise__vote-down--active button:focus:not(:active),
     .surprise-detail .surprise__votes form.surprise__vote-up.surprise__vote-up--active button:focus:not(:active),
     .surprise-detail .surprise__votes form.surprise__vote-up button.new-comment:focus:not(:active),
-    .surprise-detail .surprise__votes form.surprise__vote-down button.mdl-button--colored:focus:not(:active), .surprise-detail .surprise__votes form.surprise__vote-down.surprise__vote-up--active button:focus:not(:active), .surprise-detail .surprise__votes form.surprise__vote-down button.new-comment:focus:not(:active), .comment__actions a.mdl-button--colored:focus:not(:active), .new-comment:focus:not(:active), .form button.mdl-button--colored:focus:not(:active) {
+    .surprise-detail .surprise__votes form.surprise__vote-down button.mdl-button--colored:focus:not(:active), .surprise-detail .surprise__votes form.surprise__vote-down.surprise__vote-down--active button:focus:not(:active),
+    .surprise-detail .surprise__votes form.surprise__vote-down.surprise__vote-up--active button:focus:not(:active), .surprise-detail .surprise__votes form.surprise__vote-down button.new-comment:focus:not(:active), .comment__actions a.mdl-button--colored:focus:not(:active), .new-comment:focus:not(:active), .form button.mdl-button--colored:focus:not(:active) {
       background-color: rgba(0,0,0, 0.12); }
 
 input.mdl-button[type="submit"], input[type="submit"].new-comment {
@@ -3773,20 +3777,30 @@ input.mdl-button[type="submit"], input[type="submit"].new-comment {
   .mdl-button--raised:focus:not(:active) {
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.18), 0 8px 16px rgba(0, 0, 0, 0.36);
     background-color: rgba(158,158,158, 0.40); }
-  .mdl-button--raised.mdl-button--colored, .surprise__actions a.mdl-button--raised, .surprise-detail .surprise__votes form.surprise__vote-up.surprise__vote-up--active button.mdl-button--raised,
+  .mdl-button--raised.mdl-button--colored, .surprise__actions a.mdl-button--raised, .surprise-detail .surprise__votes form.surprise__vote-up.surprise__vote-down--active button.mdl-button--raised,
+  .surprise-detail .surprise__votes form.surprise__vote-up.surprise__vote-up--active button.mdl-button--raised,
+  .surprise-detail .surprise__votes form.surprise__vote-down.surprise__vote-down--active button.mdl-button--raised,
   .surprise-detail .surprise__votes form.surprise__vote-down.surprise__vote-up--active button.mdl-button--raised, .mdl-button--raised.new-comment {
     background: rgb(255,152,0);
     color: rgb(255,255,255); }
-    .mdl-button--raised.mdl-button--colored:hover, .surprise__actions a.mdl-button--raised:hover, .surprise-detail .surprise__votes form.surprise__vote-up.surprise__vote-up--active button.mdl-button--raised:hover,
+    .mdl-button--raised.mdl-button--colored:hover, .surprise__actions a.mdl-button--raised:hover, .surprise-detail .surprise__votes form.surprise__vote-up.surprise__vote-down--active button.mdl-button--raised:hover,
+    .surprise-detail .surprise__votes form.surprise__vote-up.surprise__vote-up--active button.mdl-button--raised:hover,
+    .surprise-detail .surprise__votes form.surprise__vote-down.surprise__vote-down--active button.mdl-button--raised:hover,
     .surprise-detail .surprise__votes form.surprise__vote-down.surprise__vote-up--active button.mdl-button--raised:hover, .mdl-button--raised.new-comment:hover {
       background-color: rgb(255,152,0); }
-    .mdl-button--raised.mdl-button--colored:active, .surprise__actions a.mdl-button--raised:active, .surprise-detail .surprise__votes form.surprise__vote-up.surprise__vote-up--active button.mdl-button--raised:active,
+    .mdl-button--raised.mdl-button--colored:active, .surprise__actions a.mdl-button--raised:active, .surprise-detail .surprise__votes form.surprise__vote-up.surprise__vote-down--active button.mdl-button--raised:active,
+    .surprise-detail .surprise__votes form.surprise__vote-up.surprise__vote-up--active button.mdl-button--raised:active,
+    .surprise-detail .surprise__votes form.surprise__vote-down.surprise__vote-down--active button.mdl-button--raised:active,
     .surprise-detail .surprise__votes form.surprise__vote-down.surprise__vote-up--active button.mdl-button--raised:active, .mdl-button--raised.new-comment:active {
       background-color: rgb(255,152,0); }
-    .mdl-button--raised.mdl-button--colored:focus:not(:active), .surprise__actions a.mdl-button--raised:focus:not(:active), .surprise-detail .surprise__votes form.surprise__vote-up.surprise__vote-up--active button.mdl-button--raised:focus:not(:active),
+    .mdl-button--raised.mdl-button--colored:focus:not(:active), .surprise__actions a.mdl-button--raised:focus:not(:active), .surprise-detail .surprise__votes form.surprise__vote-up.surprise__vote-down--active button.mdl-button--raised:focus:not(:active),
+    .surprise-detail .surprise__votes form.surprise__vote-up.surprise__vote-up--active button.mdl-button--raised:focus:not(:active),
+    .surprise-detail .surprise__votes form.surprise__vote-down.surprise__vote-down--active button.mdl-button--raised:focus:not(:active),
     .surprise-detail .surprise__votes form.surprise__vote-down.surprise__vote-up--active button.mdl-button--raised:focus:not(:active), .mdl-button--raised.new-comment:focus:not(:active) {
       background-color: rgb(255,152,0); }
-    .mdl-button--raised.mdl-button--colored .mdl-ripple, .surprise__actions a.mdl-button--raised .mdl-ripple, .surprise-detail .surprise__votes form.surprise__vote-up.surprise__vote-up--active button.mdl-button--raised .mdl-ripple,
+    .mdl-button--raised.mdl-button--colored .mdl-ripple, .surprise__actions a.mdl-button--raised .mdl-ripple, .surprise-detail .surprise__votes form.surprise__vote-up.surprise__vote-down--active button.mdl-button--raised .mdl-ripple,
+    .surprise-detail .surprise__votes form.surprise__vote-up.surprise__vote-up--active button.mdl-button--raised .mdl-ripple,
+    .surprise-detail .surprise__votes form.surprise__vote-down.surprise__vote-down--active button.mdl-button--raised .mdl-ripple,
     .surprise-detail .surprise__votes form.surprise__vote-down.surprise__vote-up--active button.mdl-button--raised .mdl-ripple, .mdl-button--raised.new-comment .mdl-ripple {
       background: rgb(255,255,255); }
 
@@ -3823,25 +3837,45 @@ input.mdl-button[type="submit"], input[type="submit"].new-comment {
   .mdl-button--fab:focus:not(:active), .new-comment:focus:not(:active) {
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.18), 0 8px 16px rgba(0, 0, 0, 0.36);
     background-color: rgba(158,158,158, 0.40); }
-  .mdl-button--fab.mdl-button--colored, .surprise__actions a.mdl-button--fab, .surprise__actions a.new-comment, .surprise-detail .surprise__votes form.surprise__vote-up.surprise__vote-up--active button.mdl-button--fab,
+  .mdl-button--fab.mdl-button--colored, .surprise__actions a.mdl-button--fab, .surprise__actions a.new-comment, .surprise-detail .surprise__votes form.surprise__vote-up.surprise__vote-down--active button.mdl-button--fab,
+  .surprise-detail .surprise__votes form.surprise__vote-up.surprise__vote-down--active button.new-comment,
+  .surprise-detail .surprise__votes form.surprise__vote-up.surprise__vote-up--active button.mdl-button--fab,
   .surprise-detail .surprise__votes form.surprise__vote-up.surprise__vote-up--active button.new-comment,
+  .surprise-detail .surprise__votes form.surprise__vote-down.surprise__vote-down--active button.mdl-button--fab,
+  .surprise-detail .surprise__votes form.surprise__vote-down.surprise__vote-down--active button.new-comment,
   .surprise-detail .surprise__votes form.surprise__vote-down.surprise__vote-up--active button.mdl-button--fab, .surprise-detail .surprise__votes form.surprise__vote-down.surprise__vote-up--active button.new-comment, .new-comment {
     background: rgb(179,136,255);
     color: rgb(255,255,255); }
-    .mdl-button--fab.mdl-button--colored:hover, .surprise__actions a.mdl-button--fab:hover, .surprise-detail .surprise__votes form.surprise__vote-up.surprise__vote-up--active button.mdl-button--fab:hover,
+    .mdl-button--fab.mdl-button--colored:hover, .surprise__actions a.mdl-button--fab:hover, .surprise-detail .surprise__votes form.surprise__vote-up.surprise__vote-down--active button.mdl-button--fab:hover,
+    .surprise-detail .surprise__votes form.surprise__vote-up.surprise__vote-down--active button.new-comment:hover,
+    .surprise-detail .surprise__votes form.surprise__vote-up.surprise__vote-up--active button.mdl-button--fab:hover,
     .surprise-detail .surprise__votes form.surprise__vote-up.surprise__vote-up--active button.new-comment:hover,
+    .surprise-detail .surprise__votes form.surprise__vote-down.surprise__vote-down--active button.mdl-button--fab:hover,
+    .surprise-detail .surprise__votes form.surprise__vote-down.surprise__vote-down--active button.new-comment:hover,
     .surprise-detail .surprise__votes form.surprise__vote-down.surprise__vote-up--active button.mdl-button--fab:hover, .surprise-detail .surprise__votes form.surprise__vote-down.surprise__vote-up--active button.new-comment:hover, .new-comment:hover {
       background-color: rgb(179,136,255); }
-    .mdl-button--fab.mdl-button--colored:focus:not(:active), .surprise__actions a.mdl-button--fab:focus:not(:active), .surprise-detail .surprise__votes form.surprise__vote-up.surprise__vote-up--active button.mdl-button--fab:focus:not(:active),
+    .mdl-button--fab.mdl-button--colored:focus:not(:active), .surprise__actions a.mdl-button--fab:focus:not(:active), .surprise-detail .surprise__votes form.surprise__vote-up.surprise__vote-down--active button.mdl-button--fab:focus:not(:active),
+    .surprise-detail .surprise__votes form.surprise__vote-up.surprise__vote-down--active button.new-comment:focus:not(:active),
+    .surprise-detail .surprise__votes form.surprise__vote-up.surprise__vote-up--active button.mdl-button--fab:focus:not(:active),
     .surprise-detail .surprise__votes form.surprise__vote-up.surprise__vote-up--active button.new-comment:focus:not(:active),
+    .surprise-detail .surprise__votes form.surprise__vote-down.surprise__vote-down--active button.mdl-button--fab:focus:not(:active),
+    .surprise-detail .surprise__votes form.surprise__vote-down.surprise__vote-down--active button.new-comment:focus:not(:active),
     .surprise-detail .surprise__votes form.surprise__vote-down.surprise__vote-up--active button.mdl-button--fab:focus:not(:active), .surprise-detail .surprise__votes form.surprise__vote-down.surprise__vote-up--active button.new-comment:focus:not(:active), .new-comment:focus:not(:active) {
       background-color: rgb(179,136,255); }
-    .mdl-button--fab.mdl-button--colored:active, .surprise__actions a.mdl-button--fab:active, .surprise-detail .surprise__votes form.surprise__vote-up.surprise__vote-up--active button.mdl-button--fab:active,
+    .mdl-button--fab.mdl-button--colored:active, .surprise__actions a.mdl-button--fab:active, .surprise-detail .surprise__votes form.surprise__vote-up.surprise__vote-down--active button.mdl-button--fab:active,
+    .surprise-detail .surprise__votes form.surprise__vote-up.surprise__vote-down--active button.new-comment:active,
+    .surprise-detail .surprise__votes form.surprise__vote-up.surprise__vote-up--active button.mdl-button--fab:active,
     .surprise-detail .surprise__votes form.surprise__vote-up.surprise__vote-up--active button.new-comment:active,
+    .surprise-detail .surprise__votes form.surprise__vote-down.surprise__vote-down--active button.mdl-button--fab:active,
+    .surprise-detail .surprise__votes form.surprise__vote-down.surprise__vote-down--active button.new-comment:active,
     .surprise-detail .surprise__votes form.surprise__vote-down.surprise__vote-up--active button.mdl-button--fab:active, .surprise-detail .surprise__votes form.surprise__vote-down.surprise__vote-up--active button.new-comment:active, .new-comment:active {
       background-color: rgb(179,136,255); }
-    .mdl-button--fab.mdl-button--colored .mdl-ripple, .surprise__actions a.mdl-button--fab .mdl-ripple, .surprise-detail .surprise__votes form.surprise__vote-up.surprise__vote-up--active button.mdl-button--fab .mdl-ripple,
+    .mdl-button--fab.mdl-button--colored .mdl-ripple, .surprise__actions a.mdl-button--fab .mdl-ripple, .surprise-detail .surprise__votes form.surprise__vote-up.surprise__vote-down--active button.mdl-button--fab .mdl-ripple,
+    .surprise-detail .surprise__votes form.surprise__vote-up.surprise__vote-down--active button.new-comment .mdl-ripple,
+    .surprise-detail .surprise__votes form.surprise__vote-up.surprise__vote-up--active button.mdl-button--fab .mdl-ripple,
     .surprise-detail .surprise__votes form.surprise__vote-up.surprise__vote-up--active button.new-comment .mdl-ripple,
+    .surprise-detail .surprise__votes form.surprise__vote-down.surprise__vote-down--active button.mdl-button--fab .mdl-ripple,
+    .surprise-detail .surprise__votes form.surprise__vote-down.surprise__vote-down--active button.new-comment .mdl-ripple,
     .surprise-detail .surprise__votes form.surprise__vote-down.surprise__vote-up--active button.mdl-button--fab .mdl-ripple, .surprise-detail .surprise__votes form.surprise__vote-down.surprise__vote-up--active button.new-comment .mdl-ripple, .new-comment .mdl-ripple {
       background: rgb(255,255,255); }
 
@@ -3946,10 +3980,14 @@ input.mdl-button[type="submit"], input[type="submit"].new-comment {
 
 .mdl-button--colored[disabled][disabled],
 .surprise__actions a[disabled][disabled],
+.surprise-detail .surprise__votes form.surprise__vote-up.surprise__vote-down--active button[disabled][disabled],
 .surprise-detail .surprise__votes form.surprise__vote-up.surprise__vote-up--active button[disabled][disabled],
+.surprise-detail .surprise__votes form.surprise__vote-down.surprise__vote-down--active button[disabled][disabled],
 .surprise-detail .surprise__votes form.surprise__vote-down.surprise__vote-up--active button[disabled][disabled],
 [disabled][disabled].new-comment,
-.mdl-button--colored.mdl-button--disabled.mdl-button--disabled, .surprise__actions a.mdl-button--disabled.mdl-button--disabled, .surprise-detail .surprise__votes form.surprise__vote-up.surprise__vote-up--active button.mdl-button--disabled.mdl-button--disabled,
+.mdl-button--colored.mdl-button--disabled.mdl-button--disabled, .surprise__actions a.mdl-button--disabled.mdl-button--disabled, .surprise-detail .surprise__votes form.surprise__vote-up.surprise__vote-down--active button.mdl-button--disabled.mdl-button--disabled,
+.surprise-detail .surprise__votes form.surprise__vote-up.surprise__vote-up--active button.mdl-button--disabled.mdl-button--disabled,
+.surprise-detail .surprise__votes form.surprise__vote-down.surprise__vote-down--active button.mdl-button--disabled.mdl-button--disabled,
 .surprise-detail .surprise__votes form.surprise__vote-down.surprise__vote-up--active button.mdl-button--disabled.mdl-button--disabled, .mdl-button--disabled.mdl-button--disabled.new-comment {
   color: rgba(0,0,0, 0.26); }
 
@@ -9363,7 +9401,9 @@ html {
     .surprise-detail .surprise__votes form.surprise__vote-up button,
     .surprise-detail .surprise__votes form.surprise__vote-down button {
       color: white; }
+    .surprise-detail .surprise__votes form.surprise__vote-up.surprise__vote-down--active button,
     .surprise-detail .surprise__votes form.surprise__vote-up.surprise__vote-up--active button,
+    .surprise-detail .surprise__votes form.surprise__vote-down.surprise__vote-down--active button,
     .surprise-detail .surprise__votes form.surprise__vote-down.surprise__vote-up--active button {
       background-color: white; }
 
