@@ -1,5 +1,7 @@
 from django.core.exceptions import PermissionDenied
 from django.test import TestCase
+from django.utils.functional import SimpleLazyObject
+
 from surprise import models, forms
 from django.contrib.auth import models as auth
 
@@ -104,6 +106,10 @@ class VotingTest(TestCase):
 
         s = models.Surprise.objects.get(pk=self.surprise.pk)
         self.assertEquals(s.points, 0)
+
+    def test_dont_raise_error_when_user_is_not_present(self):
+        vote = models.Vote.objects.get_vote_for(user=None, surprise_id=self.surprise.pk)
+        self.assertIsNone(vote)
 
 
 class VoteModelTest(TestCase):

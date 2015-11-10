@@ -88,6 +88,9 @@ def update_metadata(surprise):
 class VoteManager(models.Manager):
 
     def get_vote_for(self, user, surprise_id):
+        if not user or not user.is_authenticated():
+            return None
+
         result = self.filter(user=user, surprise__id=surprise_id)
         if result:
             return result[0]
