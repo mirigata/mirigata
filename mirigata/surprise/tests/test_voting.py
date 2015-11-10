@@ -1,13 +1,11 @@
+from django.contrib.auth import models as auth
 from django.core.exceptions import PermissionDenied
 from django.test import TestCase
-from django.utils.functional import SimpleLazyObject
 
 from surprise import models, forms
-from django.contrib.auth import models as auth
 
 
 class VotingTest(TestCase):
-
     def setUp(self):
         self.user = auth.User.objects.create_user(username='xyz', password='xyz')
         self.other_user = auth.User.objects.create_user(username='qqq', password='qqq')
@@ -111,9 +109,16 @@ class VotingTest(TestCase):
         vote = models.Vote.objects.get_vote_for(user=None, surprise_id=self.surprise.pk)
         self.assertIsNone(vote)
 
+    def test_voting_history(self):
+        self.downvote_command.execute(user=self.user)
+        self.downvote_command.execute(user=self.other_user)
+
+        votes = models.Vote.objects.get_history_for(surprise_id=self.surprise.pk)
+        self.assertIsNotNone(votes)
+        self.assertEqual(len(votes), 2)
+
 
 class VoteModelTest(TestCase):
-
     def test_upvote(self):
         vote = models.Vote(amount=1)
         self.assertTrue(vote.is_upvote())
@@ -123,4 +128,3 @@ class VoteModelTest(TestCase):
         vote = models.Vote(amount=-1)
         self.assertTrue(vote.is_downvote())
         self.assertFalse(vote.is_upvote())
-

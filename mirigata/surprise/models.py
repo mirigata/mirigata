@@ -97,6 +97,9 @@ class VoteManager(models.Manager):
         else:
             return None
 
+    def get_history_for(self, surprise_id):
+        return self.filter(surprise__id=surprise_id).order_by('-created').select_related('user')
+
 
 class Vote(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4)
