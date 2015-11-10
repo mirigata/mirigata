@@ -13,6 +13,7 @@ urlpatterns = [
     url('^surprise/(?P<pk>[a-zA-Z0-9]+)$', views.SurpriseDetailView.as_view(), name="surprise-detail"),
     url('^surprise/(?P<pk>[a-zA-Z0-9]+)/up', views.SurpriseUpvoteView.as_view(), name="surprise-vote-up"),
     url('^surprise/(?P<pk>[a-zA-Z0-9]+)/down', views.SurpriseDownvoteView.as_view(), name="surprise-vote-down"),
+    url('^surprise/(?P<pk>[a-zA-Z0-9]+)/history', views.SurpriseHistoryView.as_view(), name="surprise-vote-history"),
 
     url('^system/error$', views.error)
 ]

@@ -103,6 +103,7 @@ class Vote(models.Model):
     user = models.ForeignKey(auth.User)
     surprise = models.ForeignKey(Surprise, related_name="votes")
     amount = models.SmallIntegerField(choices=((1, 'Up'), (-1, 'Down')))
+    created = models.DateTimeField(auto_now_add=True)
 
     objects = VoteManager()
 

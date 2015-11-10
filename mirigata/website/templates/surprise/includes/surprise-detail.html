@@ -10,7 +10,7 @@
 			<button type="submit"><i class="material-icons">thumb_up</i></button>
 		</form>
 
-		<a class="surprise__score" href="#" data-feature="voting history">{{ surprise.points }}</a>
+		<a class="surprise__score" href="{% url "surprise-vote-history" surprise.pk %}" data-feature="voting history">{{ surprise.points }}</a>
 
 		<form class="surprise__vote-down{% if vote.is_downvote %} surprise__vote-down--active{% endif %}" method="POST" action="{% url "surprise-vote-down" surprise.pk %}">
 			{% csrf_token %}

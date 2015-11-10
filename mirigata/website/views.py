@@ -94,3 +94,15 @@ class SurpriseUpvoteView(_SurpriseVoteView):
 
 class SurpriseDownvoteView(_SurpriseVoteView):
     form_class = forms.DownvoteCommand
+
+
+class SurpriseHistoryView(generic.DetailView):
+    template_name = "website/surprise-history.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['history'] = self.get_object().votes.order_by('-created')
+        return context
+
+    def get_queryset(self):
+        return models.Surprise.objects.select_related('creator')
