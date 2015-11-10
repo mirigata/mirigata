@@ -14,6 +14,12 @@ from shortuuidfield import ShortUUIDField
 log = logging.getLogger(__name__)
 
 
+class SurpriseManager(models.Manager):
+
+    def get_surprises_for_homepage(self):
+        return self.filter(link_exists=True).order_by('-created').select_related('creator')
+
+
 class Surprise(models.Model):
     id = ShortUUIDField(primary_key=True, auto=True)
     link = models.URLField(max_length=500)
@@ -31,6 +37,11 @@ class Surprise(models.Model):
     metadata_retrieved = models.DateTimeField(null=True)
 
     link_exists = models.BooleanField(default=True, db_index=True)
+
+    objects = SurpriseManager()
+
+    def __str__(self):
+        return "Surprise({}, {})".format(self.id, self.link)
 
     def get_absolute_url(self):
         return reverse('surprise-detail', kwargs={"pk": self.id})

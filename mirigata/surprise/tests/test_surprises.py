@@ -1,4 +1,7 @@
+from datetime import timedelta
+
 from django.test import TestCase
+from django.utils import timezone
 
 from surprise import models
 
@@ -93,7 +96,6 @@ class GuardianMetadataTestCase(TestCase):
 
 
 class RandomSurpriseTestCase(TestCase):
-
     def test_never_return_non_existing_link(self):
         non_existing = models.Surprise.objects.create(
             link="http://hjdsfhsdhfjdshfsdj.com",
@@ -108,3 +110,27 @@ class RandomSurpriseTestCase(TestCase):
 
         self.assertIn(existing, random_surprises)
         self.assertNotIn(non_existing, random_surprises)
+
+
+class SurpriseManagerTest(TestCase):
+    def test_surprises_for_homepage(self):
+        models.Surprise.objects.all().delete()
+
+        s1 = models.Surprise.objects.create(
+            link='http://hello.world',
+            title='hello world',
+        )
+        s2 = models.Surprise.objects.create(
+            link='http://bye.world',
+            title='bye world',
+        )
+        s2.created = timezone.now() - timedelta(days=365)
+        s2.save()
+
+        s3 = models.Surprise.objects.create(
+            link_exists=False,
+            title='i should not exist',
+        )
+
+        surprises = models.Surprise.objects.get_surprises_for_homepage()
+        self.assertQuerysetEqual(surprises, [s1.pk, s2.pk], transform=lambda o: o.pk)

@@ -14,8 +14,7 @@ class HomepageView(generic.TemplateView):
 
     def get_context_data(self, **kwargs):
         ctx = super().get_context_data(**kwargs)
-        ctx['surprises'] = models.Surprise.objects.exclude(link_exists=False).order_by('-created')
-
+        ctx['surprises'] = models.Surprise.objects.get_surprises_for_homepage()
         return ctx
 
 
