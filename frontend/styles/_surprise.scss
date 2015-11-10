@@ -27,6 +27,11 @@
         @extend .mdl-button--icon;
         color: white;
       }
+
+      &.surprise__vote-up--active button {
+        @extend .mdl-button--colored;
+        background-color: white;
+      }
     }
   }
 
