@@ -48,6 +48,7 @@ INSTALLED_APPS = (
     'django.contrib.humanize',
 
     'crispy_forms',
+    'mptt',
 
     'website',
     'surprise',

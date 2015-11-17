@@ -8,6 +8,8 @@ from django.db import models
 from django.contrib.auth import models as auth
 from django.utils import timezone
 import requests
+from mptt.fields import TreeForeignKey
+from mptt.models import MPTTModel
 from shortuuidfield import ShortUUIDField
 
 
@@ -129,3 +131,17 @@ class Vote(models.Model):
 
     def is_downvote(self):
         return self.amount < 0
+
+
+class Comment(MPTTModel):
+    id = ShortUUIDField(primary_key=True, auto=True)
+    parent = TreeForeignKey('self', null=True, blank=True, related_name='children', db_index=True)
+
+    surprise = models.ForeignKey(Surprise, related_name="comments")
+    author = models.ForeignKey(auth.User, related_name="comments")
+
+    created = models.DateTimeField(auto_now_add=True)
+    content = models.TextField()
+
+    def __str__(self):
+        return "Comment {} by {}".format(self.id, self.author.username)

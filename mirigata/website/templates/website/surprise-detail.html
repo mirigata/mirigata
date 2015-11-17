@@ -1,115 +1,40 @@
 {% extends "website/base.html" %}
 
+{% load mptt_tags %}
+{% load humanize %}
+
 {% block page %}
 
-    {% include "surprise/includes/surprise-detail.html" %}
+	{% include "surprise/includes/surprise-detail.html" %}
 
-	{% comment %}
 
-    <section class="comment-list">
-        <h2>4 comments</h2>
+	<section class="comment-list">
+	<h2>{{ surprise.comments.count }} comment{{ surprise.comments.count|pluralize }}</h2>
 
-        <a class="new-comment" href="#" data-feature="posting comments"><i class="material-icons">add</i> <span>Add comment</span></a>
+	<a class="new-comment" href="#" data-feature="posting comments"><i class="material-icons">add</i> <span>Add comment</span></a>
 
-        <article class="comment">
-            <div class="comment__meta">
-                <span class="comment__author">Author</span>
-                <span class="comment__points">no points</span>
-                <span class="comment__posted">posted some time ago</span>
-            </div>
-            <div class="comment__content">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam pulvinar cursus laoreet. Pellentesque
-                eget augue feugiat, consectetur lorem et, vehicula nulla. Suspendisse nulla dui, varius non sapien
-                ut,
-                facilisis vulputate velit. Maecenas tempus risus in maximus finibus.
-            </div>
-            <div class="comment__actions">
-                <a href="#" data-feature="replying to comments"><i class="material-icons">reply</i>
-                    <span>reply</span></a>
-                <a href="#" data-feature="comments"><i class="material-icons">link</i> <span>permalink</span></a>
-                <a href="#" data-feature="flagging comments"><i class="material-icons">flag</i><span>flag</span></a>
-            </div>
+	{% recursetree surprise.comments.all %}
+		<article class="comment">
+			<div class="comment__meta">
+{#				<span class="comment__points">no points</span>#}
+				<span class="comment__posted">posted {{ node.created|naturaltime }}</span>
+				<span class="comment__author">by <a href="#" data-feature="author profile">{{ node.author.username }}</a></span>
+			</div>
+			<div class="comment__content">
+				{{ node.content }}
+			</div>
+			<div class="comment__actions">
+				<a href="#" data-feature="replying to comments"><i class="material-icons">reply</i>
+					<span>reply</span></a>
+				<a href="#" data-feature="comments"><i class="material-icons">link</i> <span>permalink</span></a>
+				<a href="#" data-feature="flagging comments"><i class="material-icons">flag</i><span>flag</span></a>
+			</div>
 
-            <section class="comment__replies">
-                <article class="comment">
-                    <div class="comment__meta">
-                        <span class="comment__author">Author</span>
-                        <span class="comment__points">no points</span>
-                        <span class="comment__posted">posted some time ago</span>
-                    </div>
-                    <div class="comment__content">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam pulvinar cursus laoreet.
-                        Pellentesque
-                        eget augue feugiat, consectetur lorem et, vehicula nulla. Suspendisse nulla dui, varius non
-                        sapien ut,
-                        facilisis vulputate velit. Maecenas tempus risus in maximus finibus.
-                    </div>
-                    <div class="comment__actions">
-                        <a href="#" data-feature="replying to comments"><i class="material-icons">reply</i>
-                            <span>reply</span></a>
-                        <a href="#" data-feature="comments"><i class="material-icons">link</i>
-                            <span>permalink</span></a>
-                        <a href="#" data-feature="flagging comments"><i
-                                class="material-icons">flag</i><span>flag</span></a>
-                    </div>
+			<section class="comment__replies">
+				{{ children }}
+			</section>
+		</article>
 
-                    <section class="comment__replies">
+	{% endrecursetree %}
 
-                    </section>
-                </article>
-
-                <article class="comment">
-                    <div class="comment__meta">
-                        <span class="comment__author">Author</span>
-                        <span class="comment__points">no points</span>
-                        <span class="comment__posted">posted some time ago</span>
-                    </div>
-                    <div class="comment__content">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam pulvinar cursus laoreet.
-                        Pellentesque
-                        eget augue feugiat, consectetur lorem et, vehicula nulla. Suspendisse nulla dui, varius non
-                        sapien ut,
-                        facilisis vulputate velit. Maecenas tempus risus in maximus finibus.
-                    </div>
-                    <div class="comment__actions">
-                        <a href="#" data-feature="replying to comments"><i class="material-icons">reply</i>
-                            <span>reply</span></a>
-                        <a href="#" data-feature="comments"><i class="material-icons">link</i>
-                            <span>permalink</span></a>
-                        <a href="#" data-feature="flagging comments"><i
-                                class="material-icons">flag</i><span>flag</span></a>
-                    </div>
-
-                    <section class="comment__replies">
-
-                    </section>
-                </article>
-            </section>
-        </article>
-        <article class="comment">
-            <div class="comment__meta">
-                <span class="comment__author">Author</span>
-                <span class="comment__points">no points</span>
-                <span class="comment__posted">posted some time ago</span>
-            </div>
-            <div class="comment__content">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam pulvinar cursus laoreet. Pellentesque
-                eget augue feugiat, consectetur lorem et, vehicula nulla. Suspendisse nulla dui, varius non sapien
-                ut,
-                facilisis vulputate velit. Maecenas tempus risus in maximus finibus.
-            </div>
-            <div class="comment__actions">
-                <a href="#" data-feature="replying to comments"><i class="material-icons">reply</i>
-                    <span>reply</span></a>
-                <a href="#" data-feature="comments"><i class="material-icons">link</i> <span>permalink</span></a>
-                <a href="#" data-feature="flagging comments"><i class="material-icons">flag</i><span>flag</span></a>
-            </div>
-
-            <section class="comment__replies">
-
-            </section>
-        </article>
-    </section>
-
-{% endcomment %}
 {% endblock page %}

@@ -1,4 +1,5 @@
 from django.contrib import admin
+from mptt.admin import MPTTModelAdmin
 
 from surprise import models
 
@@ -16,3 +17,4 @@ class SurpriseAdmin(admin.ModelAdmin):
 
 
 admin.site.register(models.Surprise, SurpriseAdmin)
+admin.site.register(models.Comment, MPTTModelAdmin)
