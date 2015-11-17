@@ -18,10 +18,21 @@
       color: white;
     }
 
-    a.surprise__vote-up,
-    a.surprise__vote-down {
-      @extend .mdl-button--icon;
-      color: white;
+    form.surprise__vote-up,
+    form.surprise__vote-down {
+      display: inline;
+
+      button {
+        @extend .mdl-button;
+        @extend .mdl-button--icon;
+        color: white;
+      }
+
+      &.surprise__vote-down--active button,
+      &.surprise__vote-up--active button {
+        @extend .mdl-button--colored;
+        background-color: white;
+      }
     }
   }
 

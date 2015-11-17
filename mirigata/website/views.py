@@ -1,9 +1,10 @@
+from braces import views as braces
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.messages import views
 from django.core.urlresolvers import reverse
+from django.shortcuts import redirect
 from django.views import generic
-from braces import views as braces
 
 from surprise import models, forms
 
@@ -13,9 +14,7 @@ class HomepageView(generic.TemplateView):
 
     def get_context_data(self, **kwargs):
         ctx = super().get_context_data(**kwargs)
-
-        ctx['surprises'] = models.Surprise.objects.exclude(link_exists=False).order_by('-created')
-
+        ctx['surprises'] = models.Surprise.objects.get_surprises_for_homepage()
         return ctx
 
 
@@ -35,7 +34,17 @@ class AddSurpriseView(views.SuccessMessageMixin, braces.LoginRequiredMixin, gene
 
 class SurpriseDetailView(generic.DetailView):
     template_name = "website/surprise-detail.html"
-    model = models.Surprise
+
+    def get_context_data(self, **kwargs):
+        result = super().get_context_data(**kwargs)
+        result['vote'] = models.Vote.objects.get_vote_for(
+            user=self.request.user,
+            surprise_id=self.kwargs['pk'],
+        )
+        return result
+
+    def get_queryset(self):
+        return models.Surprise.objects.select_related('creator')
 
 
 class RandomSurpriseView(generic.RedirectView):
@@ -63,3 +72,36 @@ class SignupView(views.SuccessMessageMixin, generic.CreateView):
                             password=form.cleaned_data['password1'])
         login(self.request, user)
         return result
+
+
+class _SurpriseVoteView(braces.LoginRequiredMixin, generic.View):
+    form_class = None
+
+    def post(self, request, *args, pk=None, **kwargs):
+        # noinspection PyCallingNonCallable
+        form = self.form_class(dict(
+            surprise_id=pk
+        ))
+        form.full_clean()
+        form.execute(user=self.request.user)
+        return redirect(reverse("surprise-detail", args=(pk,)))
+
+
+class SurpriseUpvoteView(_SurpriseVoteView):
+    form_class = forms.UpvoteCommand
+
+
+class SurpriseDownvoteView(_SurpriseVoteView):
+    form_class = forms.DownvoteCommand
+
+
+class SurpriseHistoryView(generic.DetailView):
+    template_name = "website/surprise-history.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['history'] = models.Vote.objects.get_history_for(surprise_id=self.kwargs['pk'])
+        return context
+
+    def get_queryset(self):
+        return models.Surprise.objects.select_related('creator')

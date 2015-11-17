@@ -37,3 +37,9 @@ html {
     height: 88px;
   }
 }
+
+
+// override for django debug toolbar
+[hidden][style="display: block;"] {
+  display: block !important;
+}

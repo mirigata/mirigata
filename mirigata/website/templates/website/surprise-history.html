@@ -1,0 +1,43 @@
+{% extends "website/base.html" %}
+{% load humanize %}
+
+{% block page %}
+
+	<article class="surprise surprise-detail">
+		<header>
+			<h1 class="surprise__title"><a href="{{ surprise.link }}">{{ surprise.title|default:"Untitled" }}</a></h1>
+		</header>
+
+		<section class="surprise__description">
+			Voting history for this surprise
+		</section>
+
+		<section class="surprise__actions">
+			<a href="{{ surprise.get_absolute_url }}"><i class="material-icons">arrow_back</i>
+				<span>back to surprise</span></a>
+		</section>
+	</article>
+
+	<section class="comment-list">
+		<h2>{{ history.count }} votes</h2>
+
+
+	{% for vote in history %}
+		<article class="comment">
+			<div class="comment__meta">
+				<span class="comment__author">
+					<a href="#" data-feature="author profile">{{ vote.user.username }}</a></span>
+				<span class="comment__points">
+					{% if vote.amount > 0 %}
+					upvoted this surprise
+					{% else %}
+					downvoted this surprise
+					{% endif %}
+				</span>
+				<span class="comment__posted">{{ vote.created|naturaltime }}</span>
+			</div>
+		</article>
+	{% endfor %}
+
+	</section>
+{% endblock page %}
