@@ -68,6 +68,9 @@ class Surprise(models.Model):
 
         self.save()
 
+    def get_all_comments(self):
+        return self.comments.select_related('author')
+
 
 def get_random_surprise():
     query_set = Surprise.objects.exclude(link_exists=False)
@@ -145,3 +148,4 @@ class Comment(MPTTModel):
 
     def __str__(self):
         return "Comment {} by {}".format(self.id, self.author.username)
+
