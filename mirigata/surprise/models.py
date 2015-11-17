@@ -19,7 +19,11 @@ log = logging.getLogger(__name__)
 class SurpriseManager(models.Manager):
 
     def get_surprises_for_homepage(self):
-        return self.filter(link_exists=True).order_by('-created').select_related('creator')
+        return (self
+                .filter(link_exists=True)
+                .order_by('-created')
+                .select_related('creator')
+                .prefetch_related('comments'))
 
 
 class Surprise(models.Model):
