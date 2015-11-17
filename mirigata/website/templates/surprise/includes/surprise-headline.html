@@ -19,7 +19,7 @@
     <footer>
         <a class="surprise__comments-link icon-button" href="{{ surprise.get_absolute_url }}">
             <i class="material-icons surprise__comments-icon">comment</i>
-            <span class="surprise__comments-amount">{{ surprise.comments|length }}</span>
+            <span class="surprise__comments-amount">{{ surprise.comments.all|length }}</span>
             <span class="surprise__comments-text">comments</span></a>
     </footer>
 </article>
