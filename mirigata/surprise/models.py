@@ -150,6 +150,9 @@ class Comment(MPTTModel):
     created = models.DateTimeField(auto_now_add=True)
     content = models.TextField()
 
+    class MPTTMeta:
+        order_insertion_by = ['created']
+
     def __str__(self):
         return "Comment {} by {}".format(self.id, self.author.username)
 
